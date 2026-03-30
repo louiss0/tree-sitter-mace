@@ -1,0 +1,431 @@
+/**
+ * @file Tree-sitter grammar for the Mace language
+ * @author
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
+const PREC = {
+  conditional: 1,
+  logical_or: 2,
+  logical_and: 3,
+  bitwise_or: 4,
+  bitwise_xor: 5,
+  bitwise_and: 6,
+  equality: 7,
+  relational: 8,
+  shift: 9,
+  additive: 10,
+  multiplicative: 11,
+  exponent: 12,
+  unary: 13,
+};
+
+export default grammar({
+  name: "mace",
+
+  conflicts: $ => [
+    [$._data_directive_list, $._schema_directive_list],
+  ],
+
+  extras: $ => [
+    /\s/,
+    $._comment,
+  ],
+
+  word: $ => $.identifier,
+
+  rules: {
+    source_file: $ => seq(
+      repeat($.import_declaration),
+      optional($.script_block),
+      $.output_block,
+    ),
+
+    _comment: _ => token(choice(
+      /\/=[^\r\n]*=\//,
+      /\/=[^\r\n]*/,
+    )),
+
+    identifier: _ => /[A-Za-z][A-Za-z0-9_]*/,
+
+    string_literal: _ => token(seq(
+      '"',
+      repeat(choice(
+        /[^"\\\r\n]+/,
+        /\\./,
+      )),
+      '"',
+    )),
+
+    int_literal: _ => /\d+/,
+    float_literal: _ => /\d+\.\d+/,
+    boolean_literal: _ => choice("true", "false"),
+
+    import_declaration: $ => seq(
+      "from",
+      $.string_literal,
+      "import",
+      $.identifier,
+      repeat(seq(",", $.identifier)),
+      ";",
+    ),
+
+    script_block: $ => seq(
+      $._script_delimiter,
+      repeat($._declaration),
+      $._script_delimiter,
+    ),
+
+    _script_delimiter: _ => token(prec(10, choice(
+      "|===|",
+      "|====|",
+      /\|={5,}\|/,
+    ))),
+
+    _declaration: $ => choice(
+      $.variable_declaration,
+      $.type_declaration,
+      $.schema_declaration,
+    ),
+
+    variable_declaration: $ => seq(
+      optional($.injectable_modifier),
+      $._type_reference,
+      $.identifier,
+      "=",
+      $._expression,
+      ";",
+    ),
+
+    injectable_modifier: _ => "injectable",
+
+    type_declaration: $ => seq(
+      "type",
+      $.identifier,
+      "=",
+      $._type_reference,
+      ";",
+    ),
+
+    schema_declaration: $ => seq(
+      "schema",
+      $.identifier,
+      "=",
+      $.record_type,
+      ";",
+    ),
+
+    record_type: $ => seq(
+      "{",
+      repeat($.schema_field),
+      "}",
+    ),
+
+    schema_field: $ => seq(
+      $.identifier,
+      optional($.optional_marker),
+      ":",
+      $._type_reference,
+      ";",
+    ),
+
+    _type_reference: $ => choice(
+      $.string_type,
+      $.int_type,
+      $.float_type,
+      $.boolean_type,
+      $.array_type,
+      $.named_type,
+    ),
+
+    string_type: _ => "string",
+    int_type: _ => "int",
+    float_type: _ => "float",
+    boolean_type: _ => "boolean",
+
+    array_type: $ => seq(
+      "array",
+      "<",
+      $._type_reference,
+      ">",
+    ),
+
+    named_type: $ => $.identifier,
+
+    output_block: $ => choice(
+      seq(
+        optional(alias($._data_directive_list, $.directive_list)),
+        "{",
+        repeat($.output_field),
+        "}",
+      ),
+      seq(
+        alias($._schema_directive_list, $.directive_list),
+        "{",
+        repeat($.output_schema_field),
+        "}",
+      ),
+    ),
+
+    _data_directive_list: $ => prec(1, seq(
+      "[",
+      choice(
+        seq(alias($.data_output_mode_directive, $.output_mode_directive)),
+        seq(alias($.data_output_mode_directive, $.output_mode_directive), ",",
+          $.schema_directive),
+        seq(alias($.data_output_mode_directive, $.output_mode_directive), ",",
+          $.schema_file_directive),
+      ),
+      "]",
+    )),
+
+    _schema_directive_list: $ => prec(2, seq(
+      "[",
+      alias($.schema_output_mode_directive, $.output_mode_directive),
+      "]",
+    )),
+
+    data_output_mode_directive: $ => seq(
+      "output",
+      "=",
+      $.data_mode,
+    ),
+
+    schema_output_mode_directive: $ => seq(
+      "output",
+      "=",
+      $.schema_mode,
+    ),
+
+    data_mode: _ => "data",
+    schema_mode: _ => "schema",
+
+    schema_directive: $ => seq(
+      "schema",
+      "=",
+      $.identifier,
+    ),
+
+    schema_file_directive: $ => seq(
+      "schema_file",
+      "=",
+      $.string_literal,
+    ),
+
+    output_field: $ => seq(
+      $.identifier,
+      optional($.optional_marker),
+      ":",
+      $._expression,
+      ";",
+    ),
+
+    output_schema_field: $ => seq(
+      $.identifier,
+      optional($.optional_marker),
+      ":",
+      $._type_reference,
+      ";",
+    ),
+
+    optional_marker: _ => "?",
+
+    _expression: $ => choice(
+      $.conditional_expression,
+      $.logical_or_expression,
+      $.logical_and_expression,
+      $.bitwise_or_expression,
+      $.bitwise_xor_expression,
+      $.bitwise_and_expression,
+      $.equality_expression,
+      $.relational_expression,
+      $.shift_expression,
+      $.additive_expression,
+      $.multiplicative_expression,
+      $.exponent_expression,
+      $.unary_expression,
+      $._primary_expression,
+    ),
+
+    _primary_expression: $ => choice(
+      $.identifier,
+      $.float_literal,
+      $.int_literal,
+      $.string_literal,
+      $.boolean_literal,
+      $.array_literal,
+      $.record_literal,
+      $.self_reference,
+      $.parenthesized_expression,
+    ),
+
+    parenthesized_expression: $ => seq(
+      "(",
+      $._expression,
+      ")",
+    ),
+
+    self_reference: $ => seq(
+      "$self",
+      ".",
+      $.identifier,
+      repeat(seq(".", $.identifier)),
+    ),
+
+    unary_expression: $ => prec(PREC.unary, seq(
+      choice(
+        $.bang_operator,
+        $.tilde_operator,
+        $.plus_operator,
+        $.minus_operator,
+      ),
+      $._expression,
+    )),
+
+    exponent_expression: $ => prec.right(PREC.exponent, seq(
+      $._expression,
+      $.double_star_operator,
+      $._expression,
+    )),
+
+    multiplicative_expression: $ => prec.left(PREC.multiplicative, seq(
+      $._expression,
+      choice(
+        $.star_operator,
+        $.slash_operator,
+        $.percent_operator,
+      ),
+      $._expression,
+    )),
+
+    additive_expression: $ => prec.left(PREC.additive, seq(
+      $._expression,
+      choice(
+        $.plus_operator,
+        $.minus_operator,
+      ),
+      $._expression,
+    )),
+
+    shift_expression: $ => prec.left(PREC.shift, seq(
+      $._expression,
+      choice(
+        $.shift_left_operator,
+        $.shift_right_operator,
+        $.unsigned_shift_right_operator,
+      ),
+      $._expression,
+    )),
+
+    relational_expression: $ => prec.left(PREC.relational, seq(
+      $._expression,
+      choice(
+        $.less_operator,
+        $.less_equal_operator,
+        $.greater_operator,
+        $.greater_equal_operator,
+      ),
+      $._expression,
+    )),
+
+    equality_expression: $ => prec.left(PREC.equality, seq(
+      $._expression,
+      choice(
+        $.strict_equal_operator,
+        $.strict_not_equal_operator,
+        $.equal_equal_operator,
+        $.not_equal_operator,
+      ),
+      $._expression,
+    )),
+
+    bitwise_and_expression: $ => prec.left(PREC.bitwise_and, seq(
+      $._expression,
+      $.ampersand_operator,
+      $._expression,
+    )),
+
+    bitwise_xor_expression: $ => prec.left(PREC.bitwise_xor, seq(
+      $._expression,
+      $.caret_operator,
+      $._expression,
+    )),
+
+    bitwise_or_expression: $ => prec.left(PREC.bitwise_or, seq(
+      $._expression,
+      $.pipe_operator,
+      $._expression,
+    )),
+
+    logical_and_expression: $ => prec.left(PREC.logical_and, seq(
+      $._expression,
+      $.and_and_operator,
+      $._expression,
+    )),
+
+    logical_or_expression: $ => prec.left(PREC.logical_or, seq(
+      $._expression,
+      $.or_or_operator,
+      $._expression,
+    )),
+
+    conditional_expression: $ => prec.right(PREC.conditional, seq(
+      $._expression,
+      "?",
+      $._expression,
+      ":",
+      $._expression,
+    )),
+
+    array_literal: $ => seq(
+      "[",
+      optional(seq(
+        $._expression,
+        repeat(seq(",", $._expression)),
+      )),
+      "]",
+    ),
+
+    record_literal: $ => seq(
+      "{",
+      repeat($.record_field),
+      "}",
+    ),
+
+    record_field: $ => seq(
+      $.identifier,
+      optional($.optional_marker),
+      ":",
+      $._expression,
+      ";",
+    ),
+
+    bang_operator: _ => "!",
+    tilde_operator: _ => "~",
+    plus_operator: _ => "+",
+    minus_operator: _ => "-",
+    star_operator: _ => "*",
+    slash_operator: _ => "/",
+    percent_operator: _ => "%",
+    double_star_operator: _ => "**",
+    shift_left_operator: _ => "<<",
+    shift_right_operator: _ => ">>",
+    unsigned_shift_right_operator: _ => ">>>",
+    ampersand_operator: _ => "&",
+    caret_operator: _ => "^",
+    pipe_operator: _ => "|",
+    less_operator: _ => "<",
+    less_equal_operator: _ => "<=",
+    greater_operator: _ => ">",
+    greater_equal_operator: _ => ">=",
+    equal_equal_operator: _ => "==",
+    not_equal_operator: _ => "!=",
+    strict_equal_operator: _ => "===",
+    strict_not_equal_operator: _ => "!==",
+    and_and_operator: _ => "&&",
+    or_or_operator: _ => "||",
+  },
+});
