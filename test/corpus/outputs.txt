@@ -73,6 +73,74 @@ schema User = {
       (int_literal))))
 
 ===
+data output with schema directive without data
+===
+
+|===|
+schema User = {
+  name: string;
+  age?: int;
+};
+|===|
+
+[schema=User]
+{
+  name: "Ada";
+  age?: 27;
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier)
+      (record_type
+        (schema_field
+          (identifier)
+          (string_type))
+        (schema_field
+          (identifier)
+          (optional_marker)
+          (int_type)))))
+  (output_block
+    (directive_list
+      (schema_directive
+        (identifier)))
+    (output_field
+      (identifier)
+      (string_literal))
+    (output_field
+      (identifier)
+      (optional_marker)
+      (int_literal))))
+
+===
+data output with schema directive without data
+===
+
+
+
+[schema_file = "./user-schema.mace"]
+{
+  name: "Ada";
+  age?: 27;
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (schema_file_directive
+        (string_literal)))
+    (output_field
+      (identifier)
+      (string_literal))
+    (output_field
+      (identifier)
+      (optional_marker)
+      (int_literal))))
+
+===
 schema output with type references
 ===
 [output = schema]
