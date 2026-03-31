@@ -569,6 +569,14 @@
             "type": "CHOICE",
             "members": [
               {
+                "type": "SYMBOL",
+                "name": "schema_directive"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "schema_file_directive"
+              },
+              {
                 "type": "SEQ",
                 "members": [
                   {
