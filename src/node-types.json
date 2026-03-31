@@ -1269,6 +1269,10 @@
       "required": false,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "directive_list",
           "named": true
         },
@@ -1659,6 +1663,10 @@
       "required": false,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "record_field",
           "named": true
         }
@@ -1673,6 +1681,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "schema_field",
           "named": true
@@ -1901,6 +1913,10 @@
       "required": false,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "schema_declaration",
           "named": true
         },
@@ -2050,6 +2066,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "import_declaration",
           "named": true
@@ -2420,6 +2440,10 @@
   },
   {
     "type": "caret_operator",
+    "named": true
+  },
+  {
+    "type": "comment",
     "named": true
   },
   {

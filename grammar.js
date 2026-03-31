@@ -26,25 +26,27 @@ const PREC = {
 export default grammar({
   name: "mace",
 
-  conflicts: $ => [
-    [$._data_directive_list, $._schema_directive_list],
-  ],
-
   extras: $ => [
     /\s/,
-    $._comment,
   ],
 
   word: $ => $.identifier,
 
   rules: {
     source_file: $ => seq(
-      repeat($.import_declaration),
-      optional($.script_block),
+      repeat(choice(
+        $.comment,
+        $.import_declaration,
+      )),
+      optional(seq(
+        $.script_block,
+        repeat($.comment),
+      )),
       $.output_block,
+      repeat($.comment),
     ),
 
-    _comment: _ => token(choice(
+    comment: _ => token(choice(
       /\/=[^\r\n]*=\//,
       /\/=[^\r\n]*/,
     )),
@@ -75,7 +77,10 @@ export default grammar({
 
     script_block: $ => seq(
       $._script_delimiter,
-      repeat($._declaration),
+      repeat(choice(
+        $.comment,
+        $._declaration,
+      )),
       $._script_delimiter,
     ),
 
@@ -120,7 +125,10 @@ export default grammar({
 
     record_type: $ => seq(
       "{",
-      repeat($.schema_field),
+      repeat(choice(
+        $.comment,
+        $.schema_field,
+      )),
       "}",
     ),
 
@@ -159,13 +167,19 @@ export default grammar({
       seq(
         optional(alias($._data_directive_list, $.directive_list)),
         "{",
-        repeat($.output_field),
+        repeat(choice(
+          $.comment,
+          $.output_field,
+        )),
         "}",
       ),
       seq(
         alias($._schema_directive_list, $.directive_list),
         "{",
-        repeat($.output_schema_field),
+        repeat(choice(
+          $.comment,
+          $.output_schema_field,
+        )),
         "}",
       ),
     ),
@@ -391,7 +405,10 @@ export default grammar({
 
     record_literal: $ => seq(
       "{",
-      repeat($.record_field),
+      repeat(choice(
+        $.comment,
+        $.record_field,
+      )),
       "}",
     ),
 

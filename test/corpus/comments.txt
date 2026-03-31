@@ -6,7 +6,9 @@ line comment before output block
   value: true;
 }
 ---
+
 (source_file
+  (comment)
   (output_block
     (output_field
       (identifier)
@@ -20,7 +22,9 @@ block comment before output block
   value: true;
 }
 ---
+
 (source_file
+  (comment)
   (output_block
     (output_field
       (identifier)
@@ -37,8 +41,10 @@ string name = "Ada";
   name: name;
 }
 ---
+
 (source_file
   (script_block
+    (comment)
     (variable_declaration
       (string_type)
       (identifier)
@@ -56,8 +62,10 @@ block comment inside output block
   value: true;
 }
 ---
+
 (source_file
   (output_block
+    (comment)
     (output_field
       (identifier)
       (boolean_literal))))
@@ -70,7 +78,9 @@ comment disambiguation uses block comment when terminator appears before newline
   value: true;
 }
 ---
+
 (source_file
+  (comment)
   (output_block
     (output_field
       (identifier)
@@ -84,7 +94,9 @@ comment disambiguation uses line comment without terminator before newline
   value: true;
 }
 ---
+
 (source_file
+  (comment)
   (output_block
     (output_field
       (identifier)
