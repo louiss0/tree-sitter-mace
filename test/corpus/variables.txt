@@ -170,6 +170,27 @@ injectable string env = "dev";
       (identifier))))
 
 ===
+injectable string variable without initializer
+===
+|===|
+injectable string env;
+|===|
+{
+  env: env;
+}
+---
+(source_file
+  (script_block
+    (variable_declaration
+      (injectable_modifier)
+      (string_type)
+      (identifier)))
+  (output_block
+    (output_field
+      (identifier)
+      (identifier))))
+
+===
 injectable int variable
 ===
 |===|

@@ -72,8 +72,7 @@ export default grammar({
         optional($.injectable_modifier),
         $._type_reference,
         $.identifier,
-        "=",
-        $._expression,
+        optional(seq("=", $._expression)),
         ";",
       ),
 
