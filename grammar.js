@@ -65,7 +65,12 @@ export default grammar({
     _script_delimiter: (_) => token(prec(10, choice("|===|", "|====|", /\|={5,}\|/))),
 
     _declaration: ($) =>
-      choice($.variable_declaration, $.type_declaration, $.schema_declaration),
+      choice(
+        $.variable_declaration,
+        $.type_declaration,
+        $.enum_declaration,
+        $.schema_declaration,
+      ),
 
     variable_declaration: ($) =>
       seq(
@@ -79,6 +84,25 @@ export default grammar({
     injectable_modifier: (_) => "injectable",
 
     type_declaration: ($) => seq("type", $.identifier, "=", $._type_reference, ";"),
+
+    enum_declaration: ($) =>
+      seq(
+        "enum",
+        $.identifier,
+        ":",
+        $.enum_backing_type,
+        "{",
+        repeat(choice($.comment, seq($.enum_member, optional(",")))),
+        "}",
+      ),
+
+    enum_backing_type: ($) =>
+      choice($.string_type, $.int_type, $.float_type, $.boolean_type),
+
+    enum_member: ($) => seq($.identifier, optional(seq("=", $.enum_member_value))),
+
+    enum_member_value: ($) =>
+      choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
 
     schema_declaration: ($) => seq("schema", $.identifier, "=", $.record_type, ";"),
 

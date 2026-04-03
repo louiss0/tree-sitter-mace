@@ -1,0 +1,95 @@
+===
+string enum
+===
+|===|
+enum Fruit: string {
+  Apple,
+  Strawberry = "strawberry",
+}
+|===|
+[output = data]
+{
+  result: "Apple";
+}
+---
+(source_file
+  (script_block
+    (enum_declaration
+      (identifier)
+      (enum_backing_type
+        (string_type))
+      (enum_member
+        (identifier))
+      (enum_member
+        (identifier)
+        (enum_member_value
+          (string_literal)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier)
+      (string_literal))))
+
+===
+int enum
+===
+|===|
+enum Status: int {
+  Pending = 0,
+  Running = 1,
+}
+|===|
+[output = data] {}
+---
+(source_file
+  (script_block
+    (enum_declaration
+      (identifier)
+      (enum_backing_type
+        (int_type))
+      (enum_member
+        (identifier)
+        (enum_member_value
+          (int_literal)))
+      (enum_member
+        (identifier)
+        (enum_member_value
+          (int_literal)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
+enum with comments
+===
+|===|
+enum Fruit: string {
+  /= common fruit
+  Apple,
+  /= seasonal =/
+  Strawberry = "strawberry",
+}
+|===|
+[output = data] {}
+---
+(source_file
+  (script_block
+    (enum_declaration
+      (identifier)
+      (enum_backing_type
+        (string_type))
+      (comment)
+      (enum_member
+        (identifier))
+      (comment)
+      (enum_member
+        (identifier)
+        (enum_member_value
+          (string_literal)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
