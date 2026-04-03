@@ -1000,6 +1000,21 @@
     "fields": {}
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier_word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "import_declaration",
     "named": true,
     "fields": {},
@@ -2587,7 +2602,7 @@
     "named": true
   },
   {
-    "type": "identifier",
+    "type": "identifier_word",
     "named": true
   },
   {

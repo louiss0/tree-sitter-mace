@@ -28,7 +28,28 @@ export default grammar({
 
   extras: ($) => [/\s/],
 
-  word: ($) => $.identifier,
+  word: ($) => $.identifier_word,
+
+  reserved: {
+    global: ($) => [
+      "from",
+      "import",
+      "type",
+      "enum",
+      "schema",
+      "array",
+      "string",
+      "int",
+      "float",
+      "boolean",
+      "output",
+      "schema_file",
+      "data",
+      "injectable",
+      "true",
+      "false",
+    ],
+  },
 
   rules: {
     source_file: ($) =>
@@ -41,7 +62,9 @@ export default grammar({
 
     comment: (_) => token(choice(/\/=[^\r\n]*=\//, /\/=[^\r\n]*/)),
 
-    identifier: (_) => /[A-Za-z][A-Za-z0-9_]*/,
+    identifier: ($) => reserved("global", $.identifier_word),
+
+    identifier_word: (_) => /[A-Za-z][A-Za-z0-9_]*/,
 
     string_literal: (_) => token(seq('"', repeat(choice(/[^"\\\r\n]+/, /\\./)), '"')),
 
@@ -96,8 +119,7 @@ export default grammar({
         "}",
       ),
 
-    enum_backing_type: ($) =>
-      choice($.string_type, $.int_type, $.float_type, $.boolean_type),
+    enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.boolean_type),
 
     enum_member: ($) => seq($.identifier, optional(seq("=", $.enum_member_value))),
 

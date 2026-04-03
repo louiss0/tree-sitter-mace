@@ -1,7 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "mace",
-  "word": "identifier",
+  "word": "identifier_word",
   "rules": {
     "source_file": {
       "type": "SEQ",
@@ -76,6 +76,14 @@
       }
     },
     "identifier": {
+      "type": "RESERVED",
+      "content": {
+        "type": "SYMBOL",
+        "name": "identifier_word"
+      },
+      "context_name": "global"
+    },
+    "identifier_word": {
       "type": "PATTERN",
       "value": "[A-Za-z][A-Za-z0-9_]*"
     },
@@ -1697,5 +1705,72 @@
   "externals": [],
   "inline": [],
   "supertypes": [],
-  "reserved": {}
+  "reserved": {
+    "global": [
+      {
+        "type": "STRING",
+        "value": "from"
+      },
+      {
+        "type": "STRING",
+        "value": "import"
+      },
+      {
+        "type": "STRING",
+        "value": "type"
+      },
+      {
+        "type": "STRING",
+        "value": "enum"
+      },
+      {
+        "type": "STRING",
+        "value": "schema"
+      },
+      {
+        "type": "STRING",
+        "value": "array"
+      },
+      {
+        "type": "STRING",
+        "value": "string"
+      },
+      {
+        "type": "STRING",
+        "value": "int"
+      },
+      {
+        "type": "STRING",
+        "value": "float"
+      },
+      {
+        "type": "STRING",
+        "value": "boolean"
+      },
+      {
+        "type": "STRING",
+        "value": "output"
+      },
+      {
+        "type": "STRING",
+        "value": "schema_file"
+      },
+      {
+        "type": "STRING",
+        "value": "data"
+      },
+      {
+        "type": "STRING",
+        "value": "injectable"
+      },
+      {
+        "type": "STRING",
+        "value": "true"
+      },
+      {
+        "type": "STRING",
+        "value": "false"
+      }
+    ]
+  }
 }

@@ -148,6 +148,24 @@ User user = {
       (identifier))))
 
 ===
+reserved keyword cannot be a variable name
+===
+|===|
+string enum = "Ada";
+|===|
+[output = data] {}
+---
+(source_file
+  (script_block
+    (ERROR
+      (string_type)
+      (string_literal)))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
 injectable string variable
 ===
 |===|
