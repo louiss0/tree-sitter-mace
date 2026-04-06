@@ -15,34 +15,46 @@ User user = {
   user: user;
 }
 ---
+
 (source_file
   (import_declaration
     (string_literal)
-    (identifier)
-    (identifier))
+    (identifier
+      (identifier_word))
+    (identifier
+      (identifier_word)))
   (script_block
     (variable_declaration
       (named_type
-        (identifier))
-      (identifier)
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal))
     (variable_declaration
       (named_type
-        (identifier))
-      (identifier)
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
-          (identifier)))))
+          (identifier
+            (identifier_word))
+          (identifier
+            (identifier_word))))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode))
       (schema_directive
-        (identifier)))
+        (identifier
+          (identifier_word))))
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 script block with alternate delimiter length
@@ -55,24 +67,30 @@ Scores scores = [1, 2, 3];
   scores: scores;
 }
 ---
+
 (source_file
   (script_block
     (type_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_type
         (int_type)))
     (variable_declaration
       (named_type
-        (identifier))
-      (identifier)
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (int_literal)
         (int_literal)
         (int_literal))))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 mixed declarations with schema aware output block
@@ -93,44 +111,57 @@ User user = {
   user: user;
 }
 ---
+
 (source_file
   (script_block
     (type_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_type))
     (schema_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_type
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (named_type
-            (identifier)))
+            (identifier
+              (identifier_word))))
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (array_type
             (string_type)))))
     (variable_declaration
       (named_type
-        (identifier))
-      (identifier)
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (string_literal))
-            (record_field
-              (identifier)
-              (array_literal
-                (string_literal)
-                (string_literal))))))
+        (record_field
+          (identifier
+            (identifier_word))
+          (array_literal
+            (string_literal)
+            (string_literal))))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode))
       (schema_directive
-        (identifier)))
+        (identifier
+          (identifier_word))))
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 script block with schema mode output
@@ -148,20 +179,26 @@ schema User = {
   enabled?: boolean;
 }
 ---
+
 (source_file
   (script_block
     (type_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_type))
     (schema_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_type
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (named_type
-            (identifier)))
+            (identifier
+              (identifier_word))))
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (optional_marker)
           (boolean_type)))))
   (output_block
@@ -169,10 +206,13 @@ schema User = {
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (named_type
-        (identifier)))
+        (identifier
+          (identifier_word))))
     (output_schema_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (optional_marker)
       (boolean_type))))

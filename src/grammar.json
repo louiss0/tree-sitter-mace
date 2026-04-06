@@ -1040,6 +1040,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "enum_member_access"
+        },
+        {
+          "type": "SYMBOL",
           "name": "identifier"
         },
         {
@@ -1090,6 +1094,31 @@
         {
           "type": "STRING",
           "value": ")"
+        }
+      ]
+    },
+    "enum_member_access": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "enum",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "FIELD",
+          "name": "member",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         }
       ]
     },

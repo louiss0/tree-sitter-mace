@@ -11,7 +11,8 @@ line comment before output block
   (comment)
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal))))
 
 ===
@@ -27,7 +28,8 @@ block comment before output block
   (comment)
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal))))
 
 ===
@@ -47,12 +49,15 @@ string name = "Ada";
     (comment)
     (variable_declaration
       (string_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal)))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 block comment inside output block
@@ -67,7 +72,8 @@ block comment inside output block
   (output_block
     (comment)
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal))))
 
 ===
@@ -83,7 +89,8 @@ comment disambiguation uses block comment when terminator appears before newline
   (comment)
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal))))
 
 ===
@@ -99,5 +106,6 @@ comment disambiguation uses line comment without terminator before newline
   (comment)
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal))))

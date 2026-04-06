@@ -236,6 +236,7 @@ export default grammar({
 
     _primary_expression: ($) =>
       choice(
+        $.enum_member_access,
         $.identifier,
         $.float_literal,
         $.int_literal,
@@ -248,6 +249,8 @@ export default grammar({
       ),
 
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
+
+    enum_member_access: ($) => seq(field("enum", $.identifier), ".", field("member", $.identifier)),
 
     self_reference: ($) => seq("$self", ".", $.identifier, repeat(seq(".", $.identifier))),
 

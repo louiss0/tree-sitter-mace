@@ -36,6 +36,10 @@
 (enum_member
   (identifier) @constant)
 
+(enum_member_access
+  enum: (identifier) @type
+  member: (identifier) @constant)
+
 (import_declaration
   (identifier) @type)
 

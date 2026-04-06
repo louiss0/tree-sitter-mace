@@ -14,37 +14,50 @@ boolean enabled = true;
   enabled: enabled;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (string_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))
     (variable_declaration
       (int_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (int_literal))
     (variable_declaration
       (float_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (float_literal))
     (variable_declaration
       (boolean_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal)))
   (output_block
     (output_field
-      (identifier)
-      (identifier))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
     (output_field
-      (identifier)
-      (identifier))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
     (output_field
-      (identifier)
-      (identifier))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 named type alias variable
@@ -57,20 +70,26 @@ Name name = "Ada";
   name: name;
 }
 ---
+
 (source_file
   (script_block
     (type_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_type))
     (variable_declaration
       (named_type
-        (identifier))
-      (identifier)
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal)))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 array variable declaration
@@ -82,13 +101,15 @@ array<array<int>> matrix = [[1, 2], [3, 4]];
   matrix: matrix;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (array_type
         (array_type
           (int_type)))
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (int_literal)
@@ -98,8 +119,10 @@ array<array<int>> matrix = [[1, 2], [3, 4]];
           (int_literal)))))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 schema typed variable declaration
@@ -118,34 +141,44 @@ User user = {
   user: user;
 }
 ---
+
 (source_file
   (script_block
     (schema_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_type
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (string_type))
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (optional_marker)
           (int_type))))
     (variable_declaration
       (named_type
-        (identifier))
-      (identifier)
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (string_literal))
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (optional_marker)
           (int_literal)))))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 reserved keyword cannot be a variable name
@@ -155,6 +188,7 @@ string enum = "Ada";
 |===|
 [output = data] {}
 ---
+
 (source_file
   (script_block
     (ERROR
@@ -175,17 +209,21 @@ injectable string env = "dev";
   env: env;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (injectable_modifier)
       (string_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal)))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 injectable string variable without initializer
@@ -197,16 +235,20 @@ injectable string env;
   env: env;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (injectable_modifier)
       (string_type)
-      (identifier)))
+      (identifier
+        (identifier_word))))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 injectable int variable
@@ -218,17 +260,21 @@ injectable int retries = 3;
   retries: retries;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (injectable_modifier)
       (int_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (int_literal)))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 injectable float variable
@@ -240,17 +286,21 @@ injectable float threshold = 0.75;
   threshold: threshold;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (injectable_modifier)
       (float_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (float_literal)))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 injectable boolean variable
@@ -262,17 +312,21 @@ injectable boolean enabled = false;
   enabled: enabled;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (injectable_modifier)
       (boolean_type)
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal)))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 injectable array variable
@@ -284,20 +338,24 @@ injectable array<string> tags = ["ops", "prod"];
   tags: tags;
 }
 ---
+
 (source_file
   (script_block
     (variable_declaration
       (injectable_modifier)
       (array_type
         (string_type))
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (string_literal)
         (string_literal))))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
 
 ===
 injectable schema variable
@@ -314,24 +372,32 @@ injectable User user = {
   user: user;
 }
 ---
+
 (source_file
   (script_block
     (schema_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_type
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (string_type))))
     (variable_declaration
       (injectable_modifier)
       (named_type
-        (identifier))
-      (identifier)
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (string_literal)))))
   (output_block
     (output_field
-      (identifier)
-      (identifier))))
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))

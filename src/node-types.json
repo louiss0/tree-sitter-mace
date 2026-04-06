@@ -36,6 +36,10 @@
           "named": true
         },
         {
+          "type": "enum_member_access",
+          "named": true
+        },
+        {
           "type": "equality_expression",
           "named": true
         },
@@ -140,6 +144,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -281,6 +289,10 @@
           "named": true
         },
         {
+          "type": "enum_member_access",
+          "named": true
+        },
+        {
           "type": "equality_expression",
           "named": true
         },
@@ -377,6 +389,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -487,6 +503,10 @@
           "named": true
         },
         {
+          "type": "enum_member_access",
+          "named": true
+        },
+        {
           "type": "equality_expression",
           "named": true
         },
@@ -588,6 +608,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -750,6 +774,32 @@
     }
   },
   {
+    "type": "enum_member_access",
+    "named": true,
+    "fields": {
+      "enum": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "enum_member_value",
     "named": true,
     "fields": {},
@@ -810,6 +860,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -929,6 +983,10 @@
         },
         {
           "type": "double_star_operator",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1079,6 +1137,10 @@
           "named": true
         },
         {
+          "type": "enum_member_access",
+          "named": true
+        },
+        {
           "type": "equality_expression",
           "named": true
         },
@@ -1175,6 +1237,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1278,6 +1344,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1436,6 +1506,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1604,6 +1678,10 @@
           "named": true
         },
         {
+          "type": "enum_member_access",
+          "named": true
+        },
+        {
           "type": "equality_expression",
           "named": true
         },
@@ -1700,6 +1778,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1841,6 +1923,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {
@@ -2102,6 +2188,10 @@
           "named": true
         },
         {
+          "type": "enum_member_access",
+          "named": true
+        },
+        {
           "type": "equality_expression",
           "named": true
         },
@@ -2284,6 +2374,10 @@
           "named": true
         },
         {
+          "type": "enum_member_access",
+          "named": true
+        },
+        {
           "type": "equality_expression",
           "named": true
         },
@@ -2400,6 +2494,10 @@
         },
         {
           "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "enum_member_access",
           "named": true
         },
         {

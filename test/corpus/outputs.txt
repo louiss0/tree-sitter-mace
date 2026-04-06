@@ -9,7 +9,8 @@ default data output block
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))))
 
 ===
@@ -27,7 +28,8 @@ explicit data output block
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))))
 
 ===
@@ -49,13 +51,16 @@ schema User = {
 (source_file
   (script_block
     (schema_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_type
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (string_type))
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (optional_marker)
           (int_type)))))
   (output_block
@@ -63,12 +68,15 @@ schema User = {
       (output_mode_directive
         (data_mode))
       (schema_directive
-        (identifier)))
+        (identifier
+          (identifier_word))))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (optional_marker)
       (int_literal))))
 
@@ -93,24 +101,30 @@ schema User = {
 (source_file
   (script_block
     (schema_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_type
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (string_type))
         (schema_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (optional_marker)
           (int_type)))))
   (output_block
     (directive_list
       (schema_directive
-        (identifier)))
+        (identifier
+          (identifier_word))))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (optional_marker)
       (int_literal))))
 
@@ -133,10 +147,12 @@ data output with schema directive without data
       (schema_file_directive
         (string_literal)))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (optional_marker)
       (int_literal))))
 
@@ -157,18 +173,22 @@ schema output with type references
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_type))
     (output_schema_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_type
         (array_type
           (int_type))))
     (output_schema_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (optional_marker)
       (named_type
-        (identifier)))))
+        (identifier
+          (identifier_word))))))
 
 ===
 optional output field
@@ -181,7 +201,8 @@ optional output field
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (optional_marker)
       (boolean_literal))))
 
@@ -201,9 +222,10 @@ duplicate output directives are invalid
         (data_mode))
       (ERROR
         (ERROR
-          (identifier))))
+          (identifier_word))))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))))
 
 ===
@@ -217,7 +239,8 @@ array nesting level 1
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (int_literal)))))
 
@@ -232,7 +255,8 @@ array nesting level 2
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (int_literal))))))
@@ -248,7 +272,8 @@ array nesting level 3
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -265,7 +290,8 @@ array nesting level 4
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -283,7 +309,8 @@ array nesting level 5
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -302,7 +329,8 @@ array nesting level 6
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -322,7 +350,8 @@ array nesting level 7
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -343,7 +372,8 @@ array nesting level 8
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -365,7 +395,8 @@ array nesting level 9
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -388,7 +419,8 @@ array nesting level 10
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -414,10 +446,12 @@ record nesting level 1
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (int_literal))))))
 
 ===
@@ -435,13 +469,16 @@ record nesting level 2
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (int_literal))))))))
 
 ===
@@ -461,16 +498,20 @@ record nesting level 3
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (int_literal))))))))))
 
 ===
@@ -492,19 +533,24 @@ record nesting level 4
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (identifier)
+                      (identifier
+                        (identifier_word))
                       (int_literal))))))))))))
 
 ===
@@ -528,22 +574,28 @@ record nesting level 5
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (identifier)
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (identifier)
+                          (identifier
+                            (identifier_word))
                           (int_literal))))))))))))))
 
 ===
@@ -569,25 +621,32 @@ record nesting level 6
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (identifier)
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (identifier)
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (identifier)
+                              (identifier
+                                (identifier_word))
                               (int_literal))))))))))))))))
 
 ===
@@ -615,28 +674,36 @@ record nesting level 7
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (identifier)
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (identifier)
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (identifier)
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (identifier)
+                                  (identifier
+                                    (identifier_word))
                                   (int_literal))))))))))))))))))
 
 ===
@@ -666,31 +733,40 @@ record nesting level 8
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (identifier)
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (identifier)
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (identifier)
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (identifier)
+                                  (identifier
+                                    (identifier_word))
                                   (record_literal
                                     (record_field
-                                      (identifier)
+                                      (identifier
+                                        (identifier_word))
                                       (int_literal))))))))))))))))))))
 
 ===
@@ -722,34 +798,44 @@ record nesting level 9
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (identifier)
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (identifier)
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (identifier)
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (identifier)
+                                  (identifier
+                                    (identifier_word))
                                   (record_literal
                                     (record_field
-                                      (identifier)
+                                      (identifier
+                                        (identifier_word))
                                       (record_literal
                                         (record_field
-                                          (identifier)
+                                          (identifier
+                                            (identifier_word))
                                           (int_literal))))))))))))))))))))))
 
 ===
@@ -783,35 +869,46 @@ record nesting level 10
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (identifier)
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (identifier)
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (identifier)
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (identifier)
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (identifier)
+                                  (identifier
+                                    (identifier_word))
                                   (record_literal
                                     (record_field
-                                      (identifier)
+                                      (identifier
+                                        (identifier_word))
                                       (record_literal
                                         (record_field
-                                          (identifier)
+                                          (identifier
+                                            (identifier_word))
                                           (record_literal
                                             (record_field
-                                              (identifier)
+                                              (identifier
+                                                (identifier_word))
                                               (int_literal))))))))))))))))))))))))

@@ -15,13 +15,16 @@ enum Fruit: string {
 (source_file
   (script_block
     (enum_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (enum_backing_type
         (string_type))
       (enum_member
-        (identifier))
+        (identifier
+          (identifier_word)))
       (enum_member
-        (identifier)
+        (identifier
+          (identifier_word))
         (enum_member_value
           (string_literal)))))
   (output_block
@@ -29,9 +32,9 @@ enum Fruit: string {
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))))
-
 ===
 int enum
 ===
@@ -46,22 +49,24 @@ enum Status: int {
 (source_file
   (script_block
     (enum_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (enum_backing_type
         (int_type))
       (enum_member
-        (identifier)
+        (identifier
+          (identifier_word))
         (enum_member_value
           (int_literal)))
       (enum_member
-        (identifier)
+        (identifier
+          (identifier_word))
         (enum_member_value
           (int_literal)))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode)))))
-
 ===
 enum with comments
 ===
@@ -78,18 +83,72 @@ enum Fruit: string {
 (source_file
   (script_block
     (enum_declaration
-      (identifier)
+      (identifier
+        (identifier_word))
       (enum_backing_type
         (string_type))
       (comment)
       (enum_member
-        (identifier))
+        (identifier
+          (identifier_word)))
       (comment)
       (enum_member
-        (identifier)
+        (identifier
+          (identifier_word))
         (enum_member_value
           (string_literal)))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode)))))
+
+===
+enum member access
+===
+|===|
+enum Fruit: string {
+  Apple,
+  Strawberry = "strawberry",
+}
+Fruit selected = Fruit.Apple;
+|===|
+[output = data]
+{
+  selected: selected;
+}
+---
+(source_file
+  (script_block
+    (enum_declaration
+      (identifier
+        (identifier_word))
+      (enum_backing_type
+        (string_type))
+      (enum_member
+        (identifier
+          (identifier_word)))
+      (enum_member
+        (identifier
+          (identifier_word))
+        (enum_member_value
+          (string_literal))))
+    (variable_declaration
+      (named_type
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
+      (enum_member_access
+        enum: (identifier
+          (identifier_word))
+        member: (identifier
+          (identifier_word)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))

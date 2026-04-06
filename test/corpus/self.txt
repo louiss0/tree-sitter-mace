@@ -10,13 +10,16 @@ simple self reference
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (int_literal))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (multiplicative_expression
         (self_reference
-          (identifier))
+          (identifier
+            (identifier_word)))
         (star_operator)
         (int_literal)))))
 
@@ -33,23 +36,29 @@ chained self references
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (int_literal))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (additive_expression
         (self_reference
-          (identifier))
+          (identifier
+            (identifier_word)))
         (plus_operator)
         (int_literal)))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (additive_expression
         (self_reference
-          (identifier))
+          (identifier
+            (identifier_word)))
         (plus_operator)
         (self_reference
-          (identifier))))))
+          (identifier
+            (identifier_word)))))))
 
 ===
 nested self reference path
@@ -67,20 +76,27 @@ nested self reference path
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (identifier)
+              (identifier
+                (identifier_word))
               (string_literal))))))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (self_reference
-        (identifier)
-        (identifier)
-        (identifier)))))
+        (identifier
+          (identifier_word))
+        (identifier
+          (identifier_word))
+        (identifier
+          (identifier_word))))))
 
 ===
 self reference in a conditional expression
@@ -94,13 +110,16 @@ self reference in a conditional expression
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (boolean_literal))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (conditional_expression
         (self_reference
-          (identifier))
+          (identifier
+            (identifier_word)))
         (string_literal)
         (string_literal)))))
 
@@ -118,12 +137,16 @@ self reference inside a record literal
 (source_file
   (output_block
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (string_literal))
     (output_field
-      (identifier)
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (identifier)
+          (identifier
+            (identifier_word))
           (self_reference
-            (identifier)))))))
+            (identifier
+              (identifier_word))))))))
