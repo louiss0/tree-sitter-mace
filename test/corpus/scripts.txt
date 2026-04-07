@@ -60,7 +60,7 @@ User user = {
 script block with alternate delimiter length
 ===
 |====|
-type Scores = array<int>;
+type Scores: array<int>;
 Scores scores = [1, 2, 3];
 |====|
 {
@@ -96,8 +96,8 @@ Scores scores = [1, 2, 3];
 mixed declarations with schema aware output block
 ===
 |===|
-type Name = string;
-schema User = {
+type Name: string;
+schema User: {
   name: Name;
   tags: array<string>;
 };
@@ -167,8 +167,8 @@ User user = {
 script block with schema mode output
 ===
 |===|
-type Name = string;
-schema User = {
+type Name: string;
+schema User: {
   name: Name;
   enabled?: boolean;
 };

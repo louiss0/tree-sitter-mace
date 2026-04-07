@@ -5,7 +5,7 @@ string enum
 enum Fruit: string {
   Apple,
   Strawberry = "strawberry",
-}
+};
 |===|
 [output = data]
 {
@@ -42,7 +42,7 @@ int enum
 enum Status: int {
   Pending = 0,
   Running = 1,
-}
+};
 |===|
 [output = data] {}
 ---
@@ -76,7 +76,7 @@ enum Fruit: string {
   Apple,
   /= seasonal =/
   Strawberry = "strawberry",
-}
+};
 |===|
 [output = data] {}
 ---
@@ -109,7 +109,7 @@ enum member access
 enum Fruit: string {
   Apple,
   Strawberry = "strawberry",
-}
+};
 Fruit selected = Fruit.Apple;
 |===|
 [output = data]

@@ -63,7 +63,7 @@ boolean enabled = true;
 named type alias variable
 ===
 |===|
-type Name = string;
+type Name: string;
 Name name = "Ada";
 |===|
 {
@@ -128,7 +128,7 @@ array<array<int>> matrix = [[1, 2], [3, 4]];
 schema typed variable declaration
 ===
 |===|
-schema User = {
+schema User: {
   name: string;
   age?: int;
 };
@@ -361,7 +361,7 @@ injectable array<string> tags = ["ops", "prod"];
 injectable schema variable
 ===
 |===|
-schema User = {
+schema User: {
   name: string;
 };
 injectable User user = {

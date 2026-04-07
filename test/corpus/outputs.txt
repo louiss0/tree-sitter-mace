@@ -36,7 +36,7 @@ explicit data output block
 data output with schema directive
 ===
 |===|
-schema User = {
+schema User: {
   name: string;
   age?: int;
 };
@@ -85,7 +85,7 @@ data output with schema directive without data
 ===
 
 |===|
-schema User = {
+schema User: {
   name: string;
   age?: int;
 };

@@ -106,7 +106,7 @@ export default grammar({
 
     injectable_modifier: (_) => "injectable",
 
-    type_declaration: ($) => seq("type", $.identifier, "=", $._type_reference, ";"),
+    type_declaration: ($) => seq("type", $.identifier, ":", $._type_reference, ";"),
 
     enum_declaration: ($) =>
       seq(
@@ -117,6 +117,7 @@ export default grammar({
         "{",
         repeat(choice($.comment, seq($.enum_member, optional(",")))),
         "}",
+        ";",
       ),
 
     enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.boolean_type),
@@ -126,7 +127,7 @@ export default grammar({
     enum_member_value: ($) =>
       choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
 
-    schema_declaration: ($) => seq("schema", $.identifier, "=", $.record_type, ";"),
+    schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, ";"),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
 
