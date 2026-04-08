@@ -25,6 +25,7 @@
 [
   "array"
   "union"
+  "variant"
 ] @type.builtin
 
 (type_declaration

@@ -191,12 +191,42 @@ schema output with type references
           (identifier_word))))))
 
 ===
-schema output with union type references
+schema output with variant type references
 ===
 [output = schema]
 {
-  value: union[string, int];
-  profile?: union[Profile, string];
+  value: variant[string, int];
+  profile?: variant[Profile, string];
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (variant_type
+        (string_type)
+        (int_type)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (variant_type
+        (named_type
+          (identifier
+            (identifier_word)))
+        (string_type)))))
+
+===
+schema output with union schema composition references
+===
+[output = schema]
+{
+  value: union[Profile, Audit];
 }
 ---
 
@@ -209,17 +239,12 @@ schema output with union type references
       (identifier
         (identifier_word))
       (union_type
-        (string_type)
-        (int_type)))
-    (output_schema_field
-      (identifier
-        (identifier_word))
-      (optional_marker)
-      (union_type
         (named_type
           (identifier
             (identifier_word)))
-        (string_type)))))
+        (named_type
+          (identifier
+            (identifier_word)))))))
 
 ===
 optional output field

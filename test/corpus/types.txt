@@ -1,0 +1,84 @@
+===
+variant type alias
+===
+|===|
+type Identity: variant[string, int];
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (variant_type
+        (string_type)
+        (int_type))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
+union schema composition alias
+===
+|===|
+type User: union[Profile, Audit];
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (union_type
+        (named_type
+          (identifier
+            (identifier_word)))
+        (named_type
+          (identifier
+            (identifier_word))))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
+nested union and variant references
+===
+|===|
+type Composite: variant[union[Profile, Audit], string];
+|===|
+[output = schema]
+{
+  value: Composite;
+}
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (variant_type
+        (union_type
+          (named_type
+            (identifier
+              (identifier_word)))
+          (named_type
+            (identifier
+              (identifier_word))))
+        (string_type))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (named_type
+        (identifier
+          (identifier_word))))))
