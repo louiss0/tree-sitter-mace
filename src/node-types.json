@@ -244,6 +244,10 @@
         {
           "type": "string_type",
           "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
         }
       ]
     }
@@ -1637,6 +1641,10 @@
         {
           "type": "string_type",
           "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
         }
       ]
     }
@@ -2081,6 +2089,10 @@
         {
           "type": "string_type",
           "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
         }
       ]
     }
@@ -2329,6 +2341,10 @@
         {
           "type": "string_type",
           "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
         }
       ]
     }
@@ -2447,6 +2463,45 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "union_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "boolean_type",
+          "named": true
+        },
+        {
+          "type": "float_type",
+          "named": true
+        },
+        {
+          "type": "int_type",
+          "named": true
+        },
+        {
+          "type": "named_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
           "named": true
         }
       ]
@@ -2578,6 +2633,10 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "union_type",
           "named": true
         }
       ]
@@ -2801,6 +2860,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "union",
     "named": false
   },
   {

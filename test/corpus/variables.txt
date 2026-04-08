@@ -401,3 +401,30 @@ injectable User user = {
         (identifier_word))
       (identifier
         (identifier_word)))))
+
+===
+union typed variable declaration
+===
+|===|
+union[string, int] value = "Ada";
+|===|
+{
+  value: value;
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (union_type
+        (string_type)
+        (int_type))
+      (identifier
+        (identifier_word))
+      (string_literal)))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))

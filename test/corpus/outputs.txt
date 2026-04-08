@@ -191,6 +191,37 @@ schema output with type references
           (identifier_word))))))
 
 ===
+schema output with union type references
+===
+[output = schema]
+{
+  value: union[string, int];
+  profile?: union[Profile, string];
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (union_type
+        (string_type)
+        (int_type)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (union_type
+        (named_type
+          (identifier
+            (identifier_word)))
+        (string_type)))))
+
+===
 optional output field
 ===
 {
