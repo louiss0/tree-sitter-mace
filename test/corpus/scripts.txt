@@ -216,3 +216,95 @@ schema User: {
         (identifier_word))
       (optional_marker)
       (boolean_type))))
+
+===
+script block with variant and union aliases
+===
+|===|
+schema Profile: { name: string; };
+schema Audit: { created_at: string; };
+type Identity: variant[string, int];
+type User: union[Profile, Audit];
+Identity id = "Ada";
+User user = {
+  name: "Ada";
+  created_at: "2026-04-08";
+};
+|===|
+[output = data]
+{
+  id: id;
+  user: user;
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))))
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))))
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (variant_type
+        (string_type)
+        (int_type)))
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (union_type
+        (named_type
+          (identifier
+            (identifier_word)))
+        (named_type
+          (identifier
+            (identifier_word)))))
+    (variable_declaration
+      (named_type
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (variable_declaration
+      (named_type
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (string_literal))
+        (record_field
+          (identifier
+            (identifier_word))
+          (string_literal)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))

@@ -38,6 +38,8 @@ export default grammar({
       "enum",
       "schema",
       "array",
+      "union",
+      "variant",
       "string",
       "int",
       "float",
@@ -141,6 +143,8 @@ export default grammar({
         $.float_type,
         $.boolean_type,
         $.array_type,
+        $.union_type,
+        $.variant_type,
         $.named_type,
       ),
 
@@ -150,6 +154,12 @@ export default grammar({
     boolean_type: (_) => "boolean",
 
     array_type: ($) => seq("array", "<", $._type_reference, ">"),
+
+    union_type: ($) =>
+      prec(1, seq("union", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
+
+    variant_type: ($) =>
+      prec(1, seq("variant", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
 
     named_type: ($) => $.identifier,
 

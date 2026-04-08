@@ -22,7 +22,11 @@
   (boolean_type)
 ] @type.builtin
 
-"array" @type.builtin
+[
+  "array"
+  "union"
+  "variant"
+] @type.builtin
 
 (type_declaration
   (identifier) @type.definition)
