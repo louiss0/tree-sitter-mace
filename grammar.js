@@ -140,6 +140,7 @@ export default grammar({
         $.type_declaration,
         $.enum_declaration,
         $.schema_declaration,
+        $.doc_declaration,
       ),
 
     variable_declaration: ($) =>
@@ -174,17 +175,18 @@ export default grammar({
     enum_member_value: ($) =>
       choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
 
+    doc_declaration: ($) =>
+      seq("doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
+
+    doc_entry: ($) => choice($.summary_entry, $.description_entry),
+
+    summary_entry: ($) => seq("summary", ":", $.string_literal, ";"),
+
+    description_entry: ($) => seq("description", ":", $.doc_block_string, ";"),
+
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, ";"),
 
-    record_type: ($) =>
-      seq(
-        "{",
-        optional($.schema_doc),
-        repeat(choice($.comment, $.schema_field)),
-        "}",
-      ),
-
-    schema_doc: ($) => seq("doc", $.doc_block_string),
+    record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
 
     schema_field: ($) =>
       seq($.identifier, optional($.optional_marker), ":", $._type_reference, ";"),
@@ -225,12 +227,28 @@ export default grammar({
           "}",
         ),
         seq(
+          alias($._data_directive_list, $.directive_list),
+          $.inline_doc_block,
+          "{",
+          repeat(choice($.comment, $.output_field)),
+          "}",
+        ),
+        seq(
           alias($._schema_directive_list, $.directive_list),
           "{",
           repeat(choice($.comment, $.output_schema_field)),
           "}",
         ),
+        seq(
+          alias($._schema_directive_list, $.directive_list),
+          $.inline_doc_block,
+          "{",
+          repeat(choice($.comment, $.output_schema_field)),
+          "}",
+        ),
       ),
+
+    inline_doc_block: ($) => $.doc_block_string,
 
     _data_directive_list: ($) =>
       prec(

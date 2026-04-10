@@ -103,42 +103,69 @@ Owner: $($self.user.name)
               (identifier_word))))))))
 
 ===
-schema documentation block
+output inline doc block
+===
+[output = schema]
+"""
+# Public User Output
+"""
+{
+  name: string;
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (inline_doc_block
+      (doc_block_string))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (string_type))))
+
+===
+doc declaration
 ===
 |===|
+doc User {
+  summary: "Represents a user.";
+  description: """
+# User
+""";
+}
+
 schema User: {
-  doc """
-  Represents a user.
-  Static only: $(name)
-  """
   name: string;
-  age?: int;
 };
 |===|
 [output = schema]
 {
-  name: string;
-  age?: int;
+  user: User;
 }
 ---
 
 (source_file
   (script_block
+    (doc_declaration
+      (identifier
+        (identifier_word))
+      (doc_entry
+        (summary_entry
+          (string_literal)))
+      (doc_entry
+        (description_entry
+          (doc_block_string))))
     (schema_declaration
       (identifier
         (identifier_word))
       (record_type
-        (schema_doc
-          (doc_block_string))
         (schema_field
           (identifier
             (identifier_word))
-          (string_type))
-        (schema_field
-          (identifier
-            (identifier_word))
-          (optional_marker)
-          (int_type)))))
+          (string_type)))))
   (output_block
     (directive_list
       (output_mode_directive
@@ -146,9 +173,6 @@ schema User: {
     (output_schema_field
       (identifier
         (identifier_word))
-      (string_type))
-    (output_schema_field
-      (identifier
-        (identifier_word))
-      (optional_marker)
-      (int_type))))
+      (named_type
+        (identifier
+          (identifier_word))))))

@@ -38,8 +38,14 @@
 (schema_declaration
   (identifier) @type.definition)
 
-(schema_doc
-  "doc" @keyword)
+(doc_declaration
+  "doc" @keyword
+  (identifier) @type.definition)
+
+[
+  "summary"
+  "description"
+] @property
 
 (enum_member
   (identifier) @constant)
@@ -83,6 +89,7 @@
 [
   (string_literal)
   (doc_block_string)
+  (inline_doc_block)
 ] @string
 
 (interpolation
