@@ -3,6 +3,7 @@
   "import"
   "type"
   "schema"
+  "doc"
   "enum"
   "output"
   "schema_file"
@@ -37,12 +38,11 @@
 (schema_declaration
   (identifier) @type.definition)
 
+(schema_doc
+  "doc" @keyword)
+
 (enum_member
   (identifier) @constant)
-
-(enum_member_access
-  enum: (identifier) @type
-  member: (identifier) @constant)
 
 (import_declaration
   (identifier) @type)
@@ -62,6 +62,14 @@
   (_)
   (identifier) @variable)
 
+(enum_member_access
+  enum: (identifier) @variable
+  member: (identifier) @property)
+
+(enum_member_access
+  enum: (enum_member_access)
+  member: (identifier) @property)
+
 [
   (schema_field)
   (output_field)
@@ -72,7 +80,15 @@
 (self_reference
   (identifier) @property)
 
-(string_literal) @string
+[
+  (string_literal)
+  (doc_block_string)
+] @string
+
+(interpolation
+  "$(" @punctuation.special
+  ")" @punctuation.special)
+
 (int_literal) @number
 (float_literal) @number.float
 (boolean_literal) @boolean

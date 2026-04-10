@@ -12,6 +12,7 @@ enum Fruit: string {
   result: "Apple";
 }
 ---
+
 (source_file
   (script_block
     (enum_declaration
@@ -35,6 +36,7 @@ enum Fruit: string {
       (identifier
         (identifier_word))
       (string_literal))))
+
 ===
 int enum
 ===
@@ -46,6 +48,7 @@ enum Status: int {
 |===|
 [output = data] {}
 ---
+
 (source_file
   (script_block
     (enum_declaration
@@ -67,6 +70,7 @@ enum Status: int {
     (directive_list
       (output_mode_directive
         (data_mode)))))
+
 ===
 enum with comments
 ===
@@ -80,6 +84,7 @@ enum Fruit: string {
 |===|
 [output = data] {}
 ---
+
 (source_file
   (script_block
     (enum_declaration
@@ -117,6 +122,7 @@ Fruit selected = Fruit.Apple;
   selected: selected;
 }
 ---
+
 (source_file
   (script_block
     (enum_declaration

@@ -21,6 +21,7 @@ const PREC = {
   multiplicative: 11,
   exponent: 12,
   unary: 13,
+  member: 14,
 };
 
 export default grammar({
@@ -37,6 +38,7 @@ export default grammar({
       "type",
       "enum",
       "schema",
+      "doc",
       "array",
       "union",
       "variant",
@@ -68,7 +70,50 @@ export default grammar({
 
     identifier_word: (_) => /[A-Za-z][A-Za-z0-9_]*/,
 
-    string_literal: (_) => token(seq('"', repeat(choice(/[^"\\\r\n]+/, /\\./)), '"')),
+    string_literal: ($) =>
+      choice(
+        seq(
+          "'",
+          repeat(choice(token.immediate(/[^'\\\r\n]+/), token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))))),
+          "'",
+        ),
+        seq(
+          '"',
+          repeat(
+            choice(
+              token.immediate(choice(/[^"\\\r\n$]+/, "$")),
+              token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+              $.interpolation,
+            ),
+          ),
+          '"',
+        ),
+        seq(
+          '"""',
+          repeat(
+            choice(
+              token.immediate(choice(/[^"\\$]+/, '"', '""', "$")),
+              token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+              $.interpolation,
+            ),
+          ),
+          '"""',
+        ),
+      ),
+
+    doc_block_string: ($) =>
+      seq(
+        '"""',
+        repeat(
+          choice(
+            token.immediate(choice(/[^"\\$]+/, '"', '""', "$")),
+            token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+          ),
+        ),
+        '"""',
+      ),
+
+    interpolation: ($) => seq("$(", $._expression, ")"),
 
     int_literal: (_) => /\d+/,
     float_literal: (_) => /\d+\.\d+/,
@@ -131,7 +176,15 @@ export default grammar({
 
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, ";"),
 
-    record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
+    record_type: ($) =>
+      seq(
+        "{",
+        optional($.schema_doc),
+        repeat(choice($.comment, $.schema_field)),
+        "}",
+      ),
+
+    schema_doc: ($) => seq("doc", $.doc_block_string),
 
     schema_field: ($) =>
       seq($.identifier, optional($.optional_marker), ":", $._type_reference, ";"),
@@ -261,7 +314,15 @@ export default grammar({
 
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
 
-    enum_member_access: ($) => seq(field("enum", $.identifier), ".", field("member", $.identifier)),
+    enum_member_access: ($) =>
+      prec.left(
+        PREC.member,
+        seq(
+          field("enum", choice($.identifier, $.parenthesized_expression, $.enum_member_access)),
+          ".",
+          field("member", $.identifier),
+        ),
+      ),
 
     self_reference: ($) => seq("$self", ".", $.identifier, repeat(seq(".", $.identifier))),
 

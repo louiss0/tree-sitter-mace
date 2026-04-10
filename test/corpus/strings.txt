@@ -1,0 +1,154 @@
+===
+single quoted string literal
+===
+|===|
+string greeting = 'hello';
+|===|
+{
+  greeting: greeting;
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal)))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
+
+===
+double quoted interpolation expression
+===
+|===|
+string greeting = "Hello $(user.name) $(price * quantity)";
+|===|
+{
+  greeting: greeting;
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal
+        (interpolation
+          (enum_member_access
+            (identifier
+              (identifier_word))
+            (identifier
+              (identifier_word))))
+        (interpolation
+          (multiplicative_expression
+            (identifier
+              (identifier_word))
+            (star_operator)
+            (identifier
+              (identifier_word)))))))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
+
+===
+block string interpolation
+===
+{
+  user: {
+    name: "Ada";
+  };
+  message: """
+Hello $(user.name)
+Owner: $($self.user.name)
+""";
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (string_literal))))
+    (output_field
+      (identifier
+        (identifier_word))
+      (string_literal
+        (interpolation
+          (enum_member_access
+            (identifier
+              (identifier_word))
+            (identifier
+              (identifier_word))))
+        (interpolation
+          (self_reference
+            (identifier
+              (identifier_word))
+            (identifier
+              (identifier_word))))))))
+
+===
+schema documentation block
+===
+|===|
+schema User: {
+  doc """
+  Represents a user.
+  Static only: $(name)
+  """
+  name: string;
+  age?: int;
+};
+|===|
+[output = schema]
+{
+  name: string;
+  age?: int;
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_doc
+          (doc_block_string))
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))
+        (schema_field
+          (identifier
+            (identifier_word))
+          (optional_marker)
+          (int_type)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (string_type))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (int_type))))
