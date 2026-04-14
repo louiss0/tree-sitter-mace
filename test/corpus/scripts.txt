@@ -98,7 +98,7 @@ mixed declarations with schema aware output block
 |===|
 type Name: string;
 schema User: {
-  name: Name;
+  name: Name /# The user's display name;
   tags: array<string>;
 };
 User user = {
@@ -127,7 +127,9 @@ User user = {
             (identifier_word))
           (named_type
             (identifier
-              (identifier_word))))
+              (identifier_word)))
+          (inline_description
+            (description_text)))
         (schema_field
           (identifier
             (identifier_word))

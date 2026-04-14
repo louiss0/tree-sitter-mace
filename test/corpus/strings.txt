@@ -131,14 +131,20 @@ doc declaration
 ===
 |===|
 doc User {
-  summary: "Represents a user.";
+  summary: "Represents a user";
   description: """
 # User
+A reusable schema.
 """;
+  props: {
+    name: "The user's display name";
+    age: "Optional age";
+  };
 }
 
 schema User: {
   name: string;
+  age?: int;
 };
 |===|
 [output = schema]
@@ -157,7 +163,17 @@ schema User: {
           (string_literal)))
       (doc_entry
         (description_entry
-          (doc_block_string))))
+          (doc_block_string)))
+      (doc_entry
+        (props_entry
+          (prop_entry
+            (identifier
+              (identifier_word))
+            (string_literal))
+          (prop_entry
+            (identifier
+              (identifier_word))
+            (string_literal)))))
     (schema_declaration
       (identifier
         (identifier_word))
@@ -165,7 +181,12 @@ schema User: {
         (schema_field
           (identifier
             (identifier_word))
-          (string_type)))))
+          (string_type))
+        (schema_field
+          (identifier
+            (identifier_word))
+          (optional_marker)
+          (int_type)))))
   (output_block
     (directive_list
       (output_mode_directive

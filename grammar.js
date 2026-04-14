@@ -154,7 +154,8 @@ export default grammar({
 
     injectable_modifier: (_) => "injectable",
 
-    type_declaration: ($) => seq("type", $.identifier, ":", $._type_reference, ";"),
+    type_declaration: ($) =>
+      seq("type", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
 
     enum_declaration: ($) =>
       seq(
@@ -178,18 +179,23 @@ export default grammar({
     doc_declaration: ($) =>
       seq("doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
 
-    doc_entry: ($) => choice($.summary_entry, $.description_entry),
+    doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
 
     summary_entry: ($) => seq("summary", ":", $.string_literal, ";"),
 
     description_entry: ($) => seq("description", ":", $.doc_block_string, ";"),
+
+    props_entry: ($) =>
+      seq("props", ":", "{", repeat(choice($.comment, $.prop_entry)), "}", ";"),
+
+    prop_entry: ($) => seq($.identifier, ":", $.string_literal, ";"),
 
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, ";"),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
 
     schema_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._type_reference, ";"),
+      seq($.identifier, optional($.optional_marker), ":", $._type_reference, optional($.inline_description), ";"),
 
     _type_reference: ($) =>
       choice(
@@ -291,10 +297,14 @@ export default grammar({
     schema_file_directive: ($) => seq("schema_file", "=", $.string_literal),
 
     output_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._expression, ";"),
+      seq($.identifier, optional($.optional_marker), ":", $._expression, optional($.inline_description), ";"),
 
     output_schema_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._type_reference, ";"),
+      seq($.identifier, optional($.optional_marker), ":", $._type_reference, optional($.inline_description), ";"),
+
+    inline_description: ($) => seq("/#", $.description_text),
+
+    description_text: (_) => token(/[^;\r\n]+/),
 
     optional_marker: (_) => "?",
 

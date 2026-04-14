@@ -1,0 +1,53 @@
+===
+misplaced inline description
+===
+|===|
+type Name: string;
+/# invalid placement
+|===|
+[output = data] {}
+---
+
+(source_file
+  (ERROR
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (string_type))
+    (ERROR)
+    (named_type
+      (identifier
+        (identifier_word)))
+    (identifier
+      (identifier_word))
+    (pipe_operator)
+    (strict_equal_operator)
+    (pipe_operator))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
+unknown doc entry
+===
+|===|
+doc User {
+  extra: "nope";
+}
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (doc_declaration
+      (identifier
+        (identifier_word))
+      (ERROR
+        (identifier_word)
+        (identifier_word))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))

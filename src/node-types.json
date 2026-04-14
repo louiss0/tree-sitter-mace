@@ -764,6 +764,10 @@
           "named": true
         },
         {
+          "type": "props_entry",
+          "named": true
+        },
+        {
           "type": "summary_entry",
           "named": true
         }
@@ -1164,6 +1168,21 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "inline_description",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "description_text",
           "named": true
         }
       ]
@@ -1729,6 +1748,10 @@
           "named": true
         },
         {
+          "type": "inline_description",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
@@ -1820,6 +1843,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "inline_description",
           "named": true
         },
         {
@@ -1947,6 +1974,44 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "prop_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "props_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "prop_entry",
           "named": true
         }
       ]
@@ -2275,6 +2340,10 @@
           "named": true
         },
         {
+          "type": "inline_description",
+          "named": true
+        },
+        {
           "type": "int_type",
           "named": true
         },
@@ -2566,6 +2635,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "inline_description",
           "named": true
         },
         {
@@ -2972,6 +3045,10 @@
     "named": false
   },
   {
+    "type": "/#",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -3038,6 +3115,10 @@
   {
     "type": "description",
     "named": false
+  },
+  {
+    "type": "description_text",
+    "named": true
   },
   {
     "type": "doc",
@@ -3126,6 +3207,10 @@
   {
     "type": "plus_operator",
     "named": true
+  },
+  {
+    "type": "props",
+    "named": false
   },
   {
     "type": "schema",

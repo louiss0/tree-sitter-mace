@@ -45,6 +45,7 @@
 [
   "summary"
   "description"
+  "props"
 ] @property
 
 (enum_member
@@ -83,6 +84,9 @@
   (record_field)
 ] @property
 
+(prop_entry
+  (identifier) @property)
+
 (self_reference
   (identifier) @property)
 
@@ -92,6 +96,10 @@
   (inline_doc_block)
 ] @string
 
+[
+  (inline_description)
+  (description_text)
+] @comment
 (interpolation
   "$(" @punctuation.special
   ")" @punctuation.special)

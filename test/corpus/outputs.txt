@@ -2,7 +2,7 @@
 default data output block
 ===
 {
-  name: "Ada";
+  name: "Ada" /# The emitted user name;
 }
 ---
 
@@ -11,7 +11,9 @@ default data output block
     (output_field
       (identifier
         (identifier_word))
-      (string_literal))))
+      (string_literal)
+      (inline_description
+        (description_text)))))
 
 ===
 explicit data output block
@@ -160,8 +162,11 @@ data output with schema directive without data
 schema output with type references
 ===
 [output = schema]
+"""
+# User Output
+"""
 {
-  name: string;
+  name: string /# The user's name;
   scores: array<array<int>>;
   profile?: Profile;
 }
@@ -172,10 +177,14 @@ schema output with type references
     (directive_list
       (output_mode_directive
         (schema_mode)))
+    (inline_doc_block
+      (doc_block_string))
     (output_schema_field
       (identifier
         (identifier_word))
-      (string_type))
+      (string_type)
+      (inline_description
+        (description_text)))
     (output_schema_field
       (identifier
         (identifier_word))
