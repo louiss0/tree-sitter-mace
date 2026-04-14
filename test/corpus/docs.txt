@@ -1,0 +1,123 @@
+===
+data output with inline doc block
+===
+[output = data]
+"""
+# User Payload
+
+This block emits user data.
+"""
+{
+  name: "Ada" /# The emitted user name;
+  age: 27 /# The emitted age;
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (inline_doc_block
+      (doc_block_string))
+    (output_field
+      (identifier
+        (identifier_word))
+      (string_literal)
+      (inline_description
+        (description_text)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (int_literal)
+      (inline_description
+        (description_text)))))
+
+===
+doc declaration with props metadata
+===
+|===|
+doc User {
+  summary: "Represents a user";
+  description: """
+# User
+
+A reusable schema.
+""";
+  props: {
+    name: "The user's display name";
+    age: "Optional age";
+  };
+}
+
+type Name: string /# A user display name;
+
+schema User: {
+  name: Name /# The user's name;
+  age?: int /# Optional age;
+};
+|===|
+[output = schema]
+{
+  user: User /# Public user contract;
+}
+---
+
+(source_file
+  (script_block
+    (doc_declaration
+      (identifier
+        (identifier_word))
+      (doc_entry
+        (summary_entry
+          (string_literal)))
+      (doc_entry
+        (description_entry
+          (doc_block_string)))
+      (doc_entry
+        (props_entry
+          (prop_entry
+            (identifier
+              (identifier_word))
+            (string_literal))
+          (prop_entry
+            (identifier
+              (identifier_word))
+            (string_literal)))))
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (string_type)
+      (inline_description
+        (description_text)))
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (named_type
+            (identifier
+              (identifier_word)))
+          (inline_description
+            (description_text)))
+        (schema_field
+          (identifier
+            (identifier_word))
+          (optional_marker)
+          (int_type)
+          (inline_description
+            (description_text))))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (named_type
+        (identifier
+          (identifier_word)))
+      (inline_description
+        (description_text)))))

@@ -1,0 +1,199 @@
+===
+single quoted string literal
+===
+|===|
+string greeting = 'hello';
+|===|
+{
+  greeting: greeting;
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal)))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
+
+===
+double quoted interpolation expression
+===
+|===|
+string greeting = "Hello $(user.name) $(price * quantity)";
+|===|
+{
+  greeting: greeting;
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal
+        (interpolation
+          (enum_member_access
+            (identifier
+              (identifier_word))
+            (identifier
+              (identifier_word))))
+        (interpolation
+          (multiplicative_expression
+            (identifier
+              (identifier_word))
+            (star_operator)
+            (identifier
+              (identifier_word)))))))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
+
+===
+block string interpolation
+===
+{
+  user: {
+    name: "Ada";
+  };
+  message: """
+Hello $(user.name)
+Owner: $($self.user.name)
+""";
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (string_literal))))
+    (output_field
+      (identifier
+        (identifier_word))
+      (string_literal
+        (interpolation
+          (enum_member_access
+            (identifier
+              (identifier_word))
+            (identifier
+              (identifier_word))))
+        (interpolation
+          (self_reference
+            (identifier
+              (identifier_word))
+            (identifier
+              (identifier_word))))))))
+
+===
+output inline doc block
+===
+[output = schema]
+"""
+# Public User Output
+"""
+{
+  name: string;
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (inline_doc_block
+      (doc_block_string))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (string_type))))
+
+===
+doc declaration
+===
+|===|
+doc User {
+  summary: "Represents a user";
+  description: """
+# User
+A reusable schema.
+""";
+  props: {
+    name: "The user's display name";
+    age: "Optional age";
+  };
+}
+
+schema User: {
+  name: string;
+  age?: int;
+};
+|===|
+[output = schema]
+{
+  user: User;
+}
+---
+
+(source_file
+  (script_block
+    (doc_declaration
+      (identifier
+        (identifier_word))
+      (doc_entry
+        (summary_entry
+          (string_literal)))
+      (doc_entry
+        (description_entry
+          (doc_block_string)))
+      (doc_entry
+        (props_entry
+          (prop_entry
+            (identifier
+              (identifier_word))
+            (string_literal))
+          (prop_entry
+            (identifier
+              (identifier_word))
+            (string_literal)))))
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))
+        (schema_field
+          (identifier
+            (identifier_word))
+          (optional_marker)
+          (int_type)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (named_type
+        (identifier
+          (identifier_word))))))

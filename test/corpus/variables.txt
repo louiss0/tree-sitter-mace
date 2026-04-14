@@ -191,9 +191,12 @@ string enum = "Ada";
 
 (source_file
   (script_block
-    (ERROR
+    (variable_declaration
       (string_type)
-      (string_literal)))
+      (ERROR)
+      (identifier
+        (identifier_word))
+      (ERROR)))
   (output_block
     (directive_list
       (output_mode_directive

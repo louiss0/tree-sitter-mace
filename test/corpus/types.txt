@@ -2,7 +2,7 @@
 variant type alias
 ===
 |===|
-type Identity: variant[string, int];
+type Identity: variant[string, int] /# A scalar identity value;
 |===|
 [output = data] {}
 ---
@@ -14,7 +14,9 @@ type Identity: variant[string, int];
         (identifier_word))
       (variant_type
         (string_type)
-        (int_type))))
+        (int_type))
+      (inline_description
+        (description_text))))
   (output_block
     (directive_list
       (output_mode_directive

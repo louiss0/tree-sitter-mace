@@ -21,6 +21,7 @@ const PREC = {
   multiplicative: 11,
   exponent: 12,
   unary: 13,
+  member: 14,
 };
 
 export default grammar({
@@ -37,6 +38,7 @@ export default grammar({
       "type",
       "enum",
       "schema",
+      "doc",
       "array",
       "union",
       "variant",
@@ -68,7 +70,50 @@ export default grammar({
 
     identifier_word: (_) => /[A-Za-z][A-Za-z0-9_]*/,
 
-    string_literal: (_) => token(seq('"', repeat(choice(/[^"\\\r\n]+/, /\\./)), '"')),
+    string_literal: ($) =>
+      choice(
+        seq(
+          "'",
+          repeat(choice(token.immediate(/[^'\\\r\n]+/), token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))))),
+          "'",
+        ),
+        seq(
+          '"',
+          repeat(
+            choice(
+              token.immediate(choice(/[^"\\\r\n$]+/, "$")),
+              token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+              $.interpolation,
+            ),
+          ),
+          '"',
+        ),
+        seq(
+          '"""',
+          repeat(
+            choice(
+              token.immediate(choice(/[^"\\$]+/, '"', '""', "$")),
+              token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+              $.interpolation,
+            ),
+          ),
+          '"""',
+        ),
+      ),
+
+    doc_block_string: ($) =>
+      seq(
+        '"""',
+        repeat(
+          choice(
+            token.immediate(choice(/[^"\\$]+/, '"', '""', "$")),
+            token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+          ),
+        ),
+        '"""',
+      ),
+
+    interpolation: ($) => seq("$(", $._expression, ")"),
 
     int_literal: (_) => /\d+/,
     float_literal: (_) => /\d+\.\d+/,
@@ -95,6 +140,7 @@ export default grammar({
         $.type_declaration,
         $.enum_declaration,
         $.schema_declaration,
+        $.doc_declaration,
       ),
 
     variable_declaration: ($) =>
@@ -108,7 +154,8 @@ export default grammar({
 
     injectable_modifier: (_) => "injectable",
 
-    type_declaration: ($) => seq("type", $.identifier, ":", $._type_reference, ";"),
+    type_declaration: ($) =>
+      seq("type", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
 
     enum_declaration: ($) =>
       seq(
@@ -129,12 +176,26 @@ export default grammar({
     enum_member_value: ($) =>
       choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
 
+    doc_declaration: ($) =>
+      seq("doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
+
+    doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
+
+    summary_entry: ($) => seq("summary", ":", $.string_literal, ";"),
+
+    description_entry: ($) => seq("description", ":", $.doc_block_string, ";"),
+
+    props_entry: ($) =>
+      seq("props", ":", "{", repeat(choice($.comment, $.prop_entry)), "}", ";"),
+
+    prop_entry: ($) => seq($.identifier, ":", $.string_literal, ";"),
+
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, ";"),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
 
     schema_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._type_reference, ";"),
+      seq($.identifier, optional($.optional_marker), ":", $._type_reference, optional($.inline_description), ";"),
 
     _type_reference: ($) =>
       choice(
@@ -172,12 +233,28 @@ export default grammar({
           "}",
         ),
         seq(
+          alias($._data_directive_list, $.directive_list),
+          $.inline_doc_block,
+          "{",
+          repeat(choice($.comment, $.output_field)),
+          "}",
+        ),
+        seq(
           alias($._schema_directive_list, $.directive_list),
           "{",
           repeat(choice($.comment, $.output_schema_field)),
           "}",
         ),
+        seq(
+          alias($._schema_directive_list, $.directive_list),
+          $.inline_doc_block,
+          "{",
+          repeat(choice($.comment, $.output_schema_field)),
+          "}",
+        ),
       ),
+
+    inline_doc_block: ($) => $.doc_block_string,
 
     _data_directive_list: ($) =>
       prec(
@@ -220,10 +297,14 @@ export default grammar({
     schema_file_directive: ($) => seq("schema_file", "=", $.string_literal),
 
     output_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._expression, ";"),
+      seq($.identifier, optional($.optional_marker), ":", $._expression, optional($.inline_description), ";"),
 
     output_schema_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._type_reference, ";"),
+      seq($.identifier, optional($.optional_marker), ":", $._type_reference, optional($.inline_description), ";"),
+
+    inline_description: ($) => seq("/#", $.description_text),
+
+    description_text: (_) => token(/[^;\r\n]+/),
 
     optional_marker: (_) => "?",
 
@@ -261,7 +342,15 @@ export default grammar({
 
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
 
-    enum_member_access: ($) => seq(field("enum", $.identifier), ".", field("member", $.identifier)),
+    enum_member_access: ($) =>
+      prec.left(
+        PREC.member,
+        seq(
+          field("enum", choice($.identifier, $.parenthesized_expression, $.enum_member_access)),
+          ".",
+          field("member", $.identifier),
+        ),
+      ),
 
     self_reference: ($) => seq("$self", ".", $.identifier, repeat(seq(".", $.identifier))),
 
