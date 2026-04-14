@@ -38,7 +38,8 @@ export default grammar({
       "type",
       "enum",
       "schema",
-      "doc",
+      "gen_doc",
+      "schema_doc",
       "array",
       "union",
       "variant",
@@ -140,7 +141,8 @@ export default grammar({
         $.type_declaration,
         $.enum_declaration,
         $.schema_declaration,
-        $.doc_declaration,
+        $.gen_doc_declaration,
+        $.schema_doc_declaration,
       ),
 
     variable_declaration: ($) =>
@@ -176,8 +178,11 @@ export default grammar({
     enum_member_value: ($) =>
       choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
 
-    doc_declaration: ($) =>
-      seq("doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
+    gen_doc_declaration: ($) =>
+      seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
+
+    schema_doc_declaration: ($) =>
+      seq("schema_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
 
     doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
 

@@ -29,10 +29,10 @@ type Name: string;
         (data_mode)))))
 
 ===
-unknown doc entry
+unknown schema_doc entry
 ===
 |===|
-doc User {
+schema_doc User {
   extra: "nope";
 }
 |===|
@@ -41,7 +41,7 @@ doc User {
 
 (source_file
   (script_block
-    (doc_declaration
+    (schema_doc_declaration
       (identifier
         (identifier_word))
       (ERROR

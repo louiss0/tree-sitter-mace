@@ -729,29 +729,6 @@
     "fields": {}
   },
   {
-    "type": "doc_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "doc_entry",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "doc_entry",
     "named": true,
     "fields": {},
@@ -1129,6 +1106,29 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "gen_doc_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "doc_entry",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -2316,6 +2316,29 @@
     }
   },
   {
+    "type": "schema_doc_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "doc_entry",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "schema_field",
     "named": true,
     "fields": {},
@@ -2403,15 +2426,19 @@
           "named": true
         },
         {
-          "type": "doc_declaration",
-          "named": true
-        },
-        {
           "type": "enum_declaration",
           "named": true
         },
         {
+          "type": "gen_doc_declaration",
+          "named": true
+        },
+        {
           "type": "schema_declaration",
+          "named": true
+        },
+        {
+          "type": "schema_doc_declaration",
           "named": true
         },
         {
@@ -3121,10 +3148,6 @@
     "named": true
   },
   {
-    "type": "doc",
-    "named": false
-  },
-  {
     "type": "double_star_operator",
     "named": true
   },
@@ -3150,6 +3173,10 @@
   },
   {
     "type": "from",
+    "named": false
+  },
+  {
+    "type": "gen_doc",
     "named": false
   },
   {
@@ -3214,6 +3241,10 @@
   },
   {
     "type": "schema",
+    "named": false
+  },
+  {
+    "type": "schema_doc",
     "named": false
   },
   {

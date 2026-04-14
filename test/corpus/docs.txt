@@ -34,10 +34,10 @@ This block emits user data.
         (description_text)))))
 
 ===
-doc declaration with props metadata
+schema_doc declaration with props metadata
 ===
 |===|
-doc User {
+schema_doc User {
   summary: "Represents a user";
   description: """
 # User
@@ -65,7 +65,7 @@ schema User: {
 
 (source_file
   (script_block
-    (doc_declaration
+    (schema_doc_declaration
       (identifier
         (identifier_word))
       (doc_entry

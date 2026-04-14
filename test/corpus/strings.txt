@@ -127,10 +127,10 @@ output inline doc block
       (string_type))))
 
 ===
-doc declaration
+schema_doc declaration
 ===
 |===|
-doc User {
+schema_doc User {
   summary: "Represents a user";
   description: """
 # User
@@ -155,7 +155,7 @@ schema User: {
 
 (source_file
   (script_block
-    (doc_declaration
+    (schema_doc_declaration
       (identifier
         (identifier_word))
       (doc_entry

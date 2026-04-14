@@ -3,7 +3,8 @@
   "import"
   "type"
   "schema"
-  "doc"
+  "gen_doc"
+  "schema_doc"
   "enum"
   "output"
   "schema_file"
@@ -38,8 +39,12 @@
 (schema_declaration
   (identifier) @type.definition)
 
-(doc_declaration
-  "doc" @keyword
+(gen_doc_declaration
+  "gen_doc" @keyword
+  (identifier) @type.definition)
+
+(schema_doc_declaration
+  "schema_doc" @keyword
   (identifier) @type.definition)
 
 [
