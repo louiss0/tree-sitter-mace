@@ -95,10 +95,6 @@ enum Fruit: string {
       (comment)
       (enum_member
         (identifier
-          (identifier_word)))
-      (comment)
-      (enum_member
-        (identifier
           (identifier_word))
         (enum_member_value
           (string_literal)))))

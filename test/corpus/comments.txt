@@ -18,7 +18,10 @@ line comment before output block
 ===
 block comment before output block
 ===
-/= this is a block comment =/
+/=
+this is a block comment
+
+=/
 {
   value: true;
 }
@@ -63,7 +66,9 @@ string name = "Ada";
 block comment inside output block
 ===
 {
-  /= inline block comment =/
+  /=
+  inline block comment
+  =/
   value: true;
 }
 ---
@@ -79,7 +84,10 @@ block comment inside output block
 ===
 comment disambiguation uses block comment when terminator appears before newline
 ===
-/= block comment =/
+/=
+block comment
+
+=/
 {
   value: true;
 }

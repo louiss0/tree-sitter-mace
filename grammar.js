@@ -65,7 +65,7 @@ export default grammar({
         repeat($.comment),
       ),
 
-    comment: (_) => token(choice(/\/=[^\r\n]*=\//, /\/=[^\r\n]*/)),
+    comment: (_) => token(choice(/\/=[\s\S]*?=\//, /\/=[^\r\n]*/)),
 
     identifier: ($) => reserved("global", $.identifier_word),
 
@@ -75,7 +75,12 @@ export default grammar({
       choice(
         seq(
           "'",
-          repeat(choice(token.immediate(/[^'\\\r\n]+/), token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))))),
+          repeat(
+            choice(
+              token.immediate(/[^'\\\r\n]+/),
+              token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+            ),
+          ),
           "'",
         ),
         seq(
@@ -200,7 +205,14 @@ export default grammar({
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
 
     schema_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._type_reference, optional($.inline_description), ";"),
+      seq(
+        $.identifier,
+        optional($.optional_marker),
+        ":",
+        $._type_reference,
+        optional($.inline_description),
+        ";",
+      ),
 
     _type_reference: ($) =>
       choice(
@@ -302,10 +314,24 @@ export default grammar({
     schema_file_directive: ($) => seq("schema_file", "=", $.string_literal),
 
     output_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._expression, optional($.inline_description), ";"),
+      seq(
+        $.identifier,
+        optional($.optional_marker),
+        ":",
+        $._expression,
+        optional($.inline_description),
+        ";",
+      ),
 
     output_schema_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._type_reference, optional($.inline_description), ";"),
+      seq(
+        $.identifier,
+        optional($.optional_marker),
+        ":",
+        $._type_reference,
+        optional($.inline_description),
+        ";",
+      ),
 
     inline_description: ($) => seq("/#", $.description_text),
 
