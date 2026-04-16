@@ -171,9 +171,9 @@ export default grammar({
         ":",
         $.enum_backing_type,
         "{",
-        repeat(choice($.comment, seq($.enum_member, optional(",")))),
+        repeat(choice($.comment, seq($.enum_member, optional(choice(",", ";"))))),
         "}",
-        ";",
+        optional(";"),
       ),
 
     enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.boolean_type),
@@ -200,7 +200,7 @@ export default grammar({
 
     prop_entry: ($) => seq($.identifier, ":", $.string_literal, ";"),
 
-    schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, ";"),
+    schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, optional(";")),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
 
@@ -211,7 +211,7 @@ export default grammar({
         ":",
         $._type_reference,
         optional($.inline_description),
-        ";",
+        optional(choice(",", ";")),
       ),
 
     _type_reference: ($) =>
@@ -320,7 +320,7 @@ export default grammar({
         ":",
         $._expression,
         optional($.inline_description),
-        ";",
+        optional(choice(",", ";")),
       ),
 
     output_schema_field: ($) =>
@@ -330,12 +330,12 @@ export default grammar({
         ":",
         $._type_reference,
         optional($.inline_description),
-        ";",
+        optional(choice(",", ";")),
       ),
 
     inline_description: ($) => seq("/#", $.description_text),
 
-    description_text: (_) => token(/[^;\r\n]+/),
+    description_text: (_) => token(/[^,;\r\n]+/),
 
     optional_marker: (_) => "?",
 
@@ -481,7 +481,13 @@ export default grammar({
     record_literal: ($) => seq("{", repeat(choice($.comment, $.record_field)), "}"),
 
     record_field: ($) =>
-      seq($.identifier, optional($.optional_marker), ":", $._expression, ";"),
+      seq(
+        $.identifier,
+        optional($.optional_marker),
+        ":",
+        $._expression,
+        optional(choice(",", ";")),
+      ),
 
     bang_operator: (_) => "!",
     tilde_operator: (_) => "~",

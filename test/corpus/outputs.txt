@@ -2,7 +2,7 @@
 default data output block
 ===
 {
-  name: "Ada" /# The emitted user name;
+  name: "Ada" /# The emitted user name
 }
 ---
 
@@ -20,7 +20,7 @@ explicit data output block
 ===
 [output = data]
 {
-  name: "Ada";
+  name: "Ada"
 }
 ---
 
@@ -39,14 +39,14 @@ data output with schema directive
 ===
 |===|
 schema User: {
-  name: string;
-  age?: int;
-};
+  name: string,
+  age?: int
+}
 |===|
 [output = data, schema = User]
 {
-  name: "Ada";
-  age?: 27;
+  name: "Ada",
+  age?: 27
 }
 ---
 
@@ -88,15 +88,15 @@ data output with schema directive without data
 
 |===|
 schema User: {
-  name: string;
-  age?: int;
-};
+  name: string,
+  age?: int
+}
 |===|
 
 [schema=User]
 {
-  name: "Ada";
-  age?: 27;
+  name: "Ada",
+  age?: 27
 }
 ---
 
@@ -138,8 +138,8 @@ data output with schema directive without data
 
 [schema_file = "./user-schema.mace"]
 {
-  name: "Ada";
-  age?: 27;
+  name: "Ada",
+  age?: 27
 }
 ---
 
@@ -166,9 +166,9 @@ schema output with type references
 # User Output
 """
 {
-  name: string /# The user's name;
-  scores: array<array<int>>;
-  profile?: Profile;
+  name: string /# The user's name,
+  scores: array<array<int>>,
+  profile?: Profile
 }
 ---
 
@@ -204,8 +204,8 @@ schema output with variant type references
 ===
 [output = schema]
 {
-  value: variant[string, int];
-  profile?: variant[Profile, string];
+  value: variant[string, int],
+  profile?: variant[Profile, string]
 }
 ---
 
@@ -235,7 +235,7 @@ schema output with union schema composition references
 ===
 [output = schema]
 {
-  value: union[Profile, Audit];
+  value: union[Profile, Audit]
 }
 ---
 
@@ -259,7 +259,7 @@ schema output with union schema composition references
 optional output field
 ===
 {
-  enabled?: true;
+  enabled?: true
 }
 ---
 
