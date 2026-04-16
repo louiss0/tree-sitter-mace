@@ -203,6 +203,13 @@ export default grammar({
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, optional(";")),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
+    _field_separator: (_) => choice(",", ";"),
+
+    _field_suffix: ($) =>
+      choice(
+        seq($.inline_description, optional($._field_separator)),
+        seq($._field_separator, optional($.inline_description)),
+      ),
 
     schema_field: ($) =>
       seq(
@@ -210,8 +217,7 @@ export default grammar({
         optional($.optional_marker),
         ":",
         $._type_reference,
-        optional($.inline_description),
-        optional(choice(",", ";")),
+        optional($._field_suffix),
       ),
 
     _type_reference: ($) =>
@@ -319,8 +325,7 @@ export default grammar({
         optional($.optional_marker),
         ":",
         $._expression,
-        optional($.inline_description),
-        optional(choice(",", ";")),
+        optional($._field_suffix),
       ),
 
     output_schema_field: ($) =>
@@ -329,8 +334,7 @@ export default grammar({
         optional($.optional_marker),
         ":",
         $._type_reference,
-        optional($.inline_description),
-        optional(choice(",", ";")),
+        optional($._field_suffix),
       ),
 
     inline_description: ($) => seq("/#", $.description_text),

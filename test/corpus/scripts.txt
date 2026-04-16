@@ -98,7 +98,7 @@ mixed declarations with schema aware output block
 |===|
 type Name: string;
 schema User: {
-  name: Name /# The user's display name;
+  name: Name, /# The user's display name
   tags: array<string>;
 };
 User user = {

@@ -166,7 +166,7 @@ schema output with type references
 # User Output
 """
 {
-  name: string /# The user's name,
+  name: string, /# The user's name
   scores: array<array<int>>,
   profile?: Profile
 }

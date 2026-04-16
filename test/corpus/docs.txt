@@ -8,8 +8,8 @@ data output with inline doc block
 This block emits user data.
 """
 {
-  name: "Ada" /# The emitted user name;
-  age: 27 /# The emitted age;
+  name: "Ada"; /# The emitted user name
+  age: 27, /# The emitted age
 }
 ---
 
@@ -53,13 +53,13 @@ A reusable schema.
 type Name: string /# A user display name;
 
 schema User: {
-  name: Name /# The user's name;
-  age?: int /# Optional age;
+  name: Name, /# The user's name
+  age?: int; /# Optional age
 };
 |===|
 [output = schema]
 {
-  user: User /# Public user contract;
+  user: User; /# Public user contract
 }
 ---
 
