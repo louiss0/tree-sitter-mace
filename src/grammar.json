@@ -531,21 +531,24 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 10,
+        "value": 100,
         "content": {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
               "type": "STRING",
-              "value": "|===|"
+              "value": "|"
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "STRING",
+                "value": "="
+              }
             },
             {
               "type": "STRING",
-              "value": "|====|"
-            },
-            {
-              "type": "PATTERN",
-              "value": "\\|={5,}\\|"
+              "value": "|"
             }
           ]
         }
@@ -860,6 +863,18 @@
         {
           "type": "STRING",
           "value": "}"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -897,6 +912,18 @@
         {
           "type": "STRING",
           "value": "}"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

@@ -27,12 +27,12 @@ const PREC = {
 export default grammar({
   name: "mace",
 
-  extras: ($) => [/\s/],
+  extras: () => [/\s/],
 
   word: ($) => $.identifier_word,
 
   reserved: {
-    global: ($) => [
+    global: () => [
       "from",
       "import",
       "type",
@@ -138,7 +138,7 @@ export default grammar({
     script_block: ($) =>
       seq($._script_delimiter, repeat(choice($.comment, $._declaration)), $._script_delimiter),
 
-    _script_delimiter: (_) => token(prec(10, choice("|===|", "|====|", /\|={5,}\|/))),
+    _script_delimiter: (_) => token(prec(100, seq("|", repeat1("="), "|"))),
 
     _declaration: ($) =>
       choice(
@@ -184,10 +184,17 @@ export default grammar({
       choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
 
     gen_doc_declaration: ($) =>
-      seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
+      seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}", optional(";")),
 
     schema_doc_declaration: ($) =>
-      seq("schema_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}"),
+      seq(
+        "schema_doc",
+        $.identifier,
+        "{",
+        repeat(choice($.comment, $.doc_entry)),
+        "}",
+        optional(";"),
+      ),
 
     doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
 

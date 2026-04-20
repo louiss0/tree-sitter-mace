@@ -48,7 +48,7 @@ A reusable schema.
     name: "The user's display name";
     age: "Optional age";
   };
-}
+};
 
 type Name: string /# A user display name;
 
