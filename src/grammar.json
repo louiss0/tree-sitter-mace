@@ -707,34 +707,8 @@
                 "name": "comment"
               },
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "enum_member"
-                  },
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "STRING",
-                            "value": ","
-                          },
-                          {
-                            "type": "STRING",
-                            "value": ";"
-                          }
-                        ]
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "enum_member"
               }
             ]
           }
@@ -800,6 +774,18 @@
                   "name": "enum_member_value"
                 }
               ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_field_suffix"
             },
             {
               "type": "BLANK"
@@ -960,8 +946,8 @@
           "name": "string_literal"
         },
         {
-          "type": "STRING",
-          "value": ";"
+          "type": "SYMBOL",
+          "name": "_pair_separator"
         }
       ]
     },
@@ -981,8 +967,8 @@
           "name": "doc_block_string"
         },
         {
-          "type": "STRING",
-          "value": ";"
+          "type": "SYMBOL",
+          "name": "_pair_separator"
         }
       ]
     },
@@ -1022,8 +1008,8 @@
           "value": "}"
         },
         {
-          "type": "STRING",
-          "value": ";"
+          "type": "SYMBOL",
+          "name": "_pair_separator"
         }
       ]
     },
@@ -1043,8 +1029,8 @@
           "name": "string_literal"
         },
         {
-          "type": "STRING",
-          "value": ";"
+          "type": "SYMBOL",
+          "name": "_pair_separator"
         }
       ]
     },
@@ -1107,6 +1093,19 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "_pair_separator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },

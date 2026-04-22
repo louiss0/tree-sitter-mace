@@ -3,9 +3,9 @@ string enum
 ===
 |===|
 enum Fruit: string {
-  Apple,
-  Strawberry = "strawberry"
-}
+  Apple /# Default apple,
+  Strawberry = "strawberry" /# Explicit strawberry
+};
 |===|
 [output = data]
 {
@@ -22,12 +22,16 @@ enum Fruit: string {
         (string_type))
       (enum_member
         (identifier
-          (identifier_word)))
+          (identifier_word))
+        (inline_description
+          (description_text)))
       (enum_member
         (identifier
           (identifier_word))
         (enum_member_value
-          (string_literal)))))
+          (string_literal))
+        (inline_description
+          (description_text)))))
   (output_block
     (directive_list
       (output_mode_directive

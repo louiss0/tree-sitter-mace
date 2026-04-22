@@ -171,14 +171,15 @@ export default grammar({
         ":",
         $.enum_backing_type,
         "{",
-        repeat(choice($.comment, seq($.enum_member, optional(choice(",", ";"))))),
+        repeat(choice($.comment, $.enum_member)),
         "}",
         optional(";"),
       ),
 
     enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.boolean_type),
 
-    enum_member: ($) => seq($.identifier, optional(seq("=", $.enum_member_value))),
+    enum_member: ($) =>
+      seq($.identifier, optional(seq("=", $.enum_member_value)), optional($._field_suffix)),
 
     enum_member_value: ($) =>
       choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
@@ -198,18 +199,19 @@ export default grammar({
 
     doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
 
-    summary_entry: ($) => seq("summary", ":", $.string_literal, ";"),
+    summary_entry: ($) => seq("summary", ":", $.string_literal, $._pair_separator),
 
-    description_entry: ($) => seq("description", ":", $.doc_block_string, ";"),
+    description_entry: ($) => seq("description", ":", $.doc_block_string, $._pair_separator),
 
     props_entry: ($) =>
-      seq("props", ":", "{", repeat(choice($.comment, $.prop_entry)), "}", ";"),
+      seq("props", ":", "{", repeat(choice($.comment, $.prop_entry)), "}", $._pair_separator),
 
-    prop_entry: ($) => seq($.identifier, ":", $.string_literal, ";"),
+    prop_entry: ($) => seq($.identifier, ":", $.string_literal, $._pair_separator),
 
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, optional(";")),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
+    _pair_separator: (_) => choice(",", ";"),
     _field_separator: (_) => choice(",", ";"),
 
     _field_suffix: ($) =>

@@ -38,16 +38,24 @@ schema_doc declaration with props metadata
 ===
 |===|
 schema_doc User {
-  summary: "Represents a user";
+  summary: "Represents a user",
   description: """
 # User
 
 A reusable schema.
-""";
+""",
   props: {
-    name: "The user's display name";
-    age: "Optional age";
-  };
+    name: "The user's display name",
+    age: "Optional age",
+  },
+};
+
+enum Status: string {
+  Pending /# Current status,
+};
+
+schema_doc Status {
+  summary: "Represents a status enum",
 };
 
 type Name: string /# A user display name;
@@ -84,6 +92,22 @@ schema User: {
             (identifier
               (identifier_word))
             (string_literal)))))
+    (enum_declaration
+      (identifier
+        (identifier_word))
+      (enum_backing_type
+        (string_type))
+      (enum_member
+        (identifier
+          (identifier_word))
+        (inline_description
+          (description_text))))
+    (schema_doc_declaration
+      (identifier
+        (identifier_word))
+      (doc_entry
+        (summary_entry
+          (string_literal))))
     (type_declaration
       (identifier
         (identifier_word))
