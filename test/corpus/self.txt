@@ -90,11 +90,13 @@ nested self reference path
     (output_field
       (identifier
         (identifier_word))
-      (self_reference
-        (identifier
-          (identifier_word))
-        (identifier
-          (identifier_word))
+      (member_access
+        (member_access
+          (self_reference
+            (identifier
+              (identifier_word)))
+          (identifier
+            (identifier_word)))
         (identifier
           (identifier_word))))))
 

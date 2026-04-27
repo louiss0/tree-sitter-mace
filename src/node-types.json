@@ -12,6 +12,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -33,10 +37,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -65,6 +65,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -111,6 +115,72 @@
     }
   },
   {
+    "type": "array_access",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "int_literal",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "member_access",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "record_literal",
+            "named": true
+          },
+          {
+            "type": "self_reference",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "array_literal",
     "named": true,
     "fields": {},
@@ -120,6 +190,10 @@
       "types": [
         {
           "type": "additive_expression",
+          "named": true
+        },
+        {
+          "type": "array_access",
           "named": true
         },
         {
@@ -144,10 +218,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -176,6 +246,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -273,6 +347,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -294,10 +372,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -326,6 +400,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -376,6 +454,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -397,10 +479,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -429,6 +507,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -483,6 +565,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -511,10 +597,6 @@
           "named": true
         },
         {
-          "type": "enum_member_access",
-          "named": true
-        },
-        {
           "type": "equality_expression",
           "named": true
         },
@@ -540,6 +622,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -595,6 +681,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -616,10 +706,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -648,6 +734,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -829,40 +919,6 @@
     }
   },
   {
-    "type": "enum_member_access",
-    "named": true,
-    "fields": {
-      "enum": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "enum_member_access",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          }
-        ]
-      },
-      "member": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "enum_member_value",
     "named": true,
     "fields": {},
@@ -902,6 +958,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -923,10 +983,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -959,6 +1015,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -1021,6 +1081,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -1049,10 +1113,6 @@
           "named": true
         },
         {
-          "type": "enum_member_access",
-          "named": true
-        },
-        {
           "type": "equality_expression",
           "named": true
         },
@@ -1078,6 +1138,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -1220,6 +1284,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -1241,10 +1309,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1273,6 +1337,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -1332,6 +1400,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -1353,10 +1425,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1385,6 +1453,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -1435,6 +1507,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -1456,10 +1532,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1488,6 +1560,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -1530,6 +1606,72 @@
     }
   },
   {
+    "type": "member_access",
+    "named": true,
+    "fields": {
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "array_literal",
+            "named": true
+          },
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "member_access",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "record_literal",
+            "named": true
+          },
+          {
+            "type": "self_reference",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "multiplicative_expression",
     "named": true,
     "fields": {},
@@ -1539,6 +1681,10 @@
       "types": [
         {
           "type": "additive_expression",
+          "named": true
+        },
+        {
+          "type": "array_access",
           "named": true
         },
         {
@@ -1563,10 +1709,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1595,6 +1737,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -1708,6 +1854,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -1729,10 +1879,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1765,6 +1911,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -1893,6 +2043,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -1914,10 +2068,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -1946,6 +2096,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -2034,6 +2188,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -2055,10 +2213,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -2087,6 +2241,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -2179,6 +2337,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -2200,10 +2362,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -2248,6 +2406,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -2484,6 +2646,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -2505,10 +2671,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -2537,6 +2699,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -2708,6 +2874,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -2736,10 +2906,6 @@
           "named": true
         },
         {
-          "type": "enum_member_access",
-          "named": true
-        },
-        {
           "type": "equality_expression",
           "named": true
         },
@@ -2765,6 +2931,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {
@@ -2870,6 +3040,10 @@
           "named": true
         },
         {
+          "type": "array_access",
+          "named": true
+        },
+        {
           "type": "array_literal",
           "named": true
         },
@@ -2899,10 +3073,6 @@
         },
         {
           "type": "conditional_expression",
-          "named": true
-        },
-        {
-          "type": "enum_member_access",
           "named": true
         },
         {
@@ -2943,6 +3113,10 @@
         },
         {
           "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
           "named": true
         },
         {

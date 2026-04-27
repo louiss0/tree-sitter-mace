@@ -144,10 +144,10 @@ Fruit selected = Fruit.Apple;
           (identifier_word)))
       (identifier
         (identifier_word))
-      (enum_member_access
-        enum: (identifier
+      (member_access
+        (identifier
           (identifier_word))
-        member: (identifier
+        (identifier
           (identifier_word)))))
   (output_block
     (directive_list

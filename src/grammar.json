@@ -1900,6 +1900,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "member_access"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "array_access"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_primary_expression"
         }
       ]
@@ -1907,10 +1915,6 @@
     "_primary_expression": {
       "type": "CHOICE",
       "members": [
-        {
-          "type": "SYMBOL",
-          "name": "enum_member_access"
-        },
         {
           "type": "SYMBOL",
           "name": "identifier"
@@ -1966,7 +1970,7 @@
         }
       ]
     },
-    "enum_member_access": {
+    "member_access": {
       "type": "PREC_LEFT",
       "value": 14,
       "content": {
@@ -1974,21 +1978,21 @@
         "members": [
           {
             "type": "FIELD",
-            "name": "enum",
+            "name": "target",
             "content": {
               "type": "CHOICE",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "identifier"
+                  "name": "_primary_expression"
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "parenthesized_expression"
+                  "name": "member_access"
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "enum_member_access"
+                  "name": "array_access"
                 }
               ]
             }
@@ -2008,38 +2012,88 @@
         ]
       }
     },
-    "self_reference": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "$self"
-        },
-        {
-          "type": "STRING",
-          "value": "."
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "."
-              },
-              {
-                "type": "SYMBOL",
-                "name": "identifier"
-              }
-            ]
+    "array_access": {
+      "type": "PREC_LEFT",
+      "value": 14,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "target",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_primary_expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "member_access"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "array_access"
+                }
+              ]
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "["
+          },
+          {
+            "type": "FIELD",
+            "name": "index",
+            "content": {
+              "type": "SYMBOL",
+              "name": "int_literal"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "]"
           }
-        }
-      ]
+        ]
+      }
+    },
+    "self_reference": {
+      "type": "PREC_LEFT",
+      "value": 15,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "$self"
+          },
+          {
+            "type": "STRING",
+            "value": "."
+          },
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "."
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                }
+              ]
+            }
+          }
+        ]
+      }
     },
     "unary_expression": {
       "type": "PREC",

@@ -74,12 +74,16 @@
   (_)
   (identifier) @variable)
 
-(enum_member_access
-  enum: (identifier) @variable
+(member_access
+  target: (identifier) @variable
   member: (identifier) @property)
 
-(enum_member_access
-  enum: (enum_member_access)
+(member_access
+  target: (member_access)
+  member: (identifier) @property)
+
+(member_access
+  target: (array_access)
   member: (identifier) @property)
 
 [

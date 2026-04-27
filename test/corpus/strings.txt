@@ -42,7 +42,7 @@ string greeting = "Hello $(user.name) $(price * quantity)";
         (identifier_word))
       (string_literal
         (interpolation
-          (enum_member_access
+          (member_access
             (identifier
               (identifier_word))
             (identifier
@@ -90,15 +90,16 @@ Owner: $($self.user.name)
         (identifier_word))
       (string_literal
         (interpolation
-          (enum_member_access
+          (member_access
             (identifier
               (identifier_word))
             (identifier
               (identifier_word))))
         (interpolation
-          (self_reference
-            (identifier
-              (identifier_word))
+          (member_access
+            (self_reference
+              (identifier
+                (identifier_word)))
             (identifier
               (identifier_word))))))))
 

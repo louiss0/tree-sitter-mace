@@ -16,6 +16,81 @@ default data output block
         (description_text)))))
 
 ===
+array access in output expressions
+===
+|===|
+schema User: {
+  name: string,
+};
+array<string> names = ["Ada", "Linus"];
+array<User> users = [{ name: "Ada" }, { name: "Linus" }];
+|===|
+[output = data]
+{
+  first_name: names[0],
+  second_user_name: users[1].name,
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))))
+    (variable_declaration
+      (array_type
+        (string_type))
+      (identifier
+        (identifier_word))
+      (array_literal
+        (string_literal)
+        (string_literal)))
+    (variable_declaration
+      (array_type
+        (named_type
+          (identifier
+            (identifier_word))))
+      (identifier
+        (identifier_word))
+      (array_literal
+        (record_literal
+          (record_field
+            (identifier
+              (identifier_word))
+            (string_literal)))
+        (record_literal
+          (record_field
+            (identifier
+              (identifier_word))
+            (string_literal))))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_access
+        (identifier
+          (identifier_word))
+        (int_literal)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (member_access
+        (array_access
+          (identifier
+            (identifier_word))
+          (int_literal))
+        (identifier
+          (identifier_word))))))
+
+===
 explicit data output block
 ===
 [output = data]

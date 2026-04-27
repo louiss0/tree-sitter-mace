@@ -367,12 +367,13 @@ export default grammar({
         $.multiplicative_expression,
         $.exponent_expression,
         $.unary_expression,
+        $.member_access,
+        $.array_access,
         $._primary_expression,
       ),
 
     _primary_expression: ($) =>
       choice(
-        $.enum_member_access,
         $.identifier,
         $.float_literal,
         $.int_literal,
@@ -386,17 +387,29 @@ export default grammar({
 
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
 
-    enum_member_access: ($) =>
+    member_access: ($) =>
       prec.left(
         PREC.member,
         seq(
-          field("enum", choice($.identifier, $.parenthesized_expression, $.enum_member_access)),
+          field("target", choice($._primary_expression, $.member_access, $.array_access)),
           ".",
           field("member", $.identifier),
         ),
       ),
 
-    self_reference: ($) => seq("$self", ".", $.identifier, repeat(seq(".", $.identifier))),
+    array_access: ($) =>
+      prec.left(
+        PREC.member,
+        seq(
+          field("target", choice($._primary_expression, $.member_access, $.array_access)),
+          "[",
+          field("index", $.int_literal),
+          "]",
+        ),
+      ),
+
+    self_reference: ($) =>
+      prec.left(PREC.member + 1, seq("$self", ".", $.identifier, repeat(seq(".", $.identifier)))),
 
     unary_expression: ($) =>
       prec(
