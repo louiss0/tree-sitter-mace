@@ -91,6 +91,146 @@ array<User> users = [{ name: "Ada" }, { name: "Linus" }];
           (identifier_word))))))
 
 ===
+nested array access level 1
+===
+[output = data]
+{
+  result: [1][0],
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_access
+        (array_literal
+          (int_literal))
+        (int_literal)))))
+
+===
+nested array access level 2
+===
+[output = data]
+{
+  result: [[1]][0][0],
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_access
+        (array_access
+          (array_literal
+            (array_literal
+              (int_literal)))
+          (int_literal))
+        (int_literal)))))
+
+===
+nested array access level 3
+===
+[output = data]
+{
+  result: [[[1]]][0][0][0],
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_access
+        (array_access
+          (array_access
+            (array_literal
+              (array_literal
+                (array_literal
+                  (int_literal))))
+            (int_literal))
+          (int_literal))
+        (int_literal)))))
+
+===
+nested array access level 4
+===
+[output = data]
+{
+  result: [[[[1]]]][0][0][0][0],
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_access
+        (array_access
+          (array_access
+            (array_access
+              (array_literal
+                (array_literal
+                  (array_literal
+                    (array_literal
+                      (int_literal)))))
+              (int_literal))
+            (int_literal))
+          (int_literal))
+        (int_literal)))))
+
+===
+nested array access level 5
+===
+[output = data]
+{
+  result: [[[[[1]]]]][0][0][0][0][0],
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_access
+        (array_access
+          (array_access
+            (array_access
+              (array_access
+                (array_literal
+                  (array_literal
+                    (array_literal
+                      (array_literal
+                        (array_literal
+                          (int_literal))))))
+                (int_literal))
+              (int_literal))
+            (int_literal))
+          (int_literal))
+        (int_literal)))))
+
+===
 explicit data output block
 ===
 [output = data]
