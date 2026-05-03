@@ -2600,6 +2600,10 @@
           "named": true
         },
         {
+          "type": "import_declaration",
+          "named": true
+        },
+        {
           "type": "schema_declaration",
           "named": true
         },
@@ -2763,10 +2767,6 @@
       "types": [
         {
           "type": "comment",
-          "named": true
-        },
-        {
-          "type": "import_declaration",
           "named": true
         },
         {

@@ -1,9 +1,8 @@
 ===
 file structure with imports script and schema validated output
 ===
-from "./shared.mace" import Name, User;
-
 |===|
+from "./shared.mace" import Name, User;
 Name name = "Ada";
 User user = {
   name: name;
@@ -17,13 +16,13 @@ User user = {
 ---
 
 (source_file
-  (import_declaration
-    (string_literal)
-    (identifier
-      (identifier_word))
-    (identifier
-      (identifier_word)))
   (script_block
+    (import_declaration
+      (string_literal)
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
     (variable_declaration
       (named_type
         (identifier

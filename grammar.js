@@ -58,12 +58,7 @@ export default grammar({
 
   rules: {
     source_file: ($) =>
-      seq(
-        repeat(choice($.comment, $.import_declaration)),
-        optional(seq($.script_block, repeat($.comment))),
-        $.output_block,
-        repeat($.comment),
-      ),
+      seq(repeat($.comment), optional(seq($.script_block, repeat($.comment))), $.output_block, repeat($.comment)),
 
     comment: (_) => token(choice(/\/=[\s\S]*?=\//, /\/=[^\r\n]*/)),
 
@@ -136,7 +131,11 @@ export default grammar({
       ),
 
     script_block: ($) =>
-      seq($._script_delimiter, repeat(choice($.comment, $._declaration)), $._script_delimiter),
+      seq(
+        $._script_delimiter,
+        repeat(choice($.comment, $.import_declaration, $._declaration)),
+        $._script_delimiter,
+      ),
 
     _script_delimiter: (_) => token(prec(100, seq("|", repeat1("="), "|"))),
 

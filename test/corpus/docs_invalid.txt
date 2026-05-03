@@ -9,20 +9,19 @@ type Name: string;
 ---
 
 (source_file
-  (ERROR
+  (script_block
     (type_declaration
       (identifier
         (identifier_word))
       (string_type))
     (ERROR)
-    (named_type
+    (variable_declaration
+      (named_type
+        (identifier
+          (identifier_word)))
       (identifier
-        (identifier_word)))
-    (identifier
-      (identifier_word))
-    (pipe_operator)
-    (strict_equal_operator)
-    (pipe_operator))
+        (identifier_word))
+      (MISSING ";")))
   (output_block
     (directive_list
       (output_mode_directive

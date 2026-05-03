@@ -9,17 +9,8 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "comment"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "import_declaration"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "comment"
           }
         },
         {
@@ -513,6 +504,10 @@
               {
                 "type": "SYMBOL",
                 "name": "comment"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "import_declaration"
               },
               {
                 "type": "SYMBOL",
