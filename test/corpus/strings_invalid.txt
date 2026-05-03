@@ -1,0 +1,43 @@
+===
+single quoted string rejects newline before closing quote
+===
+|===|
+string greeting = 'abc
+';
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (ERROR)))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
+double quoted string rejects newline before closing quote
+===
+|===|
+string greeting = "abc
+";
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (ERROR)))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))

@@ -76,7 +76,7 @@ export default grammar({
               token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
             ),
           ),
-          "'",
+          token.immediate("'"),
         ),
         seq(
           '"',
@@ -87,7 +87,7 @@ export default grammar({
               $.interpolation,
             ),
           ),
-          '"',
+          token.immediate('"'),
         ),
         seq(
           '"""',
