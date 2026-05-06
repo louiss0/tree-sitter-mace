@@ -9,7 +9,7 @@ enum Fruit: string {
 |===|
 [output = data]
 {
-  result: "Apple";
+  result: "Apple",
 }
 ---
 
@@ -119,7 +119,7 @@ Fruit selected = Fruit.Apple;
 |===|
 [output = data]
 {
-  selected: selected;
+  selected: selected,
 }
 ---
 

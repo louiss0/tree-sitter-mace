@@ -3,7 +3,7 @@ line comment before output block
 ===
 /= this is a line comment
 {
-  value: true;
+  value: true,
 }
 ---
 
@@ -23,7 +23,7 @@ this is a block comment
 
 =/
 {
-  value: true;
+  value: true,
 }
 ---
 
@@ -43,7 +43,7 @@ line comment inside script block
 string name = "Ada";
 |===|
 {
-  name: name;
+  name: name,
 }
 ---
 
@@ -69,7 +69,7 @@ block comment inside output block
   /=
   inline block comment
   =/
-  value: true;
+  value: true,
 }
 ---
 
@@ -89,7 +89,7 @@ block comment
 
 =/
 {
-  value: true;
+  value: true,
 }
 ---
 
@@ -106,7 +106,7 @@ comment disambiguation uses line comment without terminator before newline
 ===
 /= line comment
 {
-  value: true;
+  value: true,
 }
 ---
 

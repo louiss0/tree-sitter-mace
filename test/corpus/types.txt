@@ -56,7 +56,7 @@ type Composite: variant[union[Profile, Audit], string];
 |===|
 [output = schema]
 {
-  value: Composite;
+  value: Composite,
 }
 ---
 

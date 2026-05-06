@@ -8,7 +8,7 @@ data output with inline doc block
 This block emits user data.
 """
 {
-  name: "Ada"; /# The emitted user name
+  name: "Ada", /# The emitted user name
   age: 27, /# The emitted age
 }
 ---

@@ -2,7 +2,7 @@
 unary plus operator
 ===
 {
-  result: +1;
+  result: +1,
 }
 ---
 
@@ -19,7 +19,7 @@ unary plus operator
 unary minus operator
 ===
 {
-  result: -1;
+  result: -1,
 }
 ---
 
@@ -36,7 +36,7 @@ unary minus operator
 bitwise not operator
 ===
 {
-  result: ~1;
+  result: ~1,
 }
 ---
 
@@ -53,7 +53,7 @@ bitwise not operator
 addition operator
 ===
 {
-  result: 1 + 2;
+  result: 1 + 2,
 }
 ---
 
@@ -71,7 +71,7 @@ addition operator
 subtraction operator
 ===
 {
-  result: 5 - 3;
+  result: 5 - 3,
 }
 ---
 
@@ -89,7 +89,7 @@ subtraction operator
 multiplication operator
 ===
 {
-  result: 2 * 3;
+  result: 2 * 3,
 }
 ---
 
@@ -107,7 +107,7 @@ multiplication operator
 division operator
 ===
 {
-  result: 8 / 2;
+  result: 8 / 2,
 }
 ---
 
@@ -125,7 +125,7 @@ division operator
 modulo operator
 ===
 {
-  result: 9 % 4;
+  result: 9 % 4,
 }
 ---
 
@@ -143,7 +143,7 @@ modulo operator
 exponent operator
 ===
 {
-  result: 2 ** 3;
+  result: 2 ** 3,
 }
 ---
 
@@ -161,7 +161,7 @@ exponent operator
 shift left operator
 ===
 {
-  result: 8 << 1;
+  result: 8 << 1,
 }
 ---
 
@@ -179,7 +179,7 @@ shift left operator
 shift right operator
 ===
 {
-  result: 8 >> 1;
+  result: 8 >> 1,
 }
 ---
 
@@ -197,7 +197,7 @@ shift right operator
 unsigned shift right operator
 ===
 {
-  result: 8 >>> 1;
+  result: 8 >>> 1,
 }
 ---
 
@@ -215,7 +215,7 @@ unsigned shift right operator
 bitwise and operator
 ===
 {
-  result: 7 & 3;
+  result: 7 & 3,
 }
 ---
 
@@ -233,7 +233,7 @@ bitwise and operator
 bitwise xor operator
 ===
 {
-  result: 7 ^ 3;
+  result: 7 ^ 3,
 }
 ---
 
@@ -251,7 +251,7 @@ bitwise xor operator
 bitwise or operator
 ===
 {
-  result: 7 | 3;
+  result: 7 | 3,
 }
 ---
 
@@ -269,7 +269,7 @@ bitwise or operator
 combined arithmetic operators
 ===
 {
-  result: +1 + 2 * 3 - 8 / 4 % 2;
+  result: +1 + 2 * 3 - 8 / 4 % 2,
 }
 ---
 
@@ -301,7 +301,7 @@ combined arithmetic operators
 combined exponent shift and bitwise operators
 ===
 {
-  result: ~(2 ** 3) << 1 >> 2 >>> 1 & 7 ^ 3 | 1;
+  result: ~(2 ** 3) << 1 >> 2 >>> 1 & 7 ^ 3 | 1,
 }
 ---
 

@@ -2,7 +2,7 @@
 logical not operator
 ===
 {
-  result: !false;
+  result: !false,
 }
 ---
 
@@ -19,7 +19,7 @@ logical not operator
 less than operator
 ===
 {
-  result: 1 < 2;
+  result: 1 < 2,
 }
 ---
 
@@ -37,7 +37,7 @@ less than operator
 less than or equal operator
 ===
 {
-  result: 1 <= 2;
+  result: 1 <= 2,
 }
 ---
 
@@ -55,7 +55,7 @@ less than or equal operator
 greater than operator
 ===
 {
-  result: 2 > 1;
+  result: 2 > 1,
 }
 ---
 
@@ -73,7 +73,7 @@ greater than operator
 greater than or equal operator
 ===
 {
-  result: 2 >= 1;
+  result: 2 >= 1,
 }
 ---
 
@@ -91,7 +91,7 @@ greater than or equal operator
 equality operator
 ===
 {
-  result: 1 == 1;
+  result: 1 == 1,
 }
 ---
 
@@ -109,7 +109,7 @@ equality operator
 not equal operator
 ===
 {
-  result: 1 != 2;
+  result: 1 != 2,
 }
 ---
 
@@ -127,7 +127,7 @@ not equal operator
 strict equality operator
 ===
 {
-  result: 1 === 1;
+  result: 1 === 1,
 }
 ---
 
@@ -145,7 +145,7 @@ strict equality operator
 strict not equal operator
 ===
 {
-  result: 1 !== 2;
+  result: 1 !== 2,
 }
 ---
 
@@ -163,7 +163,7 @@ strict not equal operator
 logical and operator
 ===
 {
-  result: true && false;
+  result: true && false,
 }
 ---
 
@@ -181,7 +181,7 @@ logical and operator
 logical or operator
 ===
 {
-  result: true || false;
+  result: true || false,
 }
 ---
 
@@ -199,7 +199,7 @@ logical or operator
 ternary conditional operator
 ===
 {
-  result: true ? false : true;
+  result: true ? false : true,
 }
 ---
 
@@ -217,7 +217,7 @@ ternary conditional operator
 combined relational operators
 ===
 {
-  result: 1 < 2 && 2 <= 3 && 3 > 2 && 4 >= 4;
+  result: 1 < 2 && 2 <= 3 && 3 > 2 && 4 >= 4,
 }
 ---
 
@@ -253,7 +253,7 @@ combined relational operators
 combined equality operators
 ===
 {
-  result: 1 == 1 || 1 != 2 || 1 === 1 || 1 !== 2;
+  result: 1 == 1 || 1 != 2 || 1 === 1 || 1 !== 2,
 }
 ---
 
@@ -289,7 +289,7 @@ combined equality operators
 combined boolean operator precedence
 ===
 {
-  result: !false || 1 < 2 && 3 == 3 ? true : false;
+  result: !false || 1 < 2 && 3 == 3 ? true : false,
 }
 ---
 

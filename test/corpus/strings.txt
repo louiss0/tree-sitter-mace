@@ -5,7 +5,7 @@ single quoted string literal
 string greeting = 'hello';
 |===|
 {
-  greeting: greeting;
+  greeting: greeting,
 }
 ---
 
@@ -30,7 +30,7 @@ double quoted interpolation expression
 string greeting = "Hello $(user.name) $(price * quantity)";
 |===|
 {
-  greeting: greeting;
+  greeting: greeting,
 }
 ---
 
@@ -66,12 +66,12 @@ block string interpolation
 ===
 {
   user: {
-    name: "Ada";
-  };
+    name: "Ada",
+  },
   message: """
 Hello $(user.name)
 Owner: $($self.user.name)
-""";
+""",
 }
 ---
 
@@ -111,7 +111,7 @@ output inline doc block
 # Public User Output
 """
 {
-  name: string;
+  name: string,
 }
 ---
 
@@ -132,25 +132,25 @@ schema_doc declaration
 ===
 |===|
 schema_doc User {
-  summary: "Represents a user";
+  summary: "Represents a user",
   description: """
 # User
 A reusable schema.
-""";
+""",
   props: {
-    name: "The user's display name";
-    age: "Optional age";
-  };
+    name: "The user's display name",
+    age: "Optional age",
+  },
 }
 
 schema User: {
-  name: string;
-  age?: int;
+  name: string,
+  age?: int,
 };
 |===|
 [output = schema]
 {
-  user: User;
+  user: User,
 }
 ---
 

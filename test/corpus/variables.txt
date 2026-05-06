@@ -8,10 +8,10 @@ float ratio = 3.14;
 boolean enabled = true;
 |===|
 {
-  name: name;
-  age: age;
-  ratio: ratio;
-  enabled: enabled;
+  name: name,
+  age: age,
+  ratio: ratio,
+  enabled: enabled,
 }
 ---
 
@@ -67,7 +67,7 @@ type Name: string;
 Name name = "Ada";
 |===|
 {
-  name: name;
+  name: name,
 }
 ---
 
@@ -98,7 +98,7 @@ array variable declaration
 array<array<int>> matrix = [[1, 2], [3, 4]];
 |===|
 {
-  matrix: matrix;
+  matrix: matrix,
 }
 ---
 
@@ -129,16 +129,16 @@ schema typed variable declaration
 ===
 |===|
 schema User: {
-  name: string;
-  age?: int;
+  name: string,
+  age?: int,
 };
 User user = {
-  name: "Ada";
-  age?: 27;
+  name: "Ada",
+  age?: 27,
 };
 |===|
 {
-  user: user;
+  user: user,
 }
 ---
 
@@ -209,7 +209,7 @@ injectable string variable
 injectable string env = "dev";
 |===|
 {
-  env: env;
+  env: env,
 }
 ---
 
@@ -235,7 +235,7 @@ injectable string variable without initializer
 injectable string env;
 |===|
 {
-  env: env;
+  env: env,
 }
 ---
 
@@ -260,7 +260,7 @@ injectable int variable
 injectable int retries = 3;
 |===|
 {
-  retries: retries;
+  retries: retries,
 }
 ---
 
@@ -286,7 +286,7 @@ injectable float variable
 injectable float threshold = 0.75;
 |===|
 {
-  threshold: threshold;
+  threshold: threshold,
 }
 ---
 
@@ -312,7 +312,7 @@ injectable boolean variable
 injectable boolean enabled = false;
 |===|
 {
-  enabled: enabled;
+  enabled: enabled,
 }
 ---
 
@@ -338,7 +338,7 @@ injectable array variable
 injectable array<string> tags = ["ops", "prod"];
 |===|
 {
-  tags: tags;
+  tags: tags,
 }
 ---
 
@@ -365,14 +365,14 @@ injectable schema variable
 ===
 |===|
 schema User: {
-  name: string;
+  name: string,
 };
 injectable User user = {
-  name: "Ada";
+  name: "Ada",
 };
 |===|
 {
-  user: user;
+  user: user,
 }
 ---
 
@@ -412,7 +412,7 @@ union typed variable declaration
 union[string, int] value = "Ada";
 |===|
 {
-  value: value;
+  value: value,
 }
 ---
 

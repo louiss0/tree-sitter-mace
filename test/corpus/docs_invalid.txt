@@ -32,7 +32,7 @@ unknown schema_doc entry
 ===
 |===|
 schema_doc User {
-  extra: "nope";
+  extra: "nope",
 }
 |===|
 [output = data] {}

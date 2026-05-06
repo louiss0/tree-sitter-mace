@@ -5,13 +5,13 @@ file structure with imports script and schema validated output
 from "./shared.mace" import Name, User;
 Name name = "Ada";
 User user = {
-  name: name;
+  name: name,
 };
 |===|
 
 [output = data, schema = User]
 {
-  user: user;
+  user: user,
 }
 ---
 
@@ -63,7 +63,7 @@ type Scores: array<int>;
 Scores scores = [1, 2, 3];
 |====|
 {
-  scores: scores;
+  scores: scores,
 }
 ---
 

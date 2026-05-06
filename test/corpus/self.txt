@@ -2,8 +2,8 @@
 simple self reference
 ===
 {
-  base: 4;
-  doubled: $self.base * 2;
+  base: 4,
+  doubled: $self.base * 2,
 }
 ---
 
@@ -27,9 +27,9 @@ simple self reference
 chained self references
 ===
 {
-  base: 2;
-  next: $self.base + 1;
-  final: $self.next + $self.base;
+  base: 2,
+  next: $self.base + 1,
+  final: $self.next + $self.base,
 }
 ---
 
@@ -66,10 +66,10 @@ nested self reference path
 {
   user: {
     profile: {
-      name: "Ada";
-    };
-  };
-  name: $self.user.profile.name;
+      name: "Ada",
+    },
+  },
+  name: $self.user.profile.name,
 }
 ---
 
@@ -104,8 +104,8 @@ nested self reference path
 self reference in a conditional expression
 ===
 {
-  ready: true;
-  status: $self.ready ? "on" : "off";
+  ready: true,
+  status: $self.ready ? "on" : "off",
 }
 ---
 
@@ -129,10 +129,10 @@ self reference in a conditional expression
 self reference inside a record literal
 ===
 {
-  name: "Ada";
+  name: "Ada",
   profile: {
-    display: $self.name;
-  };
+    display: $self.name,
+  },
 }
 ---
 
