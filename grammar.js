@@ -133,7 +133,9 @@ export default grammar({
     script_block: ($) =>
       seq(
         $._script_delimiter,
-        repeat(choice($.comment, $.import_declaration, $._declaration)),
+        repeat($.comment),
+        repeat(seq($.import_declaration, repeat($.comment))),
+        repeat(seq($._declaration, repeat($.comment))),
         $._script_delimiter,
       ),
 
