@@ -1898,6 +1898,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "merge_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "equality_expression"
         },
         {
@@ -1998,7 +2002,7 @@
     },
     "member_access": {
       "type": "PREC_LEFT",
-      "value": 14,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2040,7 +2044,7 @@
     },
     "array_access": {
       "type": "PREC_LEFT",
-      "value": 14,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2086,7 +2090,7 @@
     },
     "self_reference": {
       "type": "PREC_LEFT",
-      "value": 15,
+      "value": 16,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2123,7 +2127,7 @@
     },
     "unary_expression": {
       "type": "PREC",
-      "value": 13,
+      "value": 14,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2157,7 +2161,7 @@
     },
     "exponent_expression": {
       "type": "PREC_RIGHT",
-      "value": 12,
+      "value": 13,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2178,7 +2182,7 @@
     },
     "multiplicative_expression": {
       "type": "PREC_LEFT",
-      "value": 11,
+      "value": 12,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2212,7 +2216,7 @@
     },
     "additive_expression": {
       "type": "PREC_LEFT",
-      "value": 10,
+      "value": 11,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2242,7 +2246,7 @@
     },
     "shift_expression": {
       "type": "PREC_LEFT",
-      "value": 9,
+      "value": 10,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2276,7 +2280,7 @@
     },
     "relational_expression": {
       "type": "PREC_LEFT",
-      "value": 8,
+      "value": 9,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2312,9 +2316,30 @@
         ]
       }
     },
-    "equality_expression": {
+    "merge_expression": {
       "type": "PREC_LEFT",
       "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "merge_operator"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        ]
+      }
+    },
+    "equality_expression": {
+      "type": "PREC_LEFT",
+      "value": 8,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2672,6 +2697,10 @@
     "less_equal_operator": {
       "type": "STRING",
       "value": "<="
+    },
+    "merge_operator": {
+      "type": "STRING",
+      "value": "<>"
     },
     "greater_operator": {
       "type": "STRING",

@@ -72,6 +72,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "minus_operator",
           "named": true
         },
@@ -253,6 +257,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -407,6 +415,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -511,6 +523,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -629,6 +645,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -738,6 +758,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -1022,6 +1046,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1142,6 +1170,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -1344,6 +1376,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1460,6 +1496,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1564,6 +1604,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -1672,6 +1716,121 @@
     }
   },
   {
+    "type": "merge_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive_expression",
+          "named": true
+        },
+        {
+          "type": "array_access",
+          "named": true
+        },
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "bitwise_and_expression",
+          "named": true
+        },
+        {
+          "type": "bitwise_or_expression",
+          "named": true
+        },
+        {
+          "type": "bitwise_xor_expression",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "conditional_expression",
+          "named": true
+        },
+        {
+          "type": "equality_expression",
+          "named": true
+        },
+        {
+          "type": "exponent_expression",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "logical_and_expression",
+          "named": true
+        },
+        {
+          "type": "logical_or_expression",
+          "named": true
+        },
+        {
+          "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
+          "type": "merge_operator",
+          "named": true
+        },
+        {
+          "type": "multiplicative_expression",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "record_literal",
+          "named": true
+        },
+        {
+          "type": "relational_expression",
+          "named": true
+        },
+        {
+          "type": "self_reference",
+          "named": true
+        },
+        {
+          "type": "shift_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "multiplicative_expression",
     "named": true,
     "fields": {},
@@ -1741,6 +1900,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -1915,6 +2078,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -2103,6 +2270,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -2245,6 +2416,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -2410,6 +2585,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -2710,6 +2889,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -2938,6 +3121,10 @@
           "named": true
         },
         {
+          "type": "merge_expression",
+          "named": true
+        },
+        {
           "type": "minus_operator",
           "named": true
         },
@@ -3117,6 +3304,10 @@
         },
         {
           "type": "member_access",
+          "named": true
+        },
+        {
+          "type": "merge_expression",
           "named": true
         },
         {
@@ -3383,6 +3574,10 @@
   },
   {
     "type": "less_equal_operator",
+    "named": true
+  },
+  {
+    "type": "merge_operator",
     "named": true
   },
   {
