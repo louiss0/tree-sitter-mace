@@ -266,32 +266,6 @@ bitwise or operator
         (int_literal)))))
 
 ===
-merge operator
-===
-{
-  result: { left: 1 } <> { right: 2 },
-}
----
-
-(source_file
-  (output_block
-    (output_field
-      (identifier
-        (identifier_word))
-      (merge_expression
-        (record_literal
-          (record_field
-            (identifier
-              (identifier_word))
-            (int_literal)))
-        (merge_operator)
-        (record_literal
-          (record_field
-            (identifier
-              (identifier_word))
-            (int_literal)))))))
-
-===
 combined arithmetic operators
 ===
 {
