@@ -1,5 +1,5 @@
 ===
-merge operator
+record merge in output block
 ===
 {
   result: { left: 1 } <> { right: 2 },
@@ -23,3 +23,105 @@ merge operator
             (identifier
               (identifier_word))
             (int_literal)))))))
+
+===
+array merge in output block
+===
+{
+  result: [1, 2] <> [3, 4],
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (merge_expression
+        (array_literal
+          (int_literal)
+          (int_literal))
+        (merge_operator)
+        (array_literal
+          (int_literal)
+          (int_literal))))))
+
+===
+merge output self reference
+===
+{
+  base: { name: "Ada" },
+  result: $self.base <> { active: true },
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (string_literal))))
+    (output_field
+      (identifier
+        (identifier_word))
+      (merge_expression
+        (self_reference
+          (identifier
+            (identifier_word)))
+        (merge_operator)
+        (record_literal
+          (record_field
+            (identifier
+              (identifier_word))
+            (boolean_literal)))))))
+
+===
+merge script variables
+===
+|===|
+type Tags: array<string>;
+Tags base = ["base"];
+Tags extra = ["extra"];
+|===|
+{
+  result: base <> extra,
+}
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (array_type
+        (string_type)))
+    (variable_declaration
+      (named_type
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
+      (array_literal
+        (string_literal)))
+    (variable_declaration
+      (named_type
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
+      (array_literal
+        (string_literal))))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (merge_expression
+        (identifier
+          (identifier_word))
+        (merge_operator)
+        (identifier
+          (identifier_word))))))
