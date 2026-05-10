@@ -441,6 +441,14 @@
       "type": "PATTERN",
       "value": "\\d+\\.\\d+"
     },
+    "hex_int_literal": {
+      "type": "PATTERN",
+      "value": "0[xX][0-9A-Fa-f]+"
+    },
+    "hex_float_literal": {
+      "type": "PATTERN",
+      "value": "0[xX][0-9A-Fa-f]+\\.[0-9A-Fa-f]+"
+    },
     "boolean_literal": {
       "type": "CHOICE",
       "members": [
@@ -774,6 +782,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "hex_int_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_float_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "boolean_type"
         }
       ]
@@ -834,6 +850,14 @@
         {
           "type": "SYMBOL",
           "name": "float_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_int_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_float_literal"
         },
         {
           "type": "SYMBOL",
@@ -1253,6 +1277,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "hex_int_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_float_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "boolean_type"
         },
         {
@@ -1284,6 +1316,14 @@
     "float_type": {
       "type": "STRING",
       "value": "float"
+    },
+    "hex_int_type": {
+      "type": "STRING",
+      "value": "hex_int"
+    },
+    "hex_float_type": {
+      "type": "STRING",
+      "value": "hex_float"
     },
     "boolean_type": {
       "type": "STRING",
@@ -1956,6 +1996,14 @@
         {
           "type": "SYMBOL",
           "name": "int_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_float_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_int_literal"
         },
         {
           "type": "SYMBOL",
@@ -2799,6 +2847,14 @@
       {
         "type": "STRING",
         "value": "float"
+      },
+      {
+        "type": "STRING",
+        "value": "hex_int"
+      },
+      {
+        "type": "STRING",
+        "value": "hex_float"
       },
       {
         "type": "STRING",

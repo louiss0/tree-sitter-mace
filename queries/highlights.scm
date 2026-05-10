@@ -21,6 +21,8 @@
   (string_type)
   (int_type)
   (float_type)
+  (hex_int_type)
+  (hex_float_type)
   (boolean_type)
 ] @type.builtin
 
@@ -118,6 +120,8 @@
 
 (int_literal) @number
 (float_literal) @number.float
+(hex_int_literal) @number
+(hex_float_literal) @number.float
 (boolean_literal) @boolean
 (comment) @comment
 

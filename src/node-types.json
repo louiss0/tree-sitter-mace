@@ -52,6 +52,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -153,6 +161,14 @@
             "named": true
           },
           {
+            "type": "hex_float_literal",
+            "named": true
+          },
+          {
+            "type": "hex_int_literal",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -237,6 +253,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -316,6 +340,14 @@
           "named": true
         },
         {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
+          "named": true
+        },
+        {
           "type": "int_type",
           "named": true
         },
@@ -392,6 +424,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -503,6 +543,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -625,6 +673,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -738,6 +794,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -882,6 +946,14 @@
           "named": true
         },
         {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
+          "named": true
+        },
+        {
           "type": "int_type",
           "named": true
         },
@@ -959,6 +1031,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
@@ -1023,6 +1103,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -1150,6 +1238,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -1356,6 +1452,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1476,6 +1580,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1587,6 +1699,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1684,6 +1804,14 @@
             "named": true
           },
           {
+            "type": "hex_float_literal",
+            "named": true
+          },
+          {
+            "type": "hex_int_literal",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -1765,6 +1893,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -1880,6 +2016,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -2057,6 +2201,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -2163,6 +2315,14 @@
           "named": true
         },
         {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -2247,6 +2407,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -2396,6 +2564,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -2560,6 +2736,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -2701,6 +2885,14 @@
         },
         {
           "type": "float_type",
+          "named": true
+        },
+        {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
           "named": true
         },
         {
@@ -2869,6 +3061,14 @@
           "named": true
         },
         {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3014,6 +3214,14 @@
           "named": true
         },
         {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -3098,6 +3306,14 @@
         },
         {
           "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
           "named": true
         },
         {
@@ -3192,6 +3408,14 @@
           "named": true
         },
         {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
+          "named": true
+        },
+        {
           "type": "int_type",
           "named": true
         },
@@ -3276,6 +3500,22 @@
         },
         {
           "type": "float_type",
+          "named": true
+        },
+        {
+          "type": "hex_float_literal",
+          "named": true
+        },
+        {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_literal",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
           "named": true
         },
         {
@@ -3379,6 +3619,14 @@
         },
         {
           "type": "float_type",
+          "named": true
+        },
+        {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
           "named": true
         },
         {
@@ -3550,6 +3798,22 @@
   },
   {
     "type": "greater_equal_operator",
+    "named": true
+  },
+  {
+    "type": "hex_float_literal",
+    "named": true
+  },
+  {
+    "type": "hex_float_type",
+    "named": true
+  },
+  {
+    "type": "hex_int_literal",
+    "named": true
+  },
+  {
+    "type": "hex_int_type",
     "named": true
   },
   {

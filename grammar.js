@@ -47,6 +47,8 @@ export default grammar({
       "string",
       "int",
       "float",
+      "hex_int",
+      "hex_float",
       "boolean",
       "output",
       "schema_file",
@@ -119,6 +121,8 @@ export default grammar({
 
     int_literal: (_) => /\d+/,
     float_literal: (_) => /\d+\.\d+/,
+    hex_int_literal: (_) => /0[xX][0-9A-Fa-f]+/,
+    hex_float_literal: (_) => /0[xX][0-9A-Fa-f]+\.[0-9A-Fa-f]+/,
     boolean_literal: (_) => choice("true", "false"),
 
     import_declaration: ($) =>
@@ -178,13 +182,13 @@ export default grammar({
         optional(";"),
       ),
 
-    enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.boolean_type),
+    enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.hex_int_type, $.hex_float_type, $.boolean_type),
 
     enum_member: ($) =>
       seq($.identifier, optional(seq("=", $.enum_member_value)), optional($._field_suffix)),
 
     enum_member_value: ($) =>
-      choice($.string_literal, $.int_literal, $.float_literal, $.boolean_literal),
+      choice($.string_literal, $.int_literal, $.float_literal, $.hex_int_literal, $.hex_float_literal, $.boolean_literal),
 
     gen_doc_declaration: ($) =>
       seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}", optional(";")),
@@ -236,6 +240,8 @@ export default grammar({
         $.string_type,
         $.int_type,
         $.float_type,
+        $.hex_int_type,
+        $.hex_float_type,
         $.boolean_type,
         $.array_type,
         $.union_type,
@@ -246,6 +252,8 @@ export default grammar({
     string_type: (_) => "string",
     int_type: (_) => "int",
     float_type: (_) => "float",
+    hex_int_type: (_) => "hex_int",
+    hex_float_type: (_) => "hex_float",
     boolean_type: (_) => "boolean",
 
     array_type: ($) => seq("array", "<", $._type_reference, ">"),
@@ -380,6 +388,8 @@ export default grammar({
         $.identifier,
         $.float_literal,
         $.int_literal,
+        $.hex_float_literal,
+        $.hex_int_literal,
         $.string_literal,
         $.boolean_literal,
         $.array_literal,

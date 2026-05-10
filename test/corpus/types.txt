@@ -1,4 +1,31 @@
 ===
+hex primitive declarations
+===
+|===|
+hex_int mask = 0xFF;
+hex_float ratio = 0x2.8;
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (hex_int_type)
+      (identifier
+        (identifier_word))
+      (hex_int_literal))
+    (variable_declaration
+      (hex_float_type)
+      (identifier
+        (identifier_word))
+      (hex_float_literal)))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
 variant type alias
 ===
 |===|

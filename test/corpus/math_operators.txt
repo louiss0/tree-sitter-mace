@@ -68,6 +68,24 @@ addition operator
         (int_literal)))))
 
 ===
+hex addition operator
+===
+{
+  result: 0x0F + 0x01,
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (additive_expression
+        (hex_int_literal)
+        (plus_operator)
+        (hex_int_literal)))))
+
+===
 subtraction operator
 ===
 {
@@ -120,6 +138,24 @@ division operator
         (int_literal)
         (slash_operator)
         (int_literal)))))
+
+===
+hex division operator
+===
+{
+  result: 0x05 / 0x02,
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (multiplicative_expression
+        (hex_int_literal)
+        (slash_operator)
+        (hex_int_literal)))))
 
 ===
 modulo operator
