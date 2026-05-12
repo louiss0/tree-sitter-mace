@@ -12,17 +12,19 @@ record merge in output block
       (identifier
         (identifier_word))
       (merge_expression
-        (record_literal
-          (record_field
-            (identifier
-              (identifier_word))
-            (int_literal)))
+        (merge_operand
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (int_literal))))
         (merge_operator)
-        (record_literal
-          (record_field
-            (identifier
-              (identifier_word))
-            (int_literal)))))))
+        (merge_operand
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (int_literal))))))))
 
 ===
 array merge in output block
@@ -38,13 +40,15 @@ array merge in output block
       (identifier
         (identifier_word))
       (merge_expression
-        (array_literal
-          (int_literal)
-          (int_literal))
+        (merge_operand
+          (array_literal
+            (int_literal)
+            (int_literal)))
         (merge_operator)
-        (array_literal
-          (int_literal)
-          (int_literal))))))
+        (merge_operand
+          (array_literal
+            (int_literal)
+            (int_literal)))))))
 
 ===
 merge output self reference
@@ -69,15 +73,17 @@ merge output self reference
       (identifier
         (identifier_word))
       (merge_expression
-        (self_reference
-          (identifier
-            (identifier_word)))
-        (merge_operator)
-        (record_literal
-          (record_field
+        (merge_operand
+          (self_reference
             (identifier
-              (identifier_word))
-            (boolean_literal)))))))
+              (identifier_word))))
+        (merge_operator)
+        (merge_operand
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (boolean_literal))))))))
 
 ===
 merge script variables
@@ -120,8 +126,40 @@ Tags extra = ["extra"];
       (identifier
         (identifier_word))
       (merge_expression
+        (merge_operand
+          (identifier
+            (identifier_word)))
+        (merge_operator)
+        (merge_operand
+          (identifier
+            (identifier_word)))))))
+
+===
+merge precedence stays between equality and bitwise and
+===
+{
+  result: left & base <> extra == right,
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (bitwise_and_expression
         (identifier
           (identifier_word))
-        (merge_operator)
-        (identifier
-          (identifier_word))))))
+        (ampersand_operator)
+        (equality_expression
+          (merge_expression
+            (merge_operand
+              (identifier
+                (identifier_word)))
+            (merge_operator)
+            (merge_operand
+              (identifier
+                (identifier_word))))
+          (equal_equal_operator)
+          (identifier
+            (identifier_word)))))))

@@ -481,8 +481,22 @@ export default grammar({
         ),
       ),
 
+    merge_operand: ($) =>
+      choice(
+        $.identifier,
+        $.member_access,
+        $.array_access,
+        $.self_reference,
+        $.parenthesized_expression,
+        $.array_literal,
+        $.record_literal,
+      ),
+
     merge_expression: ($) =>
-      prec.left(PREC.merge, seq($._expression, $.merge_operator, $._expression)),
+      prec.left(
+        PREC.merge,
+        seq(choice($.merge_operand, $.merge_expression), $.merge_operator, $.merge_operand),
+      ),
 
     equality_expression: ($) =>
       prec.left(

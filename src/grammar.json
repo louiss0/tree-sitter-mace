@@ -2368,6 +2368,39 @@
         ]
       }
     },
+    "merge_operand": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "member_access"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "array_access"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "self_reference"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parenthesized_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "array_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "record_literal"
+        }
+      ]
+    },
     "merge_expression": {
       "type": "PREC_LEFT",
       "value": 7,
@@ -2375,8 +2408,17 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "_expression"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "merge_operand"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "merge_expression"
+              }
+            ]
           },
           {
             "type": "SYMBOL",
@@ -2384,7 +2426,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "_expression"
+            "name": "merge_operand"
           }
         ]
       }
