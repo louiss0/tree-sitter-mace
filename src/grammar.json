@@ -53,17 +53,21 @@
     "comment": {
       "type": "TOKEN",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "\\/=[\\s\\S]*?=\\/"
-          },
-          {
-            "type": "PATTERN",
-            "value": "\\/=[^\\r\\n]*"
-          }
-        ]
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\/\\*[\\s\\S]*?\\*\\/"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\/\\/[^\\r\\n]*"
+            }
+          ]
+        }
       }
     },
     "identifier": {

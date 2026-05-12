@@ -80,9 +80,9 @@ enum with comments
 ===
 |===|
 enum Fruit: string {
-  /= common fruit
+  // common fruit
   Apple,
-  /= seasonal =/
+  /* seasonal */
   Strawberry = "strawberry"
 }
 |===|
@@ -96,6 +96,10 @@ enum Fruit: string {
         (identifier_word))
       (enum_backing_type
         (string_type))
+      (comment)
+      (enum_member
+        (identifier
+          (identifier_word)))
       (comment)
       (enum_member
         (identifier

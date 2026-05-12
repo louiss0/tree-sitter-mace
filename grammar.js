@@ -63,7 +63,7 @@ export default grammar({
     source_file: ($) =>
       seq(repeat($.comment), optional(seq($.script_block, repeat($.comment))), $.output_block, repeat($.comment)),
 
-    comment: (_) => token(choice(/\/=[\s\S]*?=\//, /\/=[^\r\n]*/)),
+    comment: (_) => token(prec(1, choice(/\/\*[\s\S]*?\*\//, /\/\/[^\r\n]*/))),
 
     identifier: ($) => reserved("global", $.identifier_word),
 
