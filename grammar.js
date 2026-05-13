@@ -191,19 +191,21 @@ export default grammar({
       choice($.string_literal, $.int_literal, $.float_literal, $.hex_int_literal, $.hex_float_literal, $.boolean_literal),
 
     gen_doc_declaration: ($) =>
-      seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}", optional(";")),
+      seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.gen_doc_entry)), "}", optional(";")),
 
     schema_doc_declaration: ($) =>
       seq(
         "schema_doc",
         $.identifier,
         "{",
-        repeat(choice($.comment, $.doc_entry)),
+        repeat(choice($.comment, $.schema_doc_entry)),
         "}",
         optional(";"),
       ),
 
-    doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
+    gen_doc_entry: ($) => choice($.summary_entry, $.description_entry),
+
+    schema_doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
 
     summary_entry: ($) => seq("summary", ":", $.string_literal, $._pair_separator),
 

@@ -907,29 +907,6 @@
     "fields": {}
   },
   {
-    "type": "doc_entry",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "description_entry",
-          "named": true
-        },
-        {
-          "type": "props_entry",
-          "named": true
-        },
-        {
-          "type": "summary_entry",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "enum_backing_type",
     "named": true,
     "fields": {},
@@ -1320,11 +1297,30 @@
           "named": true
         },
         {
-          "type": "doc_entry",
+          "type": "gen_doc_entry",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "gen_doc_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "description_entry",
+          "named": true
+        },
+        {
+          "type": "summary_entry",
           "named": true
         }
       ]
@@ -2796,11 +2792,34 @@
           "named": true
         },
         {
-          "type": "doc_entry",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "schema_doc_entry",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "schema_doc_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "description_entry",
+          "named": true
+        },
+        {
+          "type": "props_entry",
+          "named": true
+        },
+        {
+          "type": "summary_entry",
           "named": true
         }
       ]

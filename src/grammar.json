@@ -895,7 +895,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "doc_entry"
+                "name": "gen_doc_entry"
               }
             ]
           }
@@ -944,7 +944,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "doc_entry"
+                "name": "schema_doc_entry"
               }
             ]
           }
@@ -967,7 +967,20 @@
         }
       ]
     },
-    "doc_entry": {
+    "gen_doc_entry": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "summary_entry"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "description_entry"
+        }
+      ]
+    },
+    "schema_doc_entry": {
       "type": "CHOICE",
       "members": [
         {
