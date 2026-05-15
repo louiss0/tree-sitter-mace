@@ -147,8 +147,6 @@
   (greater_equal_operator)
   (equal_equal_operator)
   (not_equal_operator)
-  (strict_equal_operator)
-  (strict_not_equal_operator)
   (and_and_operator)
   (or_or_operator)
   (optional_marker)

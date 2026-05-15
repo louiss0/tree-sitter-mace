@@ -506,8 +506,6 @@ export default grammar({
         seq(
           $._expression,
           choice(
-            $.strict_equal_operator,
-            $.strict_not_equal_operator,
             $.equal_equal_operator,
             $.not_equal_operator,
           ),
@@ -568,8 +566,6 @@ export default grammar({
     greater_equal_operator: (_) => ">=",
     equal_equal_operator: (_) => "==",
     not_equal_operator: (_) => "!=",
-    strict_equal_operator: (_) => "===",
-    strict_not_equal_operator: (_) => "!==",
     and_and_operator: (_) => "&&",
     or_or_operator: (_) => "||",
   },

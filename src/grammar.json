@@ -2459,14 +2459,6 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "strict_equal_operator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "strict_not_equal_operator"
-              },
-              {
-                "type": "SYMBOL",
                 "name": "equal_equal_operator"
               },
               {
@@ -2824,14 +2816,6 @@
     "not_equal_operator": {
       "type": "STRING",
       "value": "!="
-    },
-    "strict_equal_operator": {
-      "type": "STRING",
-      "value": "==="
-    },
-    "strict_not_equal_operator": {
-      "type": "STRING",
-      "value": "!=="
     },
     "and_and_operator": {
       "type": "STRING",

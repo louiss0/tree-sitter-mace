@@ -159,13 +159,13 @@ schema User: {
     (schema_doc_declaration
       (identifier
         (identifier_word))
-      (doc_entry
+      (schema_doc_entry
         (summary_entry
           (string_literal)))
-      (doc_entry
+      (schema_doc_entry
         (description_entry
           (doc_block_string)))
-      (doc_entry
+      (schema_doc_entry
         (props_entry
           (prop_entry
             (identifier

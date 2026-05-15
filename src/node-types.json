@@ -1143,14 +1143,6 @@
           "named": true
         },
         {
-          "type": "strict_equal_operator",
-          "named": true
-        },
-        {
-          "type": "strict_not_equal_operator",
-          "named": true
-        },
-        {
           "type": "string_literal",
           "named": true
         },
@@ -3860,14 +3852,6 @@
   },
   {
     "type": "star_operator",
-    "named": true
-  },
-  {
-    "type": "strict_equal_operator",
-    "named": true
-  },
-  {
-    "type": "strict_not_equal_operator",
     "named": true
   },
   {

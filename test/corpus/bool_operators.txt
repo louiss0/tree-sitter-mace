@@ -124,42 +124,6 @@ not equal operator
         (int_literal)))))
 
 ===
-strict equality operator
-===
-{
-  result: 1 === 1,
-}
----
-
-(source_file
-  (output_block
-    (output_field
-      (identifier
-        (identifier_word))
-      (equality_expression
-        (int_literal)
-        (strict_equal_operator)
-        (int_literal)))))
-
-===
-strict not equal operator
-===
-{
-  result: 1 !== 2,
-}
----
-
-(source_file
-  (output_block
-    (output_field
-      (identifier
-        (identifier_word))
-      (equality_expression
-        (int_literal)
-        (strict_not_equal_operator)
-        (int_literal)))))
-
-===
 logical and operator
 ===
 {
@@ -253,7 +217,7 @@ combined relational operators
 combined equality operators
 ===
 {
-  result: 1 == 1 || 1 != 2 || 1 === 1 || 1 !== 2,
+  result: 1 == 1 || 1 != 2,
 }
 ---
 
@@ -263,26 +227,14 @@ combined equality operators
       (identifier
         (identifier_word))
       (logical_or_expression
-        (logical_or_expression
-          (logical_or_expression
-            (equality_expression
-              (int_literal)
-              (equal_equal_operator)
-              (int_literal))
-            (or_or_operator)
-            (equality_expression
-              (int_literal)
-              (not_equal_operator)
-              (int_literal)))
-          (or_or_operator)
-          (equality_expression
-            (int_literal)
-            (strict_equal_operator)
-            (int_literal)))
+        (equality_expression
+          (int_literal)
+          (equal_equal_operator)
+          (int_literal))
         (or_or_operator)
         (equality_expression
           (int_literal)
-          (strict_not_equal_operator)
+          (not_equal_operator)
           (int_literal))))))
 
 ===
