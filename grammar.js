@@ -372,7 +372,7 @@ export default grammar({
         $.bitwise_or_expression,
         $.bitwise_xor_expression,
         $.bitwise_and_expression,
-        $.merge_expression,
+        $.structural_merge,
         $.equality_expression,
         $.relational_expression,
         $.shift_expression,
@@ -486,18 +486,14 @@ export default grammar({
     merge_operand: ($) =>
       choice(
         $.identifier,
-        $.member_access,
-        $.array_access,
-        $.self_reference,
-        $.parenthesized_expression,
         $.array_literal,
         $.record_literal,
       ),
 
-    merge_expression: ($) =>
+    structural_merge: ($) =>
       prec.left(
         PREC.merge,
-        seq(choice($.merge_operand, $.merge_expression), $.merge_operator, $.merge_operand),
+        seq($.merge_operand, repeat1(seq("<>", $.merge_operand))),
       ),
 
     equality_expression: ($) =>
@@ -561,7 +557,6 @@ export default grammar({
     pipe_operator: (_) => "|",
     less_operator: (_) => "<",
     less_equal_operator: (_) => "<=",
-    merge_operator: (_) => "<>",
     greater_operator: (_) => ">",
     greater_equal_operator: (_) => ">=",
     equal_equal_operator: (_) => "==",

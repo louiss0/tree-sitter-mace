@@ -11,14 +11,13 @@ record merge in output block
     (output_field
       (identifier
         (identifier_word))
-      (merge_expression
+      (structural_merge
         (merge_operand
           (record_literal
             (record_field
               (identifier
                 (identifier_word))
               (int_literal))))
-        (merge_operator)
         (merge_operand
           (record_literal
             (record_field
@@ -39,23 +38,22 @@ array merge in output block
     (output_field
       (identifier
         (identifier_word))
-      (merge_expression
+      (structural_merge
         (merge_operand
           (array_literal
             (int_literal)
             (int_literal)))
-        (merge_operator)
         (merge_operand
           (array_literal
             (int_literal)
             (int_literal)))))))
 
 ===
-merge output self reference
+merge output identifier with literal
 ===
 {
   base: { name: "Ada" },
-  result: $self.base <> { active: true },
+  result: base <> { active: true },
 }
 ---
 
@@ -72,12 +70,10 @@ merge output self reference
     (output_field
       (identifier
         (identifier_word))
-      (merge_expression
+      (structural_merge
         (merge_operand
-          (self_reference
-            (identifier
-              (identifier_word))))
-        (merge_operator)
+          (identifier
+            (identifier_word)))
         (merge_operand
           (record_literal
             (record_field
@@ -125,20 +121,19 @@ Tags extra = ["extra"];
     (output_field
       (identifier
         (identifier_word))
-      (merge_expression
+      (structural_merge
         (merge_operand
           (identifier
             (identifier_word)))
-        (merge_operator)
         (merge_operand
           (identifier
             (identifier_word)))))))
 
 ===
-merge precedence stays between equality and bitwise and
+merge precedence stays above bitwise and
 ===
 {
-  result: left & base <> extra == right,
+  result: left & base <> extra,
 }
 ---
 
@@ -151,15 +146,10 @@ merge precedence stays between equality and bitwise and
         (identifier
           (identifier_word))
         (ampersand_operator)
-        (equality_expression
-          (merge_expression
-            (merge_operand
-              (identifier
-                (identifier_word)))
-            (merge_operator)
-            (merge_operand
-              (identifier
-                (identifier_word))))
-          (equal_equal_operator)
-          (identifier
-            (identifier_word)))))))
+        (structural_merge
+          (merge_operand
+            (identifier
+              (identifier_word)))
+          (merge_operand
+            (identifier
+              (identifier_word))))))))

@@ -1955,7 +1955,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "merge_expression"
+          "name": "structural_merge"
         },
         {
           "type": "SYMBOL",
@@ -2390,22 +2390,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "member_access"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "array_access"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "self_reference"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "parenthesized_expression"
-        },
-        {
-          "type": "SYMBOL",
           "name": "array_literal"
         },
         {
@@ -2414,32 +2398,31 @@
         }
       ]
     },
-    "merge_expression": {
+    "structural_merge": {
       "type": "PREC_LEFT",
       "value": 7,
       "content": {
         "type": "SEQ",
         "members": [
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "merge_operand"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "merge_expression"
-              }
-            ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "merge_operator"
-          },
-          {
             "type": "SYMBOL",
             "name": "merge_operand"
+          },
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "<>"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "merge_operand"
+                }
+              ]
+            }
           }
         ]
       }
@@ -2796,10 +2779,6 @@
     "less_equal_operator": {
       "type": "STRING",
       "value": "<="
-    },
-    "merge_operator": {
-      "type": "STRING",
-      "value": "<>"
     },
     "greater_operator": {
       "type": "STRING",

@@ -80,10 +80,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "minus_operator",
           "named": true
         },
@@ -117,6 +113,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -281,10 +281,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -310,6 +306,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -455,10 +455,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -484,6 +480,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -574,10 +574,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -607,6 +603,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -701,10 +701,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -730,6 +726,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -825,10 +825,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -854,6 +850,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -1111,10 +1111,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1144,6 +1140,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -1238,10 +1238,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1267,6 +1263,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -1468,10 +1468,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1497,6 +1493,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -1596,10 +1596,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1625,6 +1621,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -1715,10 +1715,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -1748,6 +1744,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -1832,29 +1832,6 @@
     }
   },
   {
-    "type": "merge_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
-          "type": "merge_operand",
-          "named": true
-        },
-        {
-          "type": "merge_operator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "merge_operand",
     "named": true,
     "fields": {},
@@ -1862,10 +1839,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "array_access",
-          "named": true
-        },
         {
           "type": "array_literal",
           "named": true
@@ -1875,19 +1848,7 @@
           "named": true
         },
         {
-          "type": "member_access",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
           "type": "record_literal",
-          "named": true
-        },
-        {
-          "type": "self_reference",
           "named": true
         }
       ]
@@ -1974,10 +1935,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -2015,6 +1972,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -2160,10 +2121,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -2193,6 +2150,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -2365,10 +2326,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -2394,6 +2351,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -2522,10 +2483,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -2555,6 +2512,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -2699,10 +2660,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -2728,6 +2685,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -3039,10 +3000,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -3076,6 +3033,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -3123,6 +3084,21 @@
       "types": [
         {
           "type": "interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structural_merge",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "merge_operand",
           "named": true
         }
       ]
@@ -3287,10 +3263,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "minus_operator",
           "named": true
         },
@@ -3324,6 +3296,10 @@
         },
         {
           "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -3497,10 +3473,6 @@
           "named": true
         },
         {
-          "type": "merge_expression",
-          "named": true
-        },
-        {
           "type": "multiplicative_expression",
           "named": true
         },
@@ -3534,6 +3506,10 @@
         },
         {
           "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "structural_merge",
           "named": true
         },
         {
@@ -3652,6 +3628,10 @@
   },
   {
     "type": "<",
+    "named": false
+  },
+  {
+    "type": "<>",
     "named": false
   },
   {
@@ -3788,10 +3768,6 @@
   },
   {
     "type": "less_equal_operator",
-    "named": true
-  },
-  {
-    "type": "merge_operator",
     "named": true
   },
   {

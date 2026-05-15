@@ -142,7 +142,6 @@
   (pipe_operator)
   (less_operator)
   (less_equal_operator)
-  (merge_operator)
   (greater_operator)
   (greater_equal_operator)
   (equal_equal_operator)
