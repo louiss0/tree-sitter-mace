@@ -44,6 +44,7 @@ export default grammar({
       "array",
       "union",
       "variant",
+      "choice",
       "string",
       "int",
       "float",
@@ -248,6 +249,7 @@ export default grammar({
         $.array_type,
         $.union_type,
         $.variant_type,
+        $.choice_type,
         $.named_type,
       ),
 
@@ -257,6 +259,28 @@ export default grammar({
     hex_int_type: (_) => "hex_int",
     hex_float_type: (_) => "hex_float",
     boolean_type: (_) => "boolean",
+
+    choice_type: ($) =>
+      seq(
+        "choice",
+        "[",
+        choice(
+          $.choice_member,
+          seq($.choice_member, repeat(seq(",", $.choice_member)))
+        ),
+        "]",
+      ),
+
+    choice_member: ($) =>
+      choice(
+        $.string_literal,
+        $.int_literal,
+        $.float_literal,
+        $.hex_int_literal,
+        $.hex_float_literal,
+        $.boolean_literal,
+        $.identifier,
+      ),
 
     array_type: ($) => seq("array", "<", $._type_reference, ">"),
 

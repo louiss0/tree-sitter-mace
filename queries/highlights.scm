@@ -30,6 +30,7 @@
   "array"
   "union"
   "variant"
+  "choice"
 ] @type.builtin
 
 (type_declaration

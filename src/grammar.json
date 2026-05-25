@@ -1318,6 +1318,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "choice_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "named_type"
         }
       ]
@@ -1345,6 +1349,90 @@
     "boolean_type": {
       "type": "STRING",
       "value": "boolean"
+    },
+    "choice_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "choice"
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "choice_member"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "choice_member"
+                },
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "choice_member"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "choice_member": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "string_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "int_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "float_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_int_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_float_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "boolean_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
     },
     "array_type": {
       "type": "SEQ",
@@ -2857,6 +2945,10 @@
       {
         "type": "STRING",
         "value": "variant"
+      },
+      {
+        "type": "STRING",
+        "value": "choice"
       },
       {
         "type": "STRING",

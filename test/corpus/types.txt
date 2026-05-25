@@ -111,3 +111,39 @@ type Composite: variant[union[Profile, Audit], string];
       (named_type
         (identifier
           (identifier_word))))))
+
+===
+choice type alias
+===
+|===|
+type Environment: choice["dev", "prod"];
+type Mode: choice[Environment, 1, true];
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (choice_type
+        (choice_member
+          (string_literal))
+        (choice_member
+          (string_literal))))
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (choice_type
+        (choice_member
+          (identifier
+            (identifier_word)))
+        (choice_member
+          (int_literal))
+        (choice_member
+          (boolean_literal)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
