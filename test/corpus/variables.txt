@@ -184,7 +184,7 @@ User user = {
 reserved keyword cannot be a variable name
 ===
 |===|
-string enum = "Ada";
+string schema = "Ada";
 |===|
 [output = data] {}
 ---

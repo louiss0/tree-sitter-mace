@@ -37,7 +37,6 @@ export default grammar({
       "from",
       "import",
       "type",
-      "enum",
       "schema",
       "gen_doc",
       "schema_doc",
@@ -151,7 +150,6 @@ export default grammar({
       choice(
         $.variable_declaration,
         $.type_declaration,
-        $.enum_declaration,
         $.schema_declaration,
         $.gen_doc_declaration,
         $.schema_doc_declaration,
@@ -170,26 +168,6 @@ export default grammar({
 
     type_declaration: ($) =>
       seq("type", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
-
-    enum_declaration: ($) =>
-      seq(
-        "enum",
-        $.identifier,
-        ":",
-        $.enum_backing_type,
-        "{",
-        repeat(choice($.comment, $.enum_member)),
-        "}",
-        optional(";"),
-      ),
-
-    enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.hex_int_type, $.hex_float_type, $.boolean_type),
-
-    enum_member: ($) =>
-      seq($.identifier, optional(seq("=", $.enum_member_value)), optional($._field_suffix)),
-
-    enum_member_value: ($) =>
-      choice($.string_literal, $.int_literal, $.float_literal, $.hex_int_literal, $.hex_float_literal, $.boolean_literal),
 
     gen_doc_declaration: ($) =>
       seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.gen_doc_entry)), "}", optional(";")),

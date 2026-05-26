@@ -50,12 +50,10 @@ A reusable schema.
   },
 };
 
-enum Status: string {
-  Pending /# Current status,
-};
+type Status: choice["Pending"] /# Current status choice;
 
-schema_doc Status {
-  summary: "Represents a status enum",
+gen_doc Status {
+  summary: "Represents a status choice",
 };
 
 type Name: string /# A user display name;
@@ -92,20 +90,18 @@ schema User: {
             (identifier
               (identifier_word))
             (string_literal)))))
-    (enum_declaration
+    (type_declaration
       (identifier
         (identifier_word))
-      (enum_backing_type
-        (string_type))
-      (enum_member
-        (identifier
-          (identifier_word))
-        (inline_description
-          (description_text))))
-    (schema_doc_declaration
+      (choice_type
+        (choice_member
+          (string_literal)))
+      (inline_description
+        (description_text)))
+    (gen_doc_declaration
       (identifier
         (identifier_word))
-      (schema_doc_entry
+      (gen_doc_entry
         (summary_entry
           (string_literal))))
     (type_declaration
