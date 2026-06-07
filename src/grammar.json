@@ -625,7 +625,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "injectable_modifier"
+              "name": "nullable_modifier"
             },
             {
               "type": "BLANK"
@@ -641,25 +641,12 @@
           "name": "identifier"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "="
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_expression"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
         },
         {
           "type": "STRING",
@@ -667,9 +654,9 @@
         }
       ]
     },
-    "injectable_modifier": {
+    "nullable_modifier": {
       "type": "STRING",
-      "value": "injectable"
+      "value": "nullable"
     },
     "type_declaration": {
       "type": "SEQ",
@@ -1589,50 +1576,39 @@
                     },
                     "named": true,
                     "value": "output_mode_directive"
-                  }
-                ]
-              },
-              {
-                "type": "SEQ",
-                "members": [
+                  },
                   {
-                    "type": "ALIAS",
+                    "type": "REPEAT",
                     "content": {
-                      "type": "SYMBOL",
-                      "name": "data_output_mode_directive"
-                    },
-                    "named": true,
-                    "value": "output_mode_directive"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": ","
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "schema_directive"
-                  }
-                ]
-              },
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "data_output_mode_directive"
-                    },
-                    "named": true,
-                    "value": "output_mode_directive"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": ","
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "schema_file_directive"
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ","
+                        },
+                        {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "SYMBOL",
+                              "name": "schema_directive"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "schema_file_directive"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "parse_directive"
+                            },
+                            {
+                              "type": "SYMBOL",
+                              "name": "parse_file_directive"
+                            }
+                          ]
+                        }
+                      ]
+                    }
                   }
                 ]
               }
@@ -1736,6 +1712,40 @@
         {
           "type": "STRING",
           "value": "schema_file"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_literal"
+        }
+      ]
+    },
+    "parse_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "parse"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "parse_file_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "parse_file"
         },
         {
           "type": "STRING",
@@ -1956,6 +1966,10 @@
         {
           "type": "SYMBOL",
           "name": "boolean_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "null_literal"
         },
         {
           "type": "SYMBOL",
@@ -2298,6 +2312,10 @@
               {
                 "type": "SYMBOL",
                 "name": "greater_equal_operator"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "in_operator"
               }
             ]
           },
@@ -2643,6 +2661,10 @@
         }
       ]
     },
+    "null_literal": {
+      "type": "STRING",
+      "value": "null"
+    },
     "bang_operator": {
       "type": "STRING",
       "value": "!"
@@ -2730,6 +2752,10 @@
     "or_or_operator": {
       "type": "STRING",
       "value": "||"
+    },
+    "in_operator": {
+      "type": "STRING",
+      "value": "in"
     }
   },
   "extras": [
@@ -2819,11 +2845,27 @@
       },
       {
         "type": "STRING",
+        "value": "parse"
+      },
+      {
+        "type": "STRING",
+        "value": "parse_file"
+      },
+      {
+        "type": "STRING",
         "value": "data"
       },
       {
         "type": "STRING",
-        "value": "injectable"
+        "value": "nullable"
+      },
+      {
+        "type": "STRING",
+        "value": "in"
+      },
+      {
+        "type": "STRING",
+        "value": "null"
       },
       {
         "type": "STRING",

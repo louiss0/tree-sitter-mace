@@ -52,8 +52,12 @@ export default grammar({
       "boolean",
       "output",
       "schema_file",
+      "parse",
+      "parse_file",
       "data",
-      "injectable",
+      "nullable",
+      "in",
+      "null",
       "true",
       "false",
     ],
@@ -157,14 +161,15 @@ export default grammar({
 
     variable_declaration: ($) =>
       seq(
-        optional($.injectable_modifier),
+        optional($.nullable_modifier),
         $._type_reference,
         $.identifier,
-        optional(seq("=", $._expression)),
+        "=",
+        $._expression,
         ";",
       ),
 
-    injectable_modifier: (_) => "injectable",
+    nullable_modifier: (_) => "nullable",
 
     type_declaration: ($) =>
       seq("type", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
@@ -310,18 +315,9 @@ export default grammar({
           choice(
             $.schema_directive,
             $.schema_file_directive,
-            seq(alias($.data_output_mode_directive, $.output_mode_directive)),
-
             seq(
               alias($.data_output_mode_directive, $.output_mode_directive),
-              ",",
-              $.schema_directive,
-            ),
-
-            seq(
-              alias($.data_output_mode_directive, $.output_mode_directive),
-              ",",
-              $.schema_file_directive,
+              repeat(seq(",", choice($.schema_directive, $.schema_file_directive, $.parse_directive, $.parse_file_directive))),
             ),
           ),
           "]",
@@ -341,6 +337,10 @@ export default grammar({
     schema_directive: ($) => seq("schema", "=", $.identifier),
 
     schema_file_directive: ($) => seq("schema_file", "=", $.string_literal),
+
+    parse_directive: ($) => seq("parse", "=", $.identifier),
+
+    parse_file_directive: ($) => seq("parse_file", "=", $.string_literal),
 
     output_field: ($) =>
       seq(
@@ -396,6 +396,7 @@ export default grammar({
         $.hex_int_literal,
         $.string_literal,
         $.boolean_literal,
+        $.null_literal,
         $.array_literal,
         $.record_literal,
         $.self_reference,
@@ -480,6 +481,7 @@ export default grammar({
             $.less_equal_operator,
             $.greater_operator,
             $.greater_equal_operator,
+            $.in_operator,
           ),
           $._expression,
         ),
@@ -543,6 +545,8 @@ export default grammar({
         optional(choice(",", ";")),
       ),
 
+    null_literal: (_) => "null",
+
     bang_operator: (_) => "!",
     tilde_operator: (_) => "~",
     plus_operator: (_) => "+",
@@ -565,5 +569,6 @@ export default grammar({
     not_equal_operator: (_) => "!=",
     and_and_operator: (_) => "&&",
     or_or_operator: (_) => "||",
+    in_operator: (_) => "in",
   },
 });

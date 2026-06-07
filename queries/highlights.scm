@@ -7,9 +7,11 @@
   "schema_doc"
   "output"
   "schema_file"
+  "parse"
+  "parse_file"
 ] @keyword
 
-(injectable_modifier) @keyword.modifier
+(nullable_modifier) @keyword.modifier
 
 [
   (data_mode)
@@ -66,7 +68,7 @@
   (identifier) @variable)
 
 (variable_declaration
-  (injectable_modifier)
+  (nullable_modifier)
   (_)
   (identifier) @variable)
 
@@ -117,6 +119,7 @@
 (hex_int_literal) @number
 (hex_float_literal) @number.float
 (boolean_literal) @boolean
+(null_literal) @constant.builtin
 (comment) @comment
 
 [
@@ -142,6 +145,7 @@
   (not_equal_operator)
   (and_and_operator)
   (or_or_operator)
+  (in_operator)
   (optional_marker)
   "="
   "?"

@@ -14,14 +14,12 @@ type Name: string;
       (identifier
         (identifier_word))
       (string_type))
-    (ERROR)
-    (variable_declaration
+    (ERROR
       (named_type
         (identifier
           (identifier_word)))
       (identifier
-        (identifier_word))
-      (MISSING ";")))
+        (identifier_word))))
   (output_block
     (directive_list
       (output_mode_directive

@@ -10,7 +10,7 @@ string greeting = 'abc
 
 (source_file
   (script_block
-    (variable_declaration
+    (ERROR
       (string_type)
       (identifier
         (identifier_word))
@@ -32,7 +32,7 @@ string greeting = "abc
 
 (source_file
   (script_block
-    (variable_declaration
+    (ERROR
       (string_type)
       (identifier
         (identifier_word))

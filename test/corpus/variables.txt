@@ -191,22 +191,21 @@ string schema = "Ada";
 
 (source_file
   (script_block
-    (variable_declaration
+    (ERROR
       (string_type)
       (ERROR)
       (identifier
-        (identifier_word))
-      (ERROR)))
+        (identifier_word))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode)))))
 
 ===
-injectable string variable
+nullable string variable
 ===
 |===|
-injectable string env = "dev";
+nullable string env = "dev";
 |===|
 {
   env: env,
@@ -216,7 +215,7 @@ injectable string env = "dev";
 (source_file
   (script_block
     (variable_declaration
-      (injectable_modifier)
+      (nullable_modifier)
       (string_type)
       (identifier
         (identifier_word))
@@ -229,10 +228,10 @@ injectable string env = "dev";
         (identifier_word)))))
 
 ===
-injectable string variable without initializer
+nullable string variable with null initializer
 ===
 |===|
-injectable string env;
+nullable string env = null;
 |===|
 {
   env: env,
@@ -242,10 +241,11 @@ injectable string env;
 (source_file
   (script_block
     (variable_declaration
-      (injectable_modifier)
+      (nullable_modifier)
       (string_type)
       (identifier
-        (identifier_word))))
+        (identifier_word))
+      (null_literal)))
   (output_block
     (output_field
       (identifier
@@ -254,10 +254,10 @@ injectable string env;
         (identifier_word)))))
 
 ===
-injectable int variable
+nullable int variable
 ===
 |===|
-injectable int retries = 3;
+nullable int retries = 3;
 |===|
 {
   retries: retries,
@@ -267,7 +267,7 @@ injectable int retries = 3;
 (source_file
   (script_block
     (variable_declaration
-      (injectable_modifier)
+      (nullable_modifier)
       (int_type)
       (identifier
         (identifier_word))
@@ -280,10 +280,10 @@ injectable int retries = 3;
         (identifier_word)))))
 
 ===
-injectable float variable
+nullable float variable
 ===
 |===|
-injectable float threshold = 0.75;
+nullable float threshold = 0.75;
 |===|
 {
   threshold: threshold,
@@ -293,7 +293,7 @@ injectable float threshold = 0.75;
 (source_file
   (script_block
     (variable_declaration
-      (injectable_modifier)
+      (nullable_modifier)
       (float_type)
       (identifier
         (identifier_word))
@@ -306,10 +306,10 @@ injectable float threshold = 0.75;
         (identifier_word)))))
 
 ===
-injectable boolean variable
+nullable boolean variable
 ===
 |===|
-injectable boolean enabled = false;
+nullable boolean enabled = false;
 |===|
 {
   enabled: enabled,
@@ -319,7 +319,7 @@ injectable boolean enabled = false;
 (source_file
   (script_block
     (variable_declaration
-      (injectable_modifier)
+      (nullable_modifier)
       (boolean_type)
       (identifier
         (identifier_word))
@@ -332,10 +332,10 @@ injectable boolean enabled = false;
         (identifier_word)))))
 
 ===
-injectable array variable
+nullable array variable
 ===
 |===|
-injectable array<string> tags = ["ops", "prod"];
+nullable array<string> tags = ["ops", "prod"];
 |===|
 {
   tags: tags,
@@ -345,7 +345,7 @@ injectable array<string> tags = ["ops", "prod"];
 (source_file
   (script_block
     (variable_declaration
-      (injectable_modifier)
+      (nullable_modifier)
       (array_type
         (string_type))
       (identifier
@@ -361,13 +361,13 @@ injectable array<string> tags = ["ops", "prod"];
         (identifier_word)))))
 
 ===
-injectable schema variable
+nullable schema variable
 ===
 |===|
 schema User: {
   name: string,
 };
-injectable User user = {
+nullable User user = {
   name: "Ada",
 };
 |===|
@@ -387,7 +387,7 @@ injectable User user = {
             (identifier_word))
           (string_type))))
     (variable_declaration
-      (injectable_modifier)
+      (nullable_modifier)
       (named_type
         (identifier
           (identifier_word)))
