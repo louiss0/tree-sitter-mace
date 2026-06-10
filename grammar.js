@@ -55,9 +55,7 @@ export default grammar({
       "parse",
       "parse_file",
       "data",
-      "nullable",
-      "in",
-      "null",
+      "injectable",
       "true",
       "false",
     ],
@@ -161,15 +159,12 @@ export default grammar({
 
     variable_declaration: ($) =>
       seq(
-        optional($.nullable_modifier),
+        optional(seq("injectable")),
         $._type_reference,
         $.identifier,
-        "=",
-        $._expression,
+        optional(seq("=", $._expression)),
         ";",
       ),
-
-    nullable_modifier: (_) => "nullable",
 
     type_declaration: ($) =>
       seq("type", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
@@ -396,7 +391,6 @@ export default grammar({
         $.hex_int_literal,
         $.string_literal,
         $.boolean_literal,
-        $.null_literal,
         $.array_literal,
         $.record_literal,
         $.self_reference,
@@ -544,8 +538,6 @@ export default grammar({
         $._expression,
         optional(choice(",", ";")),
       ),
-
-    null_literal: (_) => "null",
 
     bang_operator: (_) => "!",
     tilde_operator: (_) => "~",
