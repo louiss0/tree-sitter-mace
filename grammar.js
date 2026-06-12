@@ -55,7 +55,6 @@ export default grammar({
       "parse",
       "parse_file",
       "data",
-      "injectable",
       "true",
       "false",
     ],
@@ -159,10 +158,10 @@ export default grammar({
 
     variable_declaration: ($) =>
       seq(
-        optional(seq("injectable")),
         $._type_reference,
         $.identifier,
-        optional(seq("=", $._expression)),
+        "=",
+        $._expression,
         ";",
       ),
 

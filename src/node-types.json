@@ -3755,10 +3755,6 @@
     "named": true
   },
   {
-    "type": "injectable",
-    "named": false
-  },
-  {
     "type": "int_literal",
     "named": true
   },
