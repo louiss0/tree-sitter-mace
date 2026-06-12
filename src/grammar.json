@@ -466,6 +466,10 @@
         }
       ]
     },
+    "null_literal": {
+      "type": "STRING",
+      "value": "null"
+    },
     "import_declaration": {
       "type": "SEQ",
       "members": [
@@ -620,6 +624,18 @@
     "variable_declaration": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "nullable_modifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "SYMBOL",
           "name": "_type_reference"
@@ -1823,6 +1839,10 @@
         }
       ]
     },
+    "nullable_modifier": {
+      "type": "STRING",
+      "value": "nullable"
+    },
     "inline_description": {
       "type": "SEQ",
       "members": [
@@ -1950,6 +1970,10 @@
         {
           "type": "SYMBOL",
           "name": "boolean_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "null_literal"
         },
         {
           "type": "SYMBOL",
@@ -2830,6 +2854,14 @@
       {
         "type": "STRING",
         "value": "data"
+      },
+      {
+        "type": "STRING",
+        "value": "nullable"
+      },
+      {
+        "type": "STRING",
+        "value": "null"
       },
       {
         "type": "STRING",

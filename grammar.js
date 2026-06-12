@@ -55,6 +55,8 @@ export default grammar({
       "parse",
       "parse_file",
       "data",
+      "nullable",
+      "null",
       "true",
       "false",
     ],
@@ -125,6 +127,7 @@ export default grammar({
     hex_int_literal: (_) => /0[xX][0-9A-Fa-f]+/,
     hex_float_literal: (_) => /0[xX][0-9A-Fa-f]+\.[0-9A-Fa-f]+/,
     boolean_literal: (_) => choice("true", "false"),
+    null_literal: (_) => "null",
 
     import_declaration: ($) =>
       seq(
@@ -158,6 +161,7 @@ export default grammar({
 
     variable_declaration: ($) =>
       seq(
+        optional($.nullable_modifier),
         $._type_reference,
         $.identifier,
         "=",
@@ -354,6 +358,8 @@ export default grammar({
         optional($._field_suffix),
       ),
 
+    nullable_modifier: (_) => "nullable",
+
     inline_description: ($) => seq("/#", $.description_text),
 
     description_text: (_) => token(/[^,;\r\n]+/),
@@ -390,6 +396,7 @@ export default grammar({
         $.hex_int_literal,
         $.string_literal,
         $.boolean_literal,
+        $.null_literal,
         $.array_literal,
         $.record_literal,
         $.self_reference,
