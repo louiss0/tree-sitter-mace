@@ -106,8 +106,9 @@ type Composite: variant[union[Profile, Audit], string];
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (named_type
         (identifier
           (identifier_word))))))

@@ -9,8 +9,9 @@ default data output block
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal)
       (inline_description
         (description_text)))))
@@ -39,8 +40,9 @@ array<User> users = [{ name: "Ada" }, { name: "Linus" }];
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))))
     (variable_declaration
       (array_type
@@ -60,28 +62,32 @@ array<User> users = [{ name: "Ada" }, { name: "Linus" }];
       (array_literal
         (record_literal
           (record_field
-            (identifier
-              (identifier_word))
+            (field_name
+              (identifier
+                (identifier_word)))
             (string_literal)))
         (record_literal
           (record_field
-            (identifier
-              (identifier_word))
+            (field_name
+              (identifier
+                (identifier_word)))
             (string_literal))))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (identifier
           (identifier_word))
         (int_literal)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (member_access
         (array_access
           (identifier
@@ -105,8 +111,9 @@ nested array access level 1
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_literal
           (int_literal))
@@ -127,8 +134,9 @@ nested array access level 2
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (array_literal
@@ -152,8 +160,9 @@ nested array access level 3
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (array_access
@@ -180,8 +189,9 @@ nested array access level 4
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (array_access
@@ -211,8 +221,9 @@ nested array access level 5
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (array_access
@@ -245,8 +256,9 @@ explicit data output block
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal))))
 
 ===
@@ -272,12 +284,14 @@ schema User: {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (optional_marker)
           (int_type)))))
   (output_block
@@ -288,12 +302,14 @@ schema User: {
         (identifier
           (identifier_word))))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (optional_marker)
       (int_literal))))
 
@@ -322,12 +338,14 @@ schema User: {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (optional_marker)
           (int_type)))))
   (output_block
@@ -336,12 +354,14 @@ schema User: {
         (identifier
           (identifier_word))))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (optional_marker)
       (int_literal))))
 
@@ -364,12 +384,14 @@ data output with schema directive without data
       (schema_file_directive
         (string_literal)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (optional_marker)
       (int_literal))))
 
@@ -395,20 +417,23 @@ schema output with type references
     (inline_doc_block
       (doc_block_string))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_type)
       (inline_description
         (description_text)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_type
         (array_type
           (int_type))))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (optional_marker)
       (named_type
         (identifier
@@ -430,14 +455,16 @@ schema output with variant type references
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (variant_type
         (string_type)
         (int_type)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (optional_marker)
       (variant_type
         (named_type
@@ -460,8 +487,9 @@ schema output with union schema composition references
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (union_type
         (named_type
           (identifier
@@ -481,10 +509,42 @@ optional output field
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (optional_marker)
       (boolean_literal))))
+
+===
+keyword field names inside record and output fields
+===
+[output = data]
+{
+  type: {
+    version: version,
+    type: version,
+  },
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (field_name)
+      (record_literal
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (identifier
+            (identifier_word)))
+        (record_field
+          (field_name)
+          (identifier
+            (identifier_word)))))))
 
 ===
 duplicate output directives are invalid
@@ -504,8 +564,9 @@ duplicate output directives are invalid
         (ERROR
           (identifier_word))))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal))))
 
 ===
@@ -519,8 +580,9 @@ array nesting level 1
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (int_literal)))))
 
@@ -535,8 +597,9 @@ array nesting level 2
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (int_literal))))))
@@ -552,8 +615,9 @@ array nesting level 3
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -570,8 +634,9 @@ array nesting level 4
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -589,8 +654,9 @@ array nesting level 5
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -609,8 +675,9 @@ array nesting level 6
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -630,8 +697,9 @@ array nesting level 7
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -652,8 +720,9 @@ array nesting level 8
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -675,8 +744,9 @@ array nesting level 9
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -699,8 +769,9 @@ array nesting level 10
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_literal
         (array_literal
           (array_literal
@@ -726,12 +797,14 @@ record nesting level 1
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (int_literal))))))
 
 ===
@@ -749,16 +822,19 @@ record nesting level 2
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (int_literal))))))))
 
 ===
@@ -778,20 +854,24 @@ record nesting level 3
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (int_literal))))))))))
 
 ===
@@ -813,24 +893,29 @@ record nesting level 4
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (record_literal
                     (record_field
-                      (identifier
-                        (identifier_word))
+                      (field_name
+                        (identifier
+                          (identifier_word)))
                       (int_literal))))))))))))
 
 ===
@@ -854,28 +939,34 @@ record nesting level 5
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (record_literal
                     (record_field
-                      (identifier
-                        (identifier_word))
+                      (field_name
+                        (identifier
+                          (identifier_word)))
                       (record_literal
                         (record_field
-                          (identifier
-                            (identifier_word))
+                          (field_name
+                            (identifier
+                              (identifier_word)))
                           (int_literal))))))))))))))
 
 ===
@@ -901,32 +992,39 @@ record nesting level 6
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (record_literal
                     (record_field
-                      (identifier
-                        (identifier_word))
+                      (field_name
+                        (identifier
+                          (identifier_word)))
                       (record_literal
                         (record_field
-                          (identifier
-                            (identifier_word))
+                          (field_name
+                            (identifier
+                              (identifier_word)))
                           (record_literal
                             (record_field
-                              (identifier
-                                (identifier_word))
+                              (field_name
+                                (identifier
+                                  (identifier_word)))
                               (int_literal))))))))))))))))
 
 ===
@@ -954,36 +1052,44 @@ record nesting level 7
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (record_literal
                     (record_field
-                      (identifier
-                        (identifier_word))
+                      (field_name
+                        (identifier
+                          (identifier_word)))
                       (record_literal
                         (record_field
-                          (identifier
-                            (identifier_word))
+                          (field_name
+                            (identifier
+                              (identifier_word)))
                           (record_literal
                             (record_field
-                              (identifier
-                                (identifier_word))
+                              (field_name
+                                (identifier
+                                  (identifier_word)))
                               (record_literal
                                 (record_field
-                                  (identifier
-                                    (identifier_word))
+                                  (field_name
+                                    (identifier
+                                      (identifier_word)))
                                   (int_literal))))))))))))))))))
 
 ===
@@ -1013,40 +1119,49 @@ record nesting level 8
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (record_literal
                     (record_field
-                      (identifier
-                        (identifier_word))
+                      (field_name
+                        (identifier
+                          (identifier_word)))
                       (record_literal
                         (record_field
-                          (identifier
-                            (identifier_word))
+                          (field_name
+                            (identifier
+                              (identifier_word)))
                           (record_literal
                             (record_field
-                              (identifier
-                                (identifier_word))
+                              (field_name
+                                (identifier
+                                  (identifier_word)))
                               (record_literal
                                 (record_field
-                                  (identifier
-                                    (identifier_word))
+                                  (field_name
+                                    (identifier
+                                      (identifier_word)))
                                   (record_literal
                                     (record_field
-                                      (identifier
-                                        (identifier_word))
+                                      (field_name
+                                        (identifier
+                                          (identifier_word)))
                                       (int_literal))))))))))))))))))))
 
 ===
@@ -1078,44 +1193,54 @@ record nesting level 9
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (record_literal
                     (record_field
-                      (identifier
-                        (identifier_word))
+                      (field_name
+                        (identifier
+                          (identifier_word)))
                       (record_literal
                         (record_field
-                          (identifier
-                            (identifier_word))
+                          (field_name
+                            (identifier
+                              (identifier_word)))
                           (record_literal
                             (record_field
-                              (identifier
-                                (identifier_word))
+                              (field_name
+                                (identifier
+                                  (identifier_word)))
                               (record_literal
                                 (record_field
-                                  (identifier
-                                    (identifier_word))
+                                  (field_name
+                                    (identifier
+                                      (identifier_word)))
                                   (record_literal
                                     (record_field
-                                      (identifier
-                                        (identifier_word))
+                                      (field_name
+                                        (identifier
+                                          (identifier_word)))
                                       (record_literal
                                         (record_field
-                                          (identifier
-                                            (identifier_word))
+                                          (field_name
+                                            (identifier
+                                              (identifier_word)))
                                           (int_literal))))))))))))))))))))))
 
 ===
@@ -1149,46 +1274,57 @@ record nesting level 10
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (record_literal
                 (record_field
-                  (identifier
-                    (identifier_word))
+                  (field_name
+                    (identifier
+                      (identifier_word)))
                   (record_literal
                     (record_field
-                      (identifier
-                        (identifier_word))
+                      (field_name
+                        (identifier
+                          (identifier_word)))
                       (record_literal
                         (record_field
-                          (identifier
-                            (identifier_word))
+                          (field_name
+                            (identifier
+                              (identifier_word)))
                           (record_literal
                             (record_field
-                              (identifier
-                                (identifier_word))
+                              (field_name
+                                (identifier
+                                  (identifier_word)))
                               (record_literal
                                 (record_field
-                                  (identifier
-                                    (identifier_word))
+                                  (field_name
+                                    (identifier
+                                      (identifier_word)))
                                   (record_literal
                                     (record_field
-                                      (identifier
-                                        (identifier_word))
+                                      (field_name
+                                        (identifier
+                                          (identifier_word)))
                                       (record_literal
                                         (record_field
-                                          (identifier
-                                            (identifier_word))
+                                          (field_name
+                                            (identifier
+                                              (identifier_word)))
                                           (record_literal
                                             (record_field
-                                              (identifier
-                                                (identifier_word))
+                                              (field_name
+                                                (identifier
+                                                  (identifier_word)))
                                               (int_literal))))))))))))))))))))))))

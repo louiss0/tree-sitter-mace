@@ -11,8 +11,9 @@ line comment before output block
   (comment)
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (boolean_literal))))
 
 ===
@@ -31,8 +32,9 @@ this is a block comment
   (comment)
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (boolean_literal))))
 
 ===
@@ -57,8 +59,9 @@ string name = "Ada";
       (string_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -77,8 +80,9 @@ block comment inside output block
   (output_block
     (comment)
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (boolean_literal))))
 
 ===
@@ -94,6 +98,7 @@ line comment before output block without trailing newline
   (comment)
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (boolean_literal))))

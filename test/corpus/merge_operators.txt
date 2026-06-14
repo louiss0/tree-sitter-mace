@@ -9,20 +9,23 @@ record merge in output block
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (structural_merge
         (merge_operand
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (int_literal))))
         (merge_operand
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (int_literal))))))))
 
 ===
@@ -36,8 +39,9 @@ array merge in output block
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (structural_merge
         (merge_operand
           (array_literal
@@ -60,16 +64,19 @@ merge output identifier with literal
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal))))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (structural_merge
         (merge_operand
           (identifier
@@ -77,8 +84,9 @@ merge output identifier with literal
         (merge_operand
           (record_literal
             (record_field
-              (identifier
-                (identifier_word))
+              (field_name
+                (identifier
+                  (identifier_word)))
               (boolean_literal))))))))
 
 ===
@@ -119,8 +127,9 @@ Tags extra = ["extra"];
         (string_literal))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (structural_merge
         (merge_operand
           (identifier
@@ -140,8 +149,9 @@ merge precedence stays above bitwise and
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (bitwise_and_expression
         (identifier
           (identifier_word))

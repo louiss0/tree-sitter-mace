@@ -24,8 +24,9 @@ array<int> matrix = [1];
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (identifier
           (identifier_word))
@@ -59,8 +60,9 @@ array<array<int>> matrix = [[1]];
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (identifier
@@ -98,8 +100,9 @@ array<array<array<int>>> matrix = [[[1]]];
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (array_access
@@ -141,8 +144,9 @@ array<array<array<array<int>>>> matrix = [[[[1]]]];
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (array_access
@@ -188,8 +192,9 @@ array<array<array<array<array<int>>>>> matrix = [[[[[1]]]]];
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (array_access
         (array_access
           (array_access

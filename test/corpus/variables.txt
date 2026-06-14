@@ -39,23 +39,27 @@ boolean enabled = true;
       (boolean_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
-      (identifier
-        (identifier_word)))
-    (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))
     (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
-        (identifier_word))
+        (identifier_word)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -86,8 +90,9 @@ Name name = "Ada";
       (string_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -119,8 +124,9 @@ array<array<int>> matrix = [[1, 2], [3, 4]];
           (int_literal)))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -149,12 +155,14 @@ User user = {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (optional_marker)
           (int_type))))
     (variable_declaration
@@ -165,18 +173,21 @@ User user = {
         (identifier_word))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal))
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (optional_marker)
           (int_literal)))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -222,8 +233,9 @@ nullable string env = "dev";
       (string_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -248,8 +260,9 @@ nullable string env = null;
       (null_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -274,8 +287,9 @@ nullable int retries = 3;
       (int_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -300,8 +314,9 @@ nullable float threshold = 0.75;
       (float_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -326,8 +341,9 @@ nullable boolean enabled = false;
       (boolean_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -355,8 +371,9 @@ nullable array<string> tags = ["ops", "prod"];
         (string_literal))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -383,8 +400,9 @@ nullable User user = {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))))
     (variable_declaration
       (nullable_modifier)
@@ -395,13 +413,15 @@ nullable User user = {
         (identifier_word))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal)))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -427,7 +447,8 @@ union[string, int] value = "Ada";
       (string_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))

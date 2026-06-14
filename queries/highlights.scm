@@ -90,14 +90,18 @@
   member: (identifier) @property)
 
 [
-  (schema_field)
-  (output_field)
-  (output_schema_field)
-  (record_field)
-] @property
+  (schema_field
+    (field_name) @property)
+  (output_field
+    (field_name) @property)
+  (output_schema_field
+    (field_name) @property)
+  (record_field
+    (field_name) @property)
+]
 
 (prop_entry
-  (identifier) @property)
+  (field_name) @property)
 
 (self_reference
   (identifier) @property)

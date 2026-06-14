@@ -9,8 +9,9 @@ logical not operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (unary_expression
         (bang_operator)
         (boolean_literal)))))
@@ -26,8 +27,9 @@ less than operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (relational_expression
         (int_literal)
         (less_operator)
@@ -44,8 +46,9 @@ less than or equal operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (relational_expression
         (int_literal)
         (less_equal_operator)
@@ -62,8 +65,9 @@ greater than operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (relational_expression
         (int_literal)
         (greater_operator)
@@ -80,8 +84,9 @@ greater than or equal operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (relational_expression
         (int_literal)
         (greater_equal_operator)
@@ -98,8 +103,9 @@ equality operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (equality_expression
         (int_literal)
         (equal_equal_operator)
@@ -116,8 +122,9 @@ not equal operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (equality_expression
         (int_literal)
         (not_equal_operator)
@@ -134,8 +141,9 @@ logical and operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (logical_and_expression
         (boolean_literal)
         (and_and_operator)
@@ -152,8 +160,9 @@ logical or operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (logical_or_expression
         (boolean_literal)
         (or_or_operator)
@@ -170,8 +179,9 @@ ternary conditional operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (conditional_expression
         (boolean_literal)
         (boolean_literal)
@@ -188,8 +198,9 @@ combined relational operators
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (logical_and_expression
         (logical_and_expression
           (logical_and_expression
@@ -224,8 +235,9 @@ combined equality operators
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (logical_or_expression
         (equality_expression
           (int_literal)
@@ -248,8 +260,9 @@ combined boolean operator precedence
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (conditional_expression
         (logical_or_expression
           (unary_expression

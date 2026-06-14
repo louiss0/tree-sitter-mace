@@ -21,14 +21,16 @@ This block emits user data.
     (inline_doc_block
       (doc_block_string))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal)
       (inline_description
         (description_text)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (int_literal)
       (inline_description
         (description_text)))))
@@ -83,12 +85,14 @@ schema User: {
       (schema_doc_entry
         (props_entry
           (prop_entry
-            (identifier
-              (identifier_word))
+            (field_name
+              (identifier
+                (identifier_word)))
             (string_literal))
           (prop_entry
-            (identifier
-              (identifier_word))
+            (field_name
+              (identifier
+                (identifier_word)))
             (string_literal)))))
     (type_declaration
       (identifier
@@ -115,16 +119,18 @@ schema User: {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (named_type
             (identifier
               (identifier_word)))
           (inline_description
             (description_text)))
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (optional_marker)
           (int_type)
           (inline_description
@@ -134,8 +140,9 @@ schema User: {
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (named_type
         (identifier
           (identifier_word)))

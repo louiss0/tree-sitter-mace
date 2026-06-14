@@ -9,8 +9,9 @@ unary plus operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (unary_expression
         (plus_operator)
         (int_literal)))))
@@ -26,8 +27,9 @@ unary minus operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (unary_expression
         (minus_operator)
         (int_literal)))))
@@ -43,8 +45,9 @@ bitwise not operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (unary_expression
         (tilde_operator)
         (int_literal)))))
@@ -60,8 +63,9 @@ addition operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (additive_expression
         (int_literal)
         (plus_operator)
@@ -78,8 +82,9 @@ hex addition operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (additive_expression
         (hex_int_literal)
         (plus_operator)
@@ -96,8 +101,9 @@ subtraction operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (additive_expression
         (int_literal)
         (minus_operator)
@@ -114,8 +120,9 @@ multiplication operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (multiplicative_expression
         (int_literal)
         (star_operator)
@@ -132,8 +139,9 @@ division operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (multiplicative_expression
         (int_literal)
         (slash_operator)
@@ -150,8 +158,9 @@ hex division operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (multiplicative_expression
         (hex_int_literal)
         (slash_operator)
@@ -168,8 +177,9 @@ modulo operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (multiplicative_expression
         (int_literal)
         (percent_operator)
@@ -186,8 +196,9 @@ exponent operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (exponent_expression
         (int_literal)
         (double_star_operator)
@@ -204,8 +215,9 @@ shift left operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (shift_expression
         (int_literal)
         (shift_left_operator)
@@ -222,8 +234,9 @@ shift right operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (shift_expression
         (int_literal)
         (shift_right_operator)
@@ -240,8 +253,9 @@ unsigned shift right operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (shift_expression
         (int_literal)
         (unsigned_shift_right_operator)
@@ -258,8 +272,9 @@ bitwise and operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (bitwise_and_expression
         (int_literal)
         (ampersand_operator)
@@ -276,8 +291,9 @@ bitwise xor operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (bitwise_xor_expression
         (int_literal)
         (caret_operator)
@@ -294,8 +310,9 @@ bitwise or operator
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (bitwise_or_expression
         (int_literal)
         (pipe_operator)
@@ -312,8 +329,9 @@ combined arithmetic operators
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (additive_expression
         (additive_expression
           (unary_expression
@@ -344,8 +362,9 @@ combined exponent shift and bitwise operators
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (bitwise_or_expression
         (bitwise_xor_expression
           (bitwise_and_expression

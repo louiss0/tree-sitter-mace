@@ -942,7 +942,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "field_name"
         },
         {
           "type": "STRING",
@@ -1017,6 +1017,55 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "field_name": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "type"
+        },
+        {
+          "type": "STRING",
+          "value": "schema"
+        },
+        {
+          "type": "STRING",
+          "value": "output"
+        },
+        {
+          "type": "STRING",
+          "value": "schema_file"
+        },
+        {
+          "type": "STRING",
+          "value": "parse"
+        },
+        {
+          "type": "STRING",
+          "value": "parse_file"
+        },
+        {
+          "type": "STRING",
+          "value": "data"
+        },
+        {
+          "type": "STRING",
+          "value": "from"
+        },
+        {
+          "type": "STRING",
+          "value": "import"
+        },
+        {
+          "type": "STRING",
+          "value": "record"
         }
       ]
     },
@@ -1098,7 +1147,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "field_name"
         },
         {
           "type": "CHOICE",
@@ -1793,7 +1842,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "field_name"
         },
         {
           "type": "CHOICE",
@@ -1834,7 +1883,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "field_name"
         },
         {
           "type": "CHOICE",
@@ -2651,7 +2700,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "field_name"
         },
         {
           "type": "CHOICE",

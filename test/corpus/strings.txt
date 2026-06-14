@@ -18,8 +18,9 @@ string greeting = 'hello';
       (string_literal)))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -56,8 +57,9 @@ string greeting = "Hello $(user.name) $(price * quantity)";
               (identifier_word)))))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -78,16 +80,19 @@ Owner: $($self.user.name)
 (source_file
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal))))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_literal
         (interpolation
           (member_access
@@ -123,8 +128,9 @@ output inline doc block
     (inline_doc_block
       (doc_block_string))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (string_type))))
 
 ===
@@ -168,24 +174,28 @@ schema User: {
       (schema_doc_entry
         (props_entry
           (prop_entry
-            (identifier
-              (identifier_word))
+            (field_name
+              (identifier
+                (identifier_word)))
             (string_literal))
           (prop_entry
-            (identifier
-              (identifier_word))
+            (field_name
+              (identifier
+                (identifier_word)))
             (string_literal)))))
     (schema_declaration
       (identifier
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (optional_marker)
           (int_type)))))
   (output_block
@@ -193,8 +203,9 @@ schema User: {
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (named_type
         (identifier
           (identifier_word))))))

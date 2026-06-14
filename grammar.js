@@ -197,11 +197,26 @@ export default grammar({
     props_entry: ($) =>
       seq("props", ":", "{", repeat(choice($.comment, $.prop_entry)), "}", $._pair_separator),
 
-    prop_entry: ($) => seq($.identifier, ":", $.string_literal, $._pair_separator),
+    prop_entry: ($) => seq($.field_name, ":", $.string_literal, $._pair_separator),
 
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, optional(";")),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
+
+    field_name: ($) =>
+      choice(
+        $.identifier,
+        "type",
+        "schema",
+        "output",
+        "schema_file",
+        "parse",
+        "parse_file",
+        "data",
+        "from",
+        "import",
+        "record",
+      ),
     _pair_separator: (_) => choice(",", ";"),
     _field_separator: (_) => choice(",", ";"),
 
@@ -213,7 +228,7 @@ export default grammar({
 
     schema_field: ($) =>
       seq(
-        $.identifier,
+        $.field_name,
         optional($.optional_marker),
         ":",
         $._type_reference,
@@ -343,7 +358,7 @@ export default grammar({
 
     output_field: ($) =>
       seq(
-        $.identifier,
+        $.field_name,
         optional($.optional_marker),
         ":",
         $._expression,
@@ -352,7 +367,7 @@ export default grammar({
 
     output_schema_field: ($) =>
       seq(
-        $.identifier,
+        $.field_name,
         optional($.optional_marker),
         ":",
         $._type_reference,
@@ -539,7 +554,7 @@ export default grammar({
 
     record_field: ($) =>
       seq(
-        $.identifier,
+        $.field_name,
         optional($.optional_marker),
         ":",
         $._expression,

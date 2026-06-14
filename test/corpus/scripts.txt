@@ -38,8 +38,9 @@ User user = {
         (identifier_word))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (identifier
             (identifier_word))))))
   (output_block
@@ -50,8 +51,9 @@ User user = {
         (identifier
           (identifier_word))))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -78,8 +80,9 @@ from "./package_json.mace" import-as Package;
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -114,8 +117,9 @@ Scores scores = [1, 2, 3];
         (int_literal))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -150,16 +154,18 @@ User user = {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (named_type
             (identifier
               (identifier_word)))
           (inline_description
             (description_text)))
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (array_type
             (string_type)))))
     (variable_declaration
@@ -170,12 +176,14 @@ User user = {
         (identifier_word))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal))
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (array_literal
             (string_literal)
             (string_literal))))))
@@ -187,8 +195,9 @@ User user = {
         (identifier
           (identifier_word))))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -220,14 +229,16 @@ schema User: {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (named_type
             (identifier
               (identifier_word))))
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (optional_marker)
           (boolean_type)))))
   (output_block
@@ -235,14 +246,16 @@ schema User: {
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (named_type
         (identifier
           (identifier_word))))
     (output_schema_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (optional_marker)
       (boolean_type))))
 
@@ -274,16 +287,18 @@ User user = {
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))))
     (schema_declaration
       (identifier
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))))
     (type_declaration
       (identifier
@@ -316,24 +331,28 @@ User user = {
         (identifier_word))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal))
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal)))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
