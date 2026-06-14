@@ -133,9 +133,10 @@ export default grammar({
       seq(
         "from",
         $.string_literal,
-        "import",
-        $.identifier,
-        repeat(seq(",", $.identifier)),
+        choice(
+          seq("import", "-", "as", $.identifier),
+          seq("import", $.identifier, repeat(seq(",", $.identifier))),
+        ),
         ";",
       ),
 

@@ -1853,6 +1853,11 @@
     }
   },
   {
+    "type": "minus_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "multiplicative_expression",
     "named": true,
     "fields": {},
@@ -3695,6 +3700,10 @@
     "named": false
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
@@ -3748,6 +3757,10 @@
   },
   {
     "type": "array",
+    "named": false
+  },
+  {
+    "type": "as",
     "named": false
   },
   {
@@ -3852,10 +3865,6 @@
   },
   {
     "type": "less_equal_operator",
-    "named": true
-  },
-  {
-    "type": "minus_operator",
     "named": true
   },
   {

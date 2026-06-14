@@ -55,6 +55,11 @@
 ] @property
 
 (import_declaration
+  [
+    "import"
+    "-"
+    "as"
+  ] @keyword
   (identifier) @type)
 
 (named_type
