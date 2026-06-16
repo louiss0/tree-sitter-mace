@@ -480,7 +480,7 @@ from "./nx_inputs.mace" import-as NxInputs;
       (field_name
         (identifier
           (identifier_word)))
-      (member_expression
+      (member_access
         (identifier
           (identifier_word))
         (identifier
