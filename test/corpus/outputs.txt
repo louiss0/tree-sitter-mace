@@ -454,6 +454,39 @@ data output with parse_file directive without data
         (identifier_word)))))
 
 ===
+data output with imported parse directive without data
+===
+|===|
+from "./nx_inputs.mace" import-as NxInputs;
+|===|
+[parse = NxInputs]
+{
+  name: project.name,
+}
+---
+
+(source_file
+  (script_block
+    (import_declaration
+      (string_literal)
+      (identifier
+        (identifier_word))))
+  (output_block
+    (directive_list
+      (parse_directive
+        (identifier
+          (identifier_word))))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (member_expression
+        (identifier
+          (identifier_word))
+        (identifier
+          (identifier_word))))))
+
+===
 data output with reordered directives
 ===
 |===|
