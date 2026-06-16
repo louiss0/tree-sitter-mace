@@ -327,11 +327,22 @@ export default grammar({
         seq(
           "[",
           choice(
+            alias($.data_output_mode_directive, $.output_mode_directive),
             $.schema_directive,
             $.schema_file_directive,
+            $.parse_directive,
+            $.parse_file_directive,
+          ),
+          repeat(
             seq(
-              alias($.data_output_mode_directive, $.output_mode_directive),
-              repeat(seq(",", choice($.schema_directive, $.schema_file_directive, $.parse_directive, $.parse_file_directive))),
+              ",",
+              choice(
+                alias($.data_output_mode_directive, $.output_mode_directive),
+                $.schema_directive,
+                $.schema_file_directive,
+                $.parse_directive,
+                $.parse_file_directive,
+              ),
             ),
           ),
           "]",

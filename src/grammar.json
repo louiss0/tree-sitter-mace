@@ -1638,6 +1638,15 @@
             "type": "CHOICE",
             "members": [
               {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "data_output_mode_directive"
+                },
+                "named": true,
+                "value": "output_mode_directive"
+              },
+              {
                 "type": "SYMBOL",
                 "name": "schema_directive"
               },
@@ -1646,53 +1655,56 @@
                 "name": "schema_file_directive"
               },
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "data_output_mode_directive"
-                    },
-                    "named": true,
-                    "value": "output_mode_directive"
-                  },
-                  {
-                    "type": "REPEAT",
-                    "content": {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": ","
-                        },
-                        {
-                          "type": "CHOICE",
-                          "members": [
-                            {
-                              "type": "SYMBOL",
-                              "name": "schema_directive"
-                            },
-                            {
-                              "type": "SYMBOL",
-                              "name": "schema_file_directive"
-                            },
-                            {
-                              "type": "SYMBOL",
-                              "name": "parse_directive"
-                            },
-                            {
-                              "type": "SYMBOL",
-                              "name": "parse_file_directive"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "parse_directive"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "parse_file_directive"
               }
             ]
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "data_output_mode_directive"
+                      },
+                      "named": true,
+                      "value": "output_mode_directive"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "schema_directive"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "schema_file_directive"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "parse_directive"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "parse_file_directive"
+                    }
+                  ]
+                }
+              ]
+            }
           },
           {
             "type": "STRING",

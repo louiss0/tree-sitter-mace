@@ -396,6 +396,103 @@ data output with schema directive without data
       (int_literal))))
 
 ===
+data output with parse directive without data
+===
+|===|
+schema Runtime: {
+  env: string,
+}
+|===|
+[parse = Runtime]
+{
+  result: env,
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (string_type)))))
+  (output_block
+    (directive_list
+      (parse_directive
+        (identifier
+          (identifier_word))))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
+
+===
+data output with parse_file directive without data
+===
+[parse_file = "./runtime.mace"]
+{
+  result: env,
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (parse_file_directive
+        (string_literal)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
+
+===
+data output with reordered directives
+===
+|===|
+schema Runtime: {
+  env: string,
+}
+|===|
+[parse = Runtime, output = data]
+{
+  result: env,
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (string_type)))))
+  (output_block
+    (directive_list
+      (parse_directive
+        (identifier
+          (identifier_word)))
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
+
+===
 schema output with type references
 ===
 [output = schema]
@@ -561,8 +658,7 @@ duplicate output directives are invalid
       (output_mode_directive
         (data_mode))
       (ERROR
-        (ERROR
-          (identifier_word))))
+        (identifier_word)))
     (output_field
       (field_name
         (identifier
