@@ -50,6 +50,88 @@ type Identity: variant[string, int] /# A scalar identity value;
         (data_mode)))))
 
 ===
+variant array type alias
+===
+|===|
+type Values: variant[array<string>, array<int>];
+|===|
+[output = data] {}
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (variant_type
+        (array_type
+          (string_type))
+        (array_type
+          (int_type)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))
+
+===
+record map type references
+===
+|===|
+type Lookup: record<string>;
+type NestedLookup: record<array<int>>;
+schema Config: {
+  labels: record<string>;
+  nested: record<record<boolean>>;
+};
+|===|
+[output = schema]
+{
+  values: record<int>;
+}
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (record_map_type
+        (string_type)))
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (record_map_type
+        (array_type
+          (int_type))))
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (record_map_type
+            (string_type)))
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (record_map_type
+            (record_map_type
+              (boolean_type)))))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (record_map_type
+        (int_type)))))
+
+===
 union schema composition alias
 ===
 |===|

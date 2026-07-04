@@ -44,6 +44,7 @@ export default grammar({
       "union",
       "variant",
       "choice",
+      "record",
       "string",
       "int",
       "float",
@@ -244,6 +245,7 @@ export default grammar({
         $.hex_float_type,
         $.boolean_type,
         $.array_type,
+        $.record_map_type,
         $.union_type,
         $.variant_type,
         $.choice_type,
@@ -280,6 +282,8 @@ export default grammar({
       ),
 
     array_type: ($) => seq("array", "<", $._type_reference, ">"),
+
+    record_map_type: ($) => seq("record", "<", $._type_reference, ">"),
 
     union_type: ($) =>
       prec(1, seq("union", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
