@@ -1875,41 +1875,67 @@
       ]
     },
     "output_field": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "field_name"
-        },
-        {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "optional_marker"
+              "name": "field_name"
             },
             {
-              "type": "BLANK"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "optional_marker"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_field_suffix"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         },
         {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expression"
-        },
-        {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_field_suffix"
+              "name": "field_name"
             },
             {
-              "type": "BLANK"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_field_suffix"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         }
@@ -2733,50 +2759,85 @@
       ]
     },
     "record_field": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "field_name"
-        },
-        {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
               "type": "SYMBOL",
-              "name": "optional_marker"
+              "name": "field_name"
             },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expression"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
             {
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": ","
+                  "type": "SYMBOL",
+                  "name": "optional_marker"
                 },
                 {
-                  "type": "STRING",
-                  "value": ";"
+                  "type": "BLANK"
                 }
               ]
             },
             {
-              "type": "BLANK"
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ";"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "field_name"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ","
+                    },
+                    {
+                      "type": "STRING",
+                      "value": ";"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           ]
         }

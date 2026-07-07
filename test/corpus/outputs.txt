@@ -17,6 +17,61 @@ default data output block
         (description_text)))))
 
 ===
+output and record field shorthands
+===
+|===|
+string name = "Ada";
+schema User: { name: string; };
+User user = { name, };
+|===|
+[output = data]
+{
+  name,
+  user,
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (string_type))))
+    (variable_declaration
+      (named_type
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word))))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word))))))
+
+===
 array access in output expressions
 ===
 |===|

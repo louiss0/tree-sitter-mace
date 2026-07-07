@@ -372,12 +372,15 @@ export default grammar({
     parse_file_directive: ($) => seq("parse_file", "=", $.string_literal),
 
     output_field: ($) =>
-      seq(
-        $.field_name,
-        optional($.optional_marker),
-        ":",
-        $._expression,
-        optional($._field_suffix),
+      choice(
+        seq(
+          $.field_name,
+          optional($.optional_marker),
+          ":",
+          $._expression,
+          optional($._field_suffix),
+        ),
+        seq($.field_name, optional($._field_suffix)),
       ),
 
     output_schema_field: ($) =>
@@ -568,12 +571,15 @@ export default grammar({
     record_literal: ($) => seq("{", repeat(choice($.comment, $.record_field)), "}"),
 
     record_field: ($) =>
-      seq(
-        $.field_name,
-        optional($.optional_marker),
-        ":",
-        $._expression,
-        optional(choice(",", ";")),
+      choice(
+        seq(
+          $.field_name,
+          optional($.optional_marker),
+          ":",
+          $._expression,
+          optional(choice(",", ";")),
+        ),
+        seq($.field_name, optional(choice(",", ";"))),
       ),
 
     bang_operator: (_) => "!",
