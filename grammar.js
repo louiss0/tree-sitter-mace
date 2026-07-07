@@ -434,6 +434,7 @@ export default grammar({
         $.array_literal,
         $.record_literal,
         $.self_reference,
+        $.parsed_variable_reference,
         $.parenthesized_expression,
       ),
 
@@ -461,7 +462,10 @@ export default grammar({
       ),
 
     self_reference: ($) =>
-      prec.left(PREC.member + 1, seq("$self", ".", $.identifier, repeat(seq(".", $.identifier)))),
+      prec.left(PREC.member + 1, seq("$", "self", ".", $.identifier, repeat(seq(".", $.identifier)))),
+
+    parsed_variable_reference: ($) =>
+      prec.left(PREC.member + 1, seq("$", $.identifier)),
 
     unary_expression: ($) =>
       prec(

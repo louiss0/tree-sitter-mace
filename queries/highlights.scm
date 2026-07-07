@@ -82,6 +82,10 @@
   member: (identifier) @property)
 
 (member_access
+  target: (parsed_variable_reference)
+  member: (identifier) @property)
+
+(member_access
   target: (member_access)
   member: (identifier) @property)
 
@@ -104,7 +108,13 @@
   (field_name) @property)
 
 (self_reference
+  "$" @punctuation.special
+  "self" @variable.language
   (identifier) @property)
+
+(parsed_variable_reference
+  "$" @punctuation.special
+  (identifier) @variable)
 
 [
   (string_literal)

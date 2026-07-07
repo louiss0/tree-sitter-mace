@@ -2114,6 +2114,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "parsed_variable_reference"
+        },
+        {
+          "type": "SYMBOL",
           "name": "parenthesized_expression"
         }
       ]
@@ -2231,7 +2235,11 @@
         "members": [
           {
             "type": "STRING",
-            "value": "$self"
+            "value": "$"
+          },
+          {
+            "type": "STRING",
+            "value": "self"
           },
           {
             "type": "STRING",
@@ -2256,6 +2264,23 @@
                 }
               ]
             }
+          }
+        ]
+      }
+    },
+    "parsed_variable_reference": {
+      "type": "PREC_LEFT",
+      "value": 16,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "$"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
           }
         ]
       }

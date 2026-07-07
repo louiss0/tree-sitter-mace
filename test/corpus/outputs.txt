@@ -460,7 +460,7 @@ schema Runtime: {
 |===|
 [parse = Runtime]
 {
-  result: env,
+  result: $env,
 }
 ---
 
@@ -484,15 +484,16 @@ schema Runtime: {
       (field_name
         (identifier
           (identifier_word)))
-      (identifier
-        (identifier_word)))))
+      (parsed_variable_reference
+        (identifier
+          (identifier_word))))))
 
 ===
 data output with parse_file directive without data
 ===
 [parse_file = "./runtime.mace"]
 {
-  result: env,
+  result: $env,
 }
 ---
 
@@ -505,8 +506,9 @@ data output with parse_file directive without data
       (field_name
         (identifier
           (identifier_word)))
-      (identifier
-        (identifier_word)))))
+      (parsed_variable_reference
+        (identifier
+          (identifier_word))))))
 
 ===
 data output with imported parse directive without data
@@ -516,7 +518,7 @@ from "./nx_inputs.mace" import-as NxInputs;
 |===|
 [parse = NxInputs]
 {
-  name: project.name,
+  name: $project.name,
 }
 ---
 
@@ -536,8 +538,9 @@ from "./nx_inputs.mace" import-as NxInputs;
         (identifier
           (identifier_word)))
       (member_access
-        (identifier
-          (identifier_word))
+        (parsed_variable_reference
+          (identifier
+            (identifier_word)))
         (identifier
           (identifier_word))))))
 
@@ -551,7 +554,7 @@ schema Runtime: {
 |===|
 [parse = Runtime, output = data]
 {
-  result: env,
+  result: $env,
 }
 ---
 
@@ -577,8 +580,9 @@ schema Runtime: {
       (field_name
         (identifier
           (identifier_word)))
-      (identifier
-        (identifier_word)))))
+      (parsed_variable_reference
+        (identifier
+          (identifier_word))))))
 
 ===
 schema output with type references
