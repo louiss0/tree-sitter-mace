@@ -130,16 +130,16 @@ mixed declarations with schema aware output block
 type Name: string;
 schema User: {
   name: Name, /# The user's display name
-  tags: array<string>;
+  tags: array<string>,
 };
 User user = {
-  name: "Ada";
-  tags: ["ops", "prod"];
+  name: "Ada",
+  tags: ["ops", "prod"],
 };
 |===|
 [output = data, schema = User]
 {
-  user: user;
+  user: user,
 }
 ---
 
@@ -207,14 +207,14 @@ script block with schema mode output
 |===|
 type Name: string;
 schema User: {
-  name: Name;
-  enabled?: boolean;
+  name: Name,
+  enabled?: boolean,
 };
 |===|
 [output = schema]
 {
-  name: Name;
-  enabled?: boolean;
+  name: Name,
+  enabled?: boolean,
 }
 ---
 
@@ -263,20 +263,20 @@ schema User: {
 script block with variant and union aliases
 ===
 |===|
-schema Profile: { name: string; };
-schema Audit: { created_at: string; };
+schema Profile: { name: string, };
+schema Audit: { created_at: string, };
 type Identity: variant[string, int];
 type User: union[Profile, Audit];
 Identity id = "Ada";
 User user = {
-  name: "Ada";
-  created_at: "2026-04-08";
+  name: "Ada",
+  created_at: "2026-04-08",
 };
 |===|
 [output = data]
 {
-  id: id;
-  user: user;
+  id: id,
+  user: user,
 }
 ---
 

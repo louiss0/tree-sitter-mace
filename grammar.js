@@ -218,8 +218,8 @@ export default grammar({
         "import",
         "record",
       ),
-    _pair_separator: (_) => choice(",", ";"),
-    _field_separator: (_) => choice(",", ";"),
+    _pair_separator: (_) => ",",
+    _field_separator: (_) => ",",
 
     _field_suffix: ($) =>
       choice(
@@ -577,9 +577,9 @@ export default grammar({
           optional($.optional_marker),
           ":",
           $._expression,
-          optional(choice(",", ";")),
+          optional(","),
         ),
-        seq($.field_name, optional(choice(",", ";"))),
+        seq($.field_name, optional(",")),
       ),
 
     bang_operator: (_) => "!",

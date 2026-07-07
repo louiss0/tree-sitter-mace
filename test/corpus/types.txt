@@ -80,13 +80,13 @@ record map type references
 type Lookup: record<string>;
 type NestedLookup: record<array<int>>;
 schema Config: {
-  labels: record<string>;
-  nested: record<record<boolean>>;
+  labels: record<string>,
+  nested: record<record<boolean>>,
 };
 |===|
 [output = schema]
 {
-  values: record<int>;
+  values: record<int>,
 }
 ---
 

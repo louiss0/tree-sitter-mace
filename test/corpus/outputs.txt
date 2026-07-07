@@ -21,7 +21,7 @@ output and record field shorthands
 ===
 |===|
 string name = "Ada";
-schema User: { name: string; };
+schema User: { name: string, };
 User user = { name, };
 |===|
 [output = data]
@@ -736,7 +736,7 @@ duplicate output directives are invalid
 ===
 [output = data, output = schema]
 {
-  name: "Ada";
+  name: "Ada",
 }
 ---
 
@@ -757,7 +757,7 @@ duplicate output directives are invalid
 array nesting level 1
 ===
 {
-  value: [1];
+  value: [1],
 }
 ---
 
@@ -774,7 +774,7 @@ array nesting level 1
 array nesting level 2
 ===
 {
-  value: [[1]];
+  value: [[1]],
 }
 ---
 
@@ -792,7 +792,7 @@ array nesting level 2
 array nesting level 3
 ===
 {
-  value: [[[1]]];
+  value: [[[1]]],
 }
 ---
 
@@ -811,7 +811,7 @@ array nesting level 3
 array nesting level 4
 ===
 {
-  value: [[[[1]]]];
+  value: [[[[1]]]],
 }
 ---
 
@@ -831,7 +831,7 @@ array nesting level 4
 array nesting level 5
 ===
 {
-  value: [[[[[1]]]]];
+  value: [[[[[1]]]]],
 }
 ---
 
@@ -852,7 +852,7 @@ array nesting level 5
 array nesting level 6
 ===
 {
-  value: [[[[[[1]]]]]];
+  value: [[[[[[1]]]]]],
 }
 ---
 
@@ -874,7 +874,7 @@ array nesting level 6
 array nesting level 7
 ===
 {
-  value: [[[[[[[1]]]]]]];
+  value: [[[[[[[1]]]]]]],
 }
 ---
 
@@ -897,7 +897,7 @@ array nesting level 7
 array nesting level 8
 ===
 {
-  value: [[[[[[[[1]]]]]]]];
+  value: [[[[[[[[1]]]]]]]],
 }
 ---
 
@@ -921,7 +921,7 @@ array nesting level 8
 array nesting level 9
 ===
 {
-  value: [[[[[[[[[1]]]]]]]]];
+  value: [[[[[[[[[1]]]]]]]]],
 }
 ---
 
@@ -946,7 +946,7 @@ array nesting level 9
 array nesting level 10
 ===
 {
-  value: [[[[[[[[[[1]]]]]]]]]];
+  value: [[[[[[[[[[1]]]]]]]]]],
 }
 ---
 
@@ -973,8 +973,8 @@ record nesting level 1
 ===
 {
   value: {
-    level1: 1;
-  };
+    level1: 1,
+  },
 }
 ---
 
@@ -997,9 +997,9 @@ record nesting level 2
 {
   value: {
     level1: {
-      level2: 1;
-    };
-  };
+      level2: 1,
+    },
+  },
 }
 ---
 
@@ -1028,10 +1028,10 @@ record nesting level 3
   value: {
     level1: {
       level2: {
-        level3: 1;
-      };
-    };
-  };
+        level3: 1,
+      },
+    },
+  },
 }
 ---
 
@@ -1066,11 +1066,11 @@ record nesting level 4
     level1: {
       level2: {
         level3: {
-          level4: 1;
-        };
-      };
-    };
-  };
+          level4: 1,
+        },
+      },
+    },
+  },
 }
 ---
 
@@ -1111,12 +1111,12 @@ record nesting level 5
       level2: {
         level3: {
           level4: {
-            level5: 1;
-          };
-        };
-      };
-    };
-  };
+            level5: 1,
+          },
+        },
+      },
+    },
+  },
 }
 ---
 
@@ -1163,13 +1163,13 @@ record nesting level 6
         level3: {
           level4: {
             level5: {
-              level6: 1;
-            };
-          };
-        };
-      };
-    };
-  };
+              level6: 1,
+            },
+          },
+        },
+      },
+    },
+  },
 }
 ---
 
@@ -1222,14 +1222,14 @@ record nesting level 7
           level4: {
             level5: {
               level6: {
-                level7: 1;
-              };
-            };
-          };
-        };
-      };
-    };
-  };
+                level7: 1,
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
 ---
 
@@ -1288,15 +1288,15 @@ record nesting level 8
             level5: {
               level6: {
                 level7: {
-                  level8: 1;
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-  };
+                  level8: 1,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
 ---
 
@@ -1361,16 +1361,16 @@ record nesting level 9
               level6: {
                 level7: {
                   level8: {
-                    level9: 1;
-                  };
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-  };
+                    level9: 1,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
 ---
 
@@ -1441,17 +1441,17 @@ record nesting level 10
                 level7: {
                   level8: {
                     level9: {
-                      level10: 1;
-                    };
-                  };
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-  };
+                      level10: 1,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 }
 ---
 

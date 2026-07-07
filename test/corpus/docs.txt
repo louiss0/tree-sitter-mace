@@ -62,12 +62,12 @@ type Name: string /# A user display name;
 
 schema User: {
   name: Name, /# The user's name
-  age?: int; /# Optional age
+  age?: int, /# Optional age
 };
 |===|
 [output = schema]
 {
-  user: User; /# Public user contract
+  user: User, /# Public user contract
 }
 ---
 
