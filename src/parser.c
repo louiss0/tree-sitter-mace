@@ -76,7 +76,7 @@ enum ts_symbol_identifiers {
   anon_sym_array = 54,
   anon_sym_LT = 55,
   anon_sym_GT = 56,
-  anon_sym_union = 57,
+  anon_sym_fusion = 57,
   anon_sym_variant = 58,
   sym_nullable_modifier = 59,
   anon_sym_SLASH_POUND = 60,
@@ -266,7 +266,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_array] = "array",
   [anon_sym_LT] = "<",
   [anon_sym_GT] = ">",
-  [anon_sym_union] = "union",
+  [anon_sym_fusion] = "fusion",
   [anon_sym_variant] = "variant",
   [sym_nullable_modifier] = "nullable_modifier",
   [anon_sym_SLASH_POUND] = "/#",
@@ -456,7 +456,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_array] = anon_sym_array,
   [anon_sym_LT] = anon_sym_LT,
   [anon_sym_GT] = anon_sym_GT,
-  [anon_sym_union] = anon_sym_union,
+  [anon_sym_fusion] = anon_sym_fusion,
   [anon_sym_variant] = anon_sym_variant,
   [sym_nullable_modifier] = sym_nullable_modifier,
   [anon_sym_SLASH_POUND] = anon_sym_SLASH_POUND,
@@ -817,7 +817,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [anon_sym_union] = {
+  [anon_sym_fusion] = {
     .visible = true,
     .named = false,
   },
@@ -2292,30 +2292,30 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
         'r', 12,
         's', 13,
         't', 14,
-        'u', 15,
-        'v', 16,
+        'v', 15,
       );
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') SKIP(0);
       END_STATE();
     case 1:
-      if (lookahead == 'r') ADVANCE(17);
-      if (lookahead == 's') ADVANCE(18);
+      if (lookahead == 'r') ADVANCE(16);
+      if (lookahead == 's') ADVANCE(17);
       END_STATE();
     case 2:
-      if (lookahead == 'o') ADVANCE(19);
+      if (lookahead == 'o') ADVANCE(18);
       END_STATE();
     case 3:
-      if (lookahead == 'h') ADVANCE(20);
+      if (lookahead == 'h') ADVANCE(19);
       END_STATE();
     case 4:
-      if (lookahead == 'a') ADVANCE(21);
-      if (lookahead == 'e') ADVANCE(22);
+      if (lookahead == 'a') ADVANCE(20);
+      if (lookahead == 'e') ADVANCE(21);
       END_STATE();
     case 5:
-      if (lookahead == 'a') ADVANCE(23);
-      if (lookahead == 'l') ADVANCE(24);
-      if (lookahead == 'r') ADVANCE(25);
+      if (lookahead == 'a') ADVANCE(22);
+      if (lookahead == 'l') ADVANCE(23);
+      if (lookahead == 'r') ADVANCE(24);
+      if (lookahead == 'u') ADVANCE(25);
       END_STATE();
     case 6:
       if (lookahead == 'e') ADVANCE(26);
@@ -2351,37 +2351,37 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'y') ADVANCE(40);
       END_STATE();
     case 15:
-      if (lookahead == 'n') ADVANCE(41);
+      if (lookahead == 'a') ADVANCE(41);
       END_STATE();
     case 16:
-      if (lookahead == 'a') ADVANCE(42);
+      if (lookahead == 'r') ADVANCE(42);
       END_STATE();
     case 17:
-      if (lookahead == 'r') ADVANCE(43);
+      ACCEPT_TOKEN(anon_sym_as);
       END_STATE();
     case 18:
-      ACCEPT_TOKEN(anon_sym_as);
+      if (lookahead == 'o') ADVANCE(43);
       END_STATE();
     case 19:
       if (lookahead == 'o') ADVANCE(44);
       END_STATE();
     case 20:
-      if (lookahead == 'o') ADVANCE(45);
+      if (lookahead == 't') ADVANCE(45);
       END_STATE();
     case 21:
-      if (lookahead == 't') ADVANCE(46);
+      if (lookahead == 's') ADVANCE(46);
       END_STATE();
     case 22:
-      if (lookahead == 's') ADVANCE(47);
+      if (lookahead == 'l') ADVANCE(47);
       END_STATE();
     case 23:
-      if (lookahead == 'l') ADVANCE(48);
+      if (lookahead == 'o') ADVANCE(48);
       END_STATE();
     case 24:
       if (lookahead == 'o') ADVANCE(49);
       END_STATE();
     case 25:
-      if (lookahead == 'o') ADVANCE(50);
+      if (lookahead == 's') ADVANCE(50);
       END_STATE();
     case 26:
       if (lookahead == 'n') ADVANCE(51);
@@ -2430,34 +2430,34 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'p') ADVANCE(65);
       END_STATE();
     case 41:
-      if (lookahead == 'i') ADVANCE(66);
+      if (lookahead == 'r') ADVANCE(66);
       END_STATE();
     case 42:
-      if (lookahead == 'r') ADVANCE(67);
+      if (lookahead == 'a') ADVANCE(67);
       END_STATE();
     case 43:
-      if (lookahead == 'a') ADVANCE(68);
+      if (lookahead == 'l') ADVANCE(68);
       END_STATE();
     case 44:
-      if (lookahead == 'l') ADVANCE(69);
+      if (lookahead == 'i') ADVANCE(69);
       END_STATE();
     case 45:
-      if (lookahead == 'i') ADVANCE(70);
+      if (lookahead == 'a') ADVANCE(70);
       END_STATE();
     case 46:
-      if (lookahead == 'a') ADVANCE(71);
+      if (lookahead == 'c') ADVANCE(71);
       END_STATE();
     case 47:
-      if (lookahead == 'c') ADVANCE(72);
+      if (lookahead == 's') ADVANCE(72);
       END_STATE();
     case 48:
-      if (lookahead == 's') ADVANCE(73);
+      if (lookahead == 'a') ADVANCE(73);
       END_STATE();
     case 49:
-      if (lookahead == 'a') ADVANCE(74);
+      if (lookahead == 'm') ADVANCE(74);
       END_STATE();
     case 50:
-      if (lookahead == 'm') ADVANCE(75);
+      if (lookahead == 'i') ADVANCE(75);
       END_STATE();
     case 51:
       if (lookahead == '_') ADVANCE(76);
@@ -2505,34 +2505,34 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'e') ADVANCE(89);
       END_STATE();
     case 66:
-      if (lookahead == 'o') ADVANCE(90);
+      if (lookahead == 'i') ADVANCE(90);
       END_STATE();
     case 67:
-      if (lookahead == 'i') ADVANCE(91);
+      if (lookahead == 'y') ADVANCE(91);
       END_STATE();
     case 68:
-      if (lookahead == 'y') ADVANCE(92);
+      if (lookahead == 'e') ADVANCE(92);
       END_STATE();
     case 69:
-      if (lookahead == 'e') ADVANCE(93);
+      if (lookahead == 'c') ADVANCE(93);
       END_STATE();
     case 70:
-      if (lookahead == 'c') ADVANCE(94);
-      END_STATE();
-    case 71:
       ACCEPT_TOKEN(anon_sym_data);
       END_STATE();
+    case 71:
+      if (lookahead == 'r') ADVANCE(94);
+      END_STATE();
     case 72:
-      if (lookahead == 'r') ADVANCE(95);
+      if (lookahead == 'e') ADVANCE(95);
       END_STATE();
     case 73:
-      if (lookahead == 'e') ADVANCE(96);
+      if (lookahead == 't') ADVANCE(96);
       END_STATE();
     case 74:
-      if (lookahead == 't') ADVANCE(97);
+      ACCEPT_TOKEN(anon_sym_from);
       END_STATE();
     case 75:
-      ACCEPT_TOKEN(anon_sym_from);
+      if (lookahead == 'o') ADVANCE(97);
       END_STATE();
     case 76:
       if (lookahead == 'd') ADVANCE(98);
@@ -2579,28 +2579,28 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_type);
       END_STATE();
     case 90:
-      if (lookahead == 'n') ADVANCE(110);
+      if (lookahead == 'a') ADVANCE(110);
       END_STATE();
     case 91:
-      if (lookahead == 'a') ADVANCE(111);
-      END_STATE();
-    case 92:
       ACCEPT_TOKEN(anon_sym_array);
       END_STATE();
+    case 92:
+      if (lookahead == 'a') ADVANCE(111);
+      END_STATE();
     case 93:
-      if (lookahead == 'a') ADVANCE(112);
+      if (lookahead == 'e') ADVANCE(112);
       END_STATE();
     case 94:
-      if (lookahead == 'e') ADVANCE(113);
+      if (lookahead == 'i') ADVANCE(113);
       END_STATE();
     case 95:
-      if (lookahead == 'i') ADVANCE(114);
-      END_STATE();
-    case 96:
       ACCEPT_TOKEN(anon_sym_false);
       END_STATE();
-    case 97:
+    case 96:
       ACCEPT_TOKEN(sym_float_type);
+      END_STATE();
+    case 97:
+      if (lookahead == 'n') ADVANCE(114);
       END_STATE();
     case 98:
       if (lookahead == 'o') ADVANCE(115);
@@ -2640,19 +2640,19 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'r') ADVANCE(125);
       END_STATE();
     case 110:
-      ACCEPT_TOKEN(anon_sym_union);
-      END_STATE();
-    case 111:
       if (lookahead == 'n') ADVANCE(126);
       END_STATE();
-    case 112:
+    case 111:
       if (lookahead == 'n') ADVANCE(127);
       END_STATE();
-    case 113:
+    case 112:
       ACCEPT_TOKEN(anon_sym_choice);
       END_STATE();
-    case 114:
+    case 113:
       if (lookahead == 'p') ADVANCE(128);
+      END_STATE();
+    case 114:
+      ACCEPT_TOKEN(anon_sym_fusion);
       END_STATE();
     case 115:
       if (lookahead == 'c') ADVANCE(129);
@@ -3141,7 +3141,7 @@ static const TSSymbol ts_reserved_words[7][MAX_RESERVED_WORD_SET_SIZE] = {
     sym_boolean_type,
     anon_sym_choice,
     anon_sym_array,
-    anon_sym_union,
+    anon_sym_fusion,
     anon_sym_variant,
     sym_nullable_modifier,
   },
@@ -3169,7 +3169,7 @@ static const TSSymbol ts_reserved_words[7][MAX_RESERVED_WORD_SET_SIZE] = {
     sym_boolean_type,
     anon_sym_choice,
     anon_sym_array,
-    anon_sym_union,
+    anon_sym_fusion,
     anon_sym_variant,
     sym_nullable_modifier,
   },
@@ -3187,7 +3187,7 @@ static const TSSymbol ts_reserved_words[7][MAX_RESERVED_WORD_SET_SIZE] = {
     sym_boolean_type,
     anon_sym_choice,
     anon_sym_array,
-    anon_sym_union,
+    anon_sym_fusion,
     anon_sym_variant,
     sym_nullable_modifier,
   },
@@ -3241,7 +3241,7 @@ static const TSSymbol ts_reserved_words[7][MAX_RESERVED_WORD_SET_SIZE] = {
     sym_boolean_type,
     anon_sym_choice,
     anon_sym_array,
-    anon_sym_union,
+    anon_sym_fusion,
     anon_sym_variant,
     sym_nullable_modifier,
   },
@@ -3303,7 +3303,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_array] = ACTIONS(1),
     [anon_sym_LT] = ACTIONS(1),
     [anon_sym_GT] = ACTIONS(1),
-    [anon_sym_union] = ACTIONS(1),
+    [anon_sym_fusion] = ACTIONS(1),
     [anon_sym_variant] = ACTIONS(1),
     [sym_nullable_modifier] = ACTIONS(1),
     [anon_sym_SLASH_POUND] = ACTIONS(1),
@@ -7123,7 +7123,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     ACTIONS(273), 1,
@@ -7180,7 +7180,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     ACTIONS(273), 1,
@@ -7241,7 +7241,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     ACTIONS(273), 1,
@@ -7298,7 +7298,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     ACTIONS(273), 1,
@@ -7353,7 +7353,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     ACTIONS(273), 1,
@@ -7406,7 +7406,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(307), 1,
       anon_sym_array,
     ACTIONS(310), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(313), 1,
       anon_sym_variant,
     ACTIONS(316), 1,
@@ -7455,7 +7455,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     ACTIONS(273), 1,
@@ -7506,7 +7506,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     ACTIONS(273), 1,
@@ -7946,7 +7946,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [5694] = 2,
@@ -8029,7 +8029,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [5793] = 4,
@@ -8055,7 +8055,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [5823] = 5,
@@ -8082,7 +8082,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [5855] = 9,
@@ -8095,7 +8095,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8125,7 +8125,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8155,7 +8155,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8197,7 +8197,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6001] = 9,
@@ -8210,7 +8210,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8251,7 +8251,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6067] = 3,
@@ -8275,7 +8275,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6094] = 3,
@@ -8299,7 +8299,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6121] = 9,
@@ -8312,7 +8312,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8342,7 +8342,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8372,7 +8372,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8413,7 +8413,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6265] = 3,
@@ -8437,7 +8437,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6292] = 2,
@@ -8460,7 +8460,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6317] = 9,
@@ -8473,7 +8473,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8503,7 +8503,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8533,7 +8533,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8563,7 +8563,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(267), 1,
       anon_sym_array,
     ACTIONS(269), 1,
-      anon_sym_union,
+      anon_sym_fusion,
     ACTIONS(271), 1,
       anon_sym_variant,
     STATE(126), 1,
@@ -8605,7 +8605,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6502] = 2,
@@ -8628,7 +8628,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6527] = 2,
@@ -8651,7 +8651,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6552] = 2,
@@ -8674,7 +8674,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6577] = 2,
@@ -8697,7 +8697,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6602] = 2,
@@ -8719,7 +8719,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6626] = 2,
@@ -8741,7 +8741,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6650] = 2,
@@ -8763,7 +8763,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6674] = 2,
@@ -8785,7 +8785,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6698] = 2,
@@ -8851,7 +8851,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6770] = 2,
@@ -8873,7 +8873,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6794] = 2,
@@ -8917,7 +8917,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6842] = 2,
@@ -8939,7 +8939,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6866] = 2,
@@ -8961,7 +8961,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_boolean_type,
       anon_sym_choice,
       anon_sym_array,
-      anon_sym_union,
+      anon_sym_fusion,
       anon_sym_variant,
       sym_nullable_modifier,
   [6890] = 2,

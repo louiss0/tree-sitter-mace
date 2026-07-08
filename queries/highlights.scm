@@ -29,7 +29,7 @@
 
 [
   "array"
-  "union"
+  "fusion"
   "variant"
   "choice"
 ] @type.builtin

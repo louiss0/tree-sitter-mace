@@ -132,10 +132,10 @@ schema Config: {
         (int_type)))))
 
 ===
-union schema composition alias
+fusion schema composition alias
 ===
 |===|
-type User: union[Profile, Audit];
+type User: fusion[Profile, Audit];
 |===|
 [output = data] {}
 ---
@@ -158,10 +158,10 @@ type User: union[Profile, Audit];
         (data_mode)))))
 
 ===
-nested union and variant references
+nested fusion and variant references
 ===
 |===|
-type Composite: variant[union[Profile, Audit], string];
+type Composite: variant[fusion[Profile, Audit], string];
 |===|
 [output = schema]
 {

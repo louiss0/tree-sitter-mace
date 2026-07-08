@@ -662,11 +662,11 @@ schema output with variant type references
         (string_type)))))
 
 ===
-schema output with union schema composition references
+schema output with fusion schema composition references
 ===
 [output = schema]
 {
-  value: union[Profile, Audit]
+  value: fusion[Profile, Audit]
 }
 ---
 

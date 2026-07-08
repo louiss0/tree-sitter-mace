@@ -426,10 +426,10 @@ nullable User user = {
         (identifier_word)))))
 
 ===
-union typed variable declaration
+fusion typed variable declaration
 ===
 |===|
-union[string, int] value = "Ada";
+fusion[string, int] value = "Ada";
 |===|
 {
   value: value,

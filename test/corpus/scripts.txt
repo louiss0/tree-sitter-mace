@@ -260,13 +260,13 @@ schema User: {
       (boolean_type))))
 
 ===
-script block with variant and union aliases
+script block with variant and fusion aliases
 ===
 |===|
 schema Profile: { name: string, };
 schema Audit: { created_at: string, };
 type Identity: variant[string, int];
-type User: union[Profile, Audit];
+type User: fusion[Profile, Audit];
 Identity id = "Ada";
 User user = {
   name: "Ada",

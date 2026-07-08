@@ -41,7 +41,7 @@ export default grammar({
       "gen_doc",
       "schema_doc",
       "array",
-      "union",
+      "fusion",
       "variant",
       "choice",
       "record",
@@ -286,7 +286,7 @@ export default grammar({
     record_map_type: ($) => seq("record", "<", $._type_reference, ">"),
 
     union_type: ($) =>
-      prec(1, seq("union", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
+      prec(1, seq("fusion", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
 
     variant_type: ($) =>
       prec(1, seq("variant", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),

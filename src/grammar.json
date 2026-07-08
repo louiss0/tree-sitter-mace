@@ -1376,7 +1376,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "union"
+            "value": "fusion"
           },
           {
             "type": "STRING",
@@ -2968,7 +2968,7 @@
       },
       {
         "type": "STRING",
-        "value": "union"
+        "value": "fusion"
       },
       {
         "type": "STRING",

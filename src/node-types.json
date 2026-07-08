@@ -4034,6 +4034,10 @@
     "named": false
   },
   {
+    "type": "fusion",
+    "named": false
+  },
+  {
     "type": "gen_doc",
     "named": false
   },
@@ -4179,10 +4183,6 @@
   },
   {
     "type": "type",
-    "named": false
-  },
-  {
-    "type": "union",
     "named": false
   },
   {
