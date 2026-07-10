@@ -145,7 +145,7 @@ type User: fusion[Profile, Audit];
     (type_declaration
       (identifier
         (identifier_word))
-      (union_type
+      (fusion_type
         (named_type
           (identifier
             (identifier_word)))
@@ -175,7 +175,7 @@ type Composite: variant[fusion[Profile, Audit], string];
       (identifier
         (identifier_word))
       (variant_type
-        (union_type
+        (fusion_type
           (named_type
             (identifier
               (identifier_word)))

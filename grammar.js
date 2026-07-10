@@ -246,7 +246,7 @@ export default grammar({
         $.boolean_type,
         $.array_type,
         $.record_map_type,
-        $.union_type,
+        $.fusion_type,
         $.variant_type,
         $.choice_type,
         $.named_type,
@@ -285,7 +285,7 @@ export default grammar({
 
     record_map_type: ($) => seq("record", "<", $._type_reference, ">"),
 
-    union_type: ($) =>
+    fusion_type: ($) =>
       prec(1, seq("fusion", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
 
     variant_type: ($) =>

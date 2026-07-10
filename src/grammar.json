@@ -1202,7 +1202,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "union_type"
+          "name": "fusion_type"
         },
         {
           "type": "SYMBOL",
@@ -1368,7 +1368,7 @@
         }
       ]
     },
-    "union_type": {
+    "fusion_type": {
       "type": "PREC",
       "value": 1,
       "content": {

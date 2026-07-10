@@ -679,7 +679,7 @@ schema output with fusion schema composition references
       (field_name
         (identifier
           (identifier_word)))
-      (union_type
+      (fusion_type
         (named_type
           (identifier
             (identifier_word)))

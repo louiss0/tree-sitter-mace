@@ -368,6 +368,10 @@
           "named": true
         },
         {
+          "type": "fusion_type",
+          "named": true
+        },
+        {
           "type": "hex_float_type",
           "named": true
         },
@@ -389,10 +393,6 @@
         },
         {
           "type": "string_type",
-          "named": true
-        },
-        {
-          "type": "union_type",
           "named": true
         },
         {
@@ -1313,6 +1313,65 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fusion_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_type",
+          "named": true
+        },
+        {
+          "type": "boolean_type",
+          "named": true
+        },
+        {
+          "type": "choice_type",
+          "named": true
+        },
+        {
+          "type": "float_type",
+          "named": true
+        },
+        {
+          "type": "fusion_type",
+          "named": true
+        },
+        {
+          "type": "hex_float_type",
+          "named": true
+        },
+        {
+          "type": "hex_int_type",
+          "named": true
+        },
+        {
+          "type": "int_type",
+          "named": true
+        },
+        {
+          "type": "named_type",
+          "named": true
+        },
+        {
+          "type": "record_map_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "variant_type",
           "named": true
         }
       ]
@@ -2310,6 +2369,10 @@
           "named": true
         },
         {
+          "type": "fusion_type",
+          "named": true
+        },
+        {
           "type": "hex_float_type",
           "named": true
         },
@@ -2339,10 +2402,6 @@
         },
         {
           "type": "string_type",
-          "named": true
-        },
-        {
-          "type": "union_type",
           "named": true
         },
         {
@@ -2741,6 +2800,10 @@
           "named": true
         },
         {
+          "type": "fusion_type",
+          "named": true
+        },
+        {
           "type": "hex_float_type",
           "named": true
         },
@@ -2762,10 +2825,6 @@
         },
         {
           "type": "string_type",
-          "named": true
-        },
-        {
-          "type": "union_type",
           "named": true
         },
         {
@@ -3050,6 +3109,10 @@
           "named": true
         },
         {
+          "type": "fusion_type",
+          "named": true
+        },
+        {
           "type": "hex_float_type",
           "named": true
         },
@@ -3079,10 +3142,6 @@
         },
         {
           "type": "string_type",
-          "named": true
-        },
-        {
-          "type": "union_type",
           "named": true
         },
         {
@@ -3399,6 +3458,10 @@
           "named": true
         },
         {
+          "type": "fusion_type",
+          "named": true
+        },
+        {
           "type": "hex_float_type",
           "named": true
         },
@@ -3428,10 +3491,6 @@
         },
         {
           "type": "string_type",
-          "named": true
-        },
-        {
-          "type": "union_type",
           "named": true
         },
         {
@@ -3585,65 +3644,6 @@
     }
   },
   {
-    "type": "union_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "array_type",
-          "named": true
-        },
-        {
-          "type": "boolean_type",
-          "named": true
-        },
-        {
-          "type": "choice_type",
-          "named": true
-        },
-        {
-          "type": "float_type",
-          "named": true
-        },
-        {
-          "type": "hex_float_type",
-          "named": true
-        },
-        {
-          "type": "hex_int_type",
-          "named": true
-        },
-        {
-          "type": "int_type",
-          "named": true
-        },
-        {
-          "type": "named_type",
-          "named": true
-        },
-        {
-          "type": "record_map_type",
-          "named": true
-        },
-        {
-          "type": "string_type",
-          "named": true
-        },
-        {
-          "type": "union_type",
-          "named": true
-        },
-        {
-          "type": "variant_type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "variable_declaration",
     "named": true,
     "fields": {},
@@ -3709,6 +3709,10 @@
         },
         {
           "type": "float_type",
+          "named": true
+        },
+        {
+          "type": "fusion_type",
           "named": true
         },
         {
@@ -3812,10 +3816,6 @@
           "named": true
         },
         {
-          "type": "union_type",
-          "named": true
-        },
-        {
           "type": "variant_type",
           "named": true
         }
@@ -3847,6 +3847,10 @@
           "named": true
         },
         {
+          "type": "fusion_type",
+          "named": true
+        },
+        {
           "type": "hex_float_type",
           "named": true
         },
@@ -3868,10 +3872,6 @@
         },
         {
           "type": "string_type",
-          "named": true
-        },
-        {
-          "type": "union_type",
           "named": true
         },
         {

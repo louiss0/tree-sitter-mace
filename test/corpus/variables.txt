@@ -439,7 +439,7 @@ fusion[string, int] value = "Ada";
 (source_file
   (script_block
     (variable_declaration
-      (union_type
+      (fusion_type
         (string_type)
         (int_type))
       (identifier
