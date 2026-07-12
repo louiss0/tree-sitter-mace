@@ -9,70 +9,993 @@ default data output block
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal)
       (inline_description
         (description_text)))))
 
 ===
-output and record field shorthands
+explicit data output block
 ===
-|===|
-string name = "Ada";
-schema User: { name: string, };
-User user = { name, };
-|===|
 [output = data]
 {
-  name,
-  user,
+  name: "Ada"
 }
 ---
 
 (source_file
-  (script_block
-    (variable_declaration
-      (string_type)
-      (identifier
-        (identifier_word))
-      (string_literal))
-    (schema_declaration
-      (identifier
-        (identifier_word))
-      (record_type
-        (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
-          (string_type))))
-    (variable_declaration
-      (named_type
-        (identifier
-          (identifier_word)))
-      (identifier
-        (identifier_word))
-      (record_literal
-        (record_field
-          (field_name
-            (identifier
-              (identifier_word)))))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
+      (identifier
+        (identifier_word))
+      (string_literal))))
+
+===
+data output with schema directive
+===
+|===|
+schema User: {
+  name: string,
+  age?: int
+}
+|===|
+[output = data, schema = User]
+{
+  name: "Ada",
+  age?: 27
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))
+        (schema_field
+          (identifier
+            (identifier_word))
+          (optional_marker)
+          (int_type)))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode))
+      (schema_directive
         (identifier
           (identifier_word))))
     (output_field
-      (field_name
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (output_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (int_literal))))
+
+===
+data output with schema directive without data
+===
+
+|===|
+schema User: {
+  name: string,
+  age?: int
+}
+|===|
+
+[schema=User]
+{
+  name: "Ada",
+  age?: 27
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))
+        (schema_field
+          (identifier
+            (identifier_word))
+          (optional_marker)
+          (int_type)))))
+  (output_block
+    (directive_list
+      (schema_directive
+        (identifier
+          (identifier_word))))
+    (output_field
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (output_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (int_literal))))
+
+===
+data output with schema directive without data
+===
+
+
+
+[schema_file = "./user-schema.mace"]
+{
+  name: "Ada",
+  age?: 27
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (schema_file_directive
+        (string_literal)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (output_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (int_literal))))
+
+===
+schema output with type references
+===
+[output = schema]
+"""
+# User Output
+"""
+{
+  name: string, /# The user's name
+  scores: array<array<int>>,
+  profile?: Profile
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (inline_doc_block
+      (doc_block_string))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (string_type)
+      (inline_description
+        (description_text)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (array_type
+        (array_type
+          (int_type))))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (named_type
         (identifier
           (identifier_word))))))
 
 ===
-array access in output expressions
+schema output with variant type references
+===
+[output = schema]
+{
+  value: variant[string, int],
+  profile?: variant[Profile, string]
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (variant_type
+        (string_type)
+        (int_type)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (variant_type
+        (named_type
+          (identifier
+            (identifier_word)))
+        (string_type)))))
+
+===
+schema output with union schema composition references
+===
+[output = schema]
+{
+  value: union[Profile, Audit]
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (identifier
+        (identifier_word))
+      (union_type
+        (named_type
+          (identifier
+            (identifier_word)))
+        (named_type
+          (identifier
+            (identifier_word)))))))
+
+===
+optional output field
+===
+{
+  enabled?: true
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (optional_marker)
+      (boolean_literal))))
+
+===
+duplicate output directives are invalid
+===
+[output = data, output = schema]
+{
+  name: "Ada";
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode))
+      (ERROR
+        (ERROR
+          (identifier_word))))
+    (output_field
+      (identifier
+        (identifier_word))
+      (string_literal))))
+
+===
+array nesting level 1
+===
+{
+  value: [1];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (int_literal)))))
+
+===
+array nesting level 2
+===
+{
+  value: [[1]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (int_literal))))))
+
+===
+array nesting level 3
+===
+{
+  value: [[[1]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (int_literal)))))))
+
+===
+array nesting level 4
+===
+{
+  value: [[[[1]]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (array_literal
+              (int_literal))))))))
+
+===
+array nesting level 5
+===
+{
+  value: [[[[[1]]]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (array_literal
+              (array_literal
+                (int_literal)))))))))
+
+===
+array nesting level 6
+===
+{
+  value: [[[[[[1]]]]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (array_literal
+              (array_literal
+                (array_literal
+                  (int_literal))))))))))
+
+===
+array nesting level 7
+===
+{
+  value: [[[[[[[1]]]]]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (array_literal
+              (array_literal
+                (array_literal
+                  (array_literal
+                    (int_literal)))))))))))
+
+===
+array nesting level 8
+===
+{
+  value: [[[[[[[[1]]]]]]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (array_literal
+              (array_literal
+                (array_literal
+                  (array_literal
+                    (array_literal
+                      (int_literal))))))))))))
+
+===
+array nesting level 9
+===
+{
+  value: [[[[[[[[[1]]]]]]]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (array_literal
+              (array_literal
+                (array_literal
+                  (array_literal
+                    (array_literal
+                      (array_literal
+                        (int_literal)))))))))))))
+
+===
+array nesting level 10
+===
+{
+  value: [[[[[[[[[[1]]]]]]]]]];
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (array_literal
+        (array_literal
+          (array_literal
+            (array_literal
+              (array_literal
+                (array_literal
+                  (array_literal
+                    (array_literal
+                      (array_literal
+                        (array_literal
+                          (int_literal))))))))))))))
+
+===
+record nesting level 1
+===
+{
+  value: {
+    level1: 1;
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (int_literal))))))
+
+===
+record nesting level 2
+===
+{
+  value: {
+    level1: {
+      level2: 1;
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (int_literal))))))))
+
+===
+record nesting level 3
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: 1;
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (int_literal))))))))))
+
+===
+record nesting level 4
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: {
+          level4: 1;
+        };
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (record_literal
+                    (record_field
+                      (identifier
+                        (identifier_word))
+                      (int_literal))))))))))))
+
+===
+record nesting level 5
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: {
+          level4: {
+            level5: 1;
+          };
+        };
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (record_literal
+                    (record_field
+                      (identifier
+                        (identifier_word))
+                      (record_literal
+                        (record_field
+                          (identifier
+                            (identifier_word))
+                          (int_literal))))))))))))))
+
+===
+record nesting level 6
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: {
+          level4: {
+            level5: {
+              level6: 1;
+            };
+          };
+        };
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (record_literal
+                    (record_field
+                      (identifier
+                        (identifier_word))
+                      (record_literal
+                        (record_field
+                          (identifier
+                            (identifier_word))
+                          (record_literal
+                            (record_field
+                              (identifier
+                                (identifier_word))
+                              (int_literal))))))))))))))))
+
+===
+record nesting level 7
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: {
+          level4: {
+            level5: {
+              level6: {
+                level7: 1;
+              };
+            };
+          };
+        };
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (record_literal
+                    (record_field
+                      (identifier
+                        (identifier_word))
+                      (record_literal
+                        (record_field
+                          (identifier
+                            (identifier_word))
+                          (record_literal
+                            (record_field
+                              (identifier
+                                (identifier_word))
+                              (record_literal
+                                (record_field
+                                  (identifier
+                                    (identifier_word))
+                                  (int_literal))))))))))))))))))
+
+===
+record nesting level 8
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: {
+          level4: {
+            level5: {
+              level6: {
+                level7: {
+                  level8: 1;
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (record_literal
+                    (record_field
+                      (identifier
+                        (identifier_word))
+                      (record_literal
+                        (record_field
+                          (identifier
+                            (identifier_word))
+                          (record_literal
+                            (record_field
+                              (identifier
+                                (identifier_word))
+                              (record_literal
+                                (record_field
+                                  (identifier
+                                    (identifier_word))
+                                  (record_literal
+                                    (record_field
+                                      (identifier
+                                        (identifier_word))
+                                      (int_literal))))))))))))))))))))
+
+===
+record nesting level 9
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: {
+          level4: {
+            level5: {
+              level6: {
+                level7: {
+                  level8: {
+                    level9: 1;
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (record_literal
+                    (record_field
+                      (identifier
+                        (identifier_word))
+                      (record_literal
+                        (record_field
+                          (identifier
+                            (identifier_word))
+                          (record_literal
+                            (record_field
+                              (identifier
+                                (identifier_word))
+                              (record_literal
+                                (record_field
+                                  (identifier
+                                    (identifier_word))
+                                  (record_literal
+                                    (record_field
+                                      (identifier
+                                        (identifier_word))
+                                      (record_literal
+                                        (record_field
+                                          (identifier
+                                            (identifier_word))
+                                          (int_literal))))))))))))))))))))))
+
+===
+record nesting level 10
+===
+{
+  value: {
+    level1: {
+      level2: {
+        level3: {
+          level4: {
+            level5: {
+              level6: {
+                level7: {
+                  level8: {
+                    level9: {
+                      level10: 1;
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (record_literal
+            (record_field
+              (identifier
+                (identifier_word))
+              (record_literal
+                (record_field
+                  (identifier
+                    (identifier_word))
+                  (record_literal
+                    (record_field
+                      (identifier
+                        (identifier_word))
+                      (record_literal
+                        (record_field
+                          (identifier
+                            (identifier_word))
+                          (record_literal
+                            (record_field
+                              (identifier
+                                (identifier_word))
+                              (record_literal
+                                (record_field
+                                  (identifier
+                                    (identifier_word))
+                                  (record_literal
+                                    (record_field
+                                      (identifier
+                                        (identifier_word))
+                                      (record_literal
+                                        (record_field
+                                          (identifier
+                                            (identifier_word))
+                                          (record_literal
+                                            (record_field
+                                              (identifier
+                                                (identifier_word))
+                                              (int_literal))))))))))))))))))))))))
+first
+17
+===
+default data output block
+===
+{
+  name: "Ada" /# The emitted user name
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (string_literal)
+      (inline_description
+        (description_text)))))
+
 ===
 |===|
 schema User: {
@@ -95,9 +1018,8 @@ array<User> users = [{ name: "Ada" }, { name: "Linus" }];
         (identifier_word))
       (record_type
         (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (string_type))))
     (variable_declaration
       (array_type
@@ -117,32 +1039,28 @@ array<User> users = [{ name: "Ada" }, { name: "Linus" }];
       (array_literal
         (record_literal
           (record_field
-            (field_name
-              (identifier
-                (identifier_word)))
+            (identifier
+              (identifier_word))
             (string_literal)))
         (record_literal
           (record_field
-            (field_name
-              (identifier
-                (identifier_word)))
+            (identifier
+              (identifier_word))
             (string_literal))))))
   (output_block
     (directive_list
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_access
         (identifier
           (identifier_word))
         (int_literal)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (member_access
         (array_access
           (identifier
@@ -151,8 +1069,6 @@ array<User> users = [{ name: "Ada" }, { name: "Linus" }];
         (identifier
           (identifier_word))))))
 
-===
-nested array access level 1
 ===
 [output = data]
 {
@@ -166,16 +1082,13 @@ nested array access level 1
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_access
         (array_literal
           (int_literal))
         (int_literal)))))
 
-===
-nested array access level 2
 ===
 [output = data]
 {
@@ -189,9 +1102,8 @@ nested array access level 2
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_access
         (array_access
           (array_literal
@@ -200,8 +1112,6 @@ nested array access level 2
           (int_literal))
         (int_literal)))))
 
-===
-nested array access level 3
 ===
 [output = data]
 {
@@ -215,9 +1125,8 @@ nested array access level 3
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_access
         (array_access
           (array_access
@@ -229,8 +1138,6 @@ nested array access level 3
           (int_literal))
         (int_literal)))))
 
-===
-nested array access level 4
 ===
 [output = data]
 {
@@ -244,9 +1151,8 @@ nested array access level 4
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_access
         (array_access
           (array_access
@@ -262,8 +1168,6 @@ nested array access level 4
         (int_literal)))))
 
 ===
-nested array access level 5
-===
 [output = data]
 {
   result: [[[[[1]]]]][0][0][0][0][0],
@@ -276,9 +1180,8 @@ nested array access level 5
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_access
         (array_access
           (array_access
@@ -311,9 +1214,8 @@ explicit data output block
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal))))
 
 ===
@@ -339,14 +1241,12 @@ schema User: {
         (identifier_word))
       (record_type
         (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (string_type))
         (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (optional_marker)
           (int_type)))))
   (output_block
@@ -357,14 +1257,12 @@ schema User: {
         (identifier
           (identifier_word))))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (optional_marker)
       (int_literal))))
 
@@ -393,14 +1291,12 @@ schema User: {
         (identifier_word))
       (record_type
         (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (string_type))
         (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (optional_marker)
           (int_type)))))
   (output_block
@@ -409,14 +1305,12 @@ schema User: {
         (identifier
           (identifier_word))))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (optional_marker)
       (int_literal))))
 
@@ -439,150 +1333,14 @@ data output with schema directive without data
       (schema_file_directive
         (string_literal)))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (optional_marker)
       (int_literal))))
-
-===
-data output with parse directive without data
-===
-|===|
-schema Runtime: {
-  env: string,
-}
-|===|
-[parse = Runtime]
-{
-  result: $env,
-}
----
-
-(source_file
-  (script_block
-    (schema_declaration
-      (identifier
-        (identifier_word))
-      (record_type
-        (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
-          (string_type)))))
-  (output_block
-    (directive_list
-      (parse_directive
-        (identifier
-          (identifier_word))))
-    (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
-      (parsed_variable_reference
-        (identifier
-          (identifier_word))))))
-
-===
-data output with parse_file directive without data
-===
-[parse_file = "./runtime.mace"]
-{
-  result: $env,
-}
----
-
-(source_file
-  (output_block
-    (directive_list
-      (parse_file_directive
-        (string_literal)))
-    (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
-      (parsed_variable_reference
-        (identifier
-          (identifier_word))))))
-
-===
-data output with imported parse directive without data
-===
-|===|
-from "./nx_inputs.mace" import-as NxInputs;
-|===|
-[parse = NxInputs]
-{
-  name: $project.name,
-}
----
-
-(source_file
-  (script_block
-    (import_declaration
-      (string_literal)
-      (identifier
-        (identifier_word))))
-  (output_block
-    (directive_list
-      (parse_directive
-        (identifier
-          (identifier_word))))
-    (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
-      (member_access
-        (parsed_variable_reference
-          (identifier
-            (identifier_word)))
-        (identifier
-          (identifier_word))))))
-
-===
-data output with reordered directives
-===
-|===|
-schema Runtime: {
-  env: string,
-}
-|===|
-[parse = Runtime, output = data]
-{
-  result: $env,
-}
----
-
-(source_file
-  (script_block
-    (schema_declaration
-      (identifier
-        (identifier_word))
-      (record_type
-        (schema_field
-          (field_name
-            (identifier
-              (identifier_word)))
-          (string_type)))))
-  (output_block
-    (directive_list
-      (parse_directive
-        (identifier
-          (identifier_word)))
-      (output_mode_directive
-        (data_mode)))
-    (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
-      (parsed_variable_reference
-        (identifier
-          (identifier_word))))))
 
 ===
 schema output with type references
@@ -606,23 +1364,20 @@ schema output with type references
     (inline_doc_block
       (doc_block_string))
     (output_schema_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_type)
       (inline_description
         (description_text)))
     (output_schema_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_type
         (array_type
           (int_type))))
     (output_schema_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (optional_marker)
       (named_type
         (identifier
@@ -644,16 +1399,14 @@ schema output with variant type references
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (variant_type
         (string_type)
         (int_type)))
     (output_schema_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (optional_marker)
       (variant_type
         (named_type
@@ -662,11 +1415,11 @@ schema output with variant type references
         (string_type)))))
 
 ===
-schema output with fusion schema composition references
+schema output with union schema composition references
 ===
 [output = schema]
 {
-  value: fusion[Profile, Audit]
+  value: union[Profile, Audit]
 }
 ---
 
@@ -676,10 +1429,9 @@ schema output with fusion schema composition references
       (output_mode_directive
         (schema_mode)))
     (output_schema_field
-      (field_name
-        (identifier
-          (identifier_word)))
-      (fusion_type
+      (identifier
+        (identifier_word))
+      (union_type
         (named_type
           (identifier
             (identifier_word)))
@@ -698,49 +1450,17 @@ optional output field
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (optional_marker)
       (boolean_literal))))
-
-===
-keyword field names inside record and output fields
-===
-[output = data]
-{
-  type: {
-    version: version,
-    type: version,
-  },
-}
----
-
-(source_file
-  (output_block
-    (directive_list
-      (output_mode_directive
-        (data_mode)))
-    (output_field
-      (field_name)
-      (record_literal
-        (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
-          (identifier
-            (identifier_word)))
-        (record_field
-          (field_name)
-          (identifier
-            (identifier_word)))))))
 
 ===
 duplicate output directives are invalid
 ===
 [output = data, output = schema]
 {
-  name: "Ada",
+  name: "Ada";
 }
 ---
 
@@ -750,27 +1470,26 @@ duplicate output directives are invalid
       (output_mode_directive
         (data_mode))
       (ERROR
-        (identifier_word)))
+        (ERROR
+          (identifier_word))))
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (string_literal))))
 
 ===
 array nesting level 1
 ===
 {
-  value: [1],
+  value: [1];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (int_literal)))))
 
@@ -778,16 +1497,15 @@ array nesting level 1
 array nesting level 2
 ===
 {
-  value: [[1]],
+  value: [[1]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (int_literal))))))
@@ -796,16 +1514,15 @@ array nesting level 2
 array nesting level 3
 ===
 {
-  value: [[[1]]],
+  value: [[[1]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -815,16 +1532,15 @@ array nesting level 3
 array nesting level 4
 ===
 {
-  value: [[[[1]]]],
+  value: [[[[1]]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -835,16 +1551,15 @@ array nesting level 4
 array nesting level 5
 ===
 {
-  value: [[[[[1]]]]],
+  value: [[[[[1]]]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -856,16 +1571,15 @@ array nesting level 5
 array nesting level 6
 ===
 {
-  value: [[[[[[1]]]]]],
+  value: [[[[[[1]]]]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -878,16 +1592,15 @@ array nesting level 6
 array nesting level 7
 ===
 {
-  value: [[[[[[[1]]]]]]],
+  value: [[[[[[[1]]]]]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -901,16 +1614,15 @@ array nesting level 7
 array nesting level 8
 ===
 {
-  value: [[[[[[[[1]]]]]]]],
+  value: [[[[[[[[1]]]]]]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -925,16 +1637,15 @@ array nesting level 8
 array nesting level 9
 ===
 {
-  value: [[[[[[[[[1]]]]]]]]],
+  value: [[[[[[[[[1]]]]]]]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -950,16 +1661,15 @@ array nesting level 9
 array nesting level 10
 ===
 {
-  value: [[[[[[[[[[1]]]]]]]]]],
+  value: [[[[[[[[[[1]]]]]]]]]];
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (array_literal
         (array_literal
           (array_literal
@@ -977,22 +1687,20 @@ record nesting level 1
 ===
 {
   value: {
-    level1: 1,
-  },
+    level1: 1;
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (int_literal))))))
 
 ===
@@ -1001,28 +1709,25 @@ record nesting level 2
 {
   value: {
     level1: {
-      level2: 1,
-    },
-  },
+      level2: 1;
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (int_literal))))))))
 
 ===
@@ -1032,34 +1737,30 @@ record nesting level 3
   value: {
     level1: {
       level2: {
-        level3: 1,
-      },
-    },
-  },
+        level3: 1;
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (int_literal))))))))))
 
 ===
@@ -1070,40 +1771,35 @@ record nesting level 4
     level1: {
       level2: {
         level3: {
-          level4: 1,
-        },
-      },
-    },
-  },
+          level4: 1;
+        };
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (field_name
-                        (identifier
-                          (identifier_word)))
+                      (identifier
+                        (identifier_word))
                       (int_literal))))))))))))
 
 ===
@@ -1115,46 +1811,40 @@ record nesting level 5
       level2: {
         level3: {
           level4: {
-            level5: 1,
-          },
-        },
-      },
-    },
-  },
+            level5: 1;
+          };
+        };
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (field_name
-                        (identifier
-                          (identifier_word)))
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (field_name
-                            (identifier
-                              (identifier_word)))
+                          (identifier
+                            (identifier_word))
                           (int_literal))))))))))))))
 
 ===
@@ -1167,52 +1857,45 @@ record nesting level 6
         level3: {
           level4: {
             level5: {
-              level6: 1,
-            },
-          },
-        },
-      },
-    },
-  },
+              level6: 1;
+            };
+          };
+        };
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (field_name
-                        (identifier
-                          (identifier_word)))
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (field_name
-                            (identifier
-                              (identifier_word)))
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (field_name
-                                (identifier
-                                  (identifier_word)))
+                              (identifier
+                                (identifier_word))
                               (int_literal))))))))))))))))
 
 ===
@@ -1226,58 +1909,50 @@ record nesting level 7
           level4: {
             level5: {
               level6: {
-                level7: 1,
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+                level7: 1;
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (field_name
-                        (identifier
-                          (identifier_word)))
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (field_name
-                            (identifier
-                              (identifier_word)))
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (field_name
-                                (identifier
-                                  (identifier_word)))
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (field_name
-                                    (identifier
-                                      (identifier_word)))
+                                  (identifier
+                                    (identifier_word))
                                   (int_literal))))))))))))))))))
 
 ===
@@ -1292,64 +1967,55 @@ record nesting level 8
             level5: {
               level6: {
                 level7: {
-                  level8: 1,
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+                  level8: 1;
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (field_name
-                        (identifier
-                          (identifier_word)))
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (field_name
-                            (identifier
-                              (identifier_word)))
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (field_name
-                                (identifier
-                                  (identifier_word)))
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (field_name
-                                    (identifier
-                                      (identifier_word)))
+                                  (identifier
+                                    (identifier_word))
                                   (record_literal
                                     (record_field
-                                      (field_name
-                                        (identifier
-                                          (identifier_word)))
+                                      (identifier
+                                        (identifier_word))
                                       (int_literal))))))))))))))))))))
 
 ===
@@ -1365,70 +2031,60 @@ record nesting level 9
               level6: {
                 level7: {
                   level8: {
-                    level9: 1,
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+                    level9: 1;
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (field_name
-                        (identifier
-                          (identifier_word)))
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (field_name
-                            (identifier
-                              (identifier_word)))
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (field_name
-                                (identifier
-                                  (identifier_word)))
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (field_name
-                                    (identifier
-                                      (identifier_word)))
+                                  (identifier
+                                    (identifier_word))
                                   (record_literal
                                     (record_field
-                                      (field_name
-                                        (identifier
-                                          (identifier_word)))
+                                      (identifier
+                                        (identifier_word))
                                       (record_literal
                                         (record_field
-                                          (field_name
-                                            (identifier
-                                              (identifier_word)))
+                                          (identifier
+                                            (identifier_word))
                                           (int_literal))))))))))))))))))))))
 
 ===
@@ -1445,74 +2101,65 @@ record nesting level 10
                 level7: {
                   level8: {
                     level9: {
-                      level10: 1,
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
+                      level10: 1;
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
 ---
 
 (source_file
   (output_block
     (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
+      (identifier
+        (identifier_word))
       (record_literal
         (record_field
-          (field_name
-            (identifier
-              (identifier_word)))
+          (identifier
+            (identifier_word))
           (record_literal
             (record_field
-              (field_name
-                (identifier
-                  (identifier_word)))
+              (identifier
+                (identifier_word))
               (record_literal
                 (record_field
-                  (field_name
-                    (identifier
-                      (identifier_word)))
+                  (identifier
+                    (identifier_word))
                   (record_literal
                     (record_field
-                      (field_name
-                        (identifier
-                          (identifier_word)))
+                      (identifier
+                        (identifier_word))
                       (record_literal
                         (record_field
-                          (field_name
-                            (identifier
-                              (identifier_word)))
+                          (identifier
+                            (identifier_word))
                           (record_literal
                             (record_field
-                              (field_name
-                                (identifier
-                                  (identifier_word)))
+                              (identifier
+                                (identifier_word))
                               (record_literal
                                 (record_field
-                                  (field_name
-                                    (identifier
-                                      (identifier_word)))
+                                  (identifier
+                                    (identifier_word))
                                   (record_literal
                                     (record_field
-                                      (field_name
-                                        (identifier
-                                          (identifier_word)))
+                                      (identifier
+                                        (identifier_word))
                                       (record_literal
                                         (record_field
-                                          (field_name
-                                            (identifier
-                                              (identifier_word)))
+                                          (identifier
+                                            (identifier_word))
                                           (record_literal
                                             (record_field
-                                              (field_name
-                                                (identifier
-                                                  (identifier_word)))
+                                              (identifier
+                                                (identifier_word))
                                               (int_literal))))))))))))))))))))))))
+skip
+232
