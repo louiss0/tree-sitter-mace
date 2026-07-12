@@ -445,7 +445,7 @@ export default grammar({
         PREC.member,
         seq(
           field("target", choice($._primary_expression, $.member_access, $.array_access)),
-          ".",
+          field("operator", choice(".", "?.")),
           field("member", $.identifier),
         ),
       ),
