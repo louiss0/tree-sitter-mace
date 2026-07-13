@@ -16,13 +16,14 @@ const PREC = {
   bitwise_and: 6,
   merge: 7,
   equality: 8,
-  relational: 9,
-  shift: 10,
-  additive: 11,
-  multiplicative: 12,
-  exponent: 13,
-  unary: 14,
-  member: 15,
+  type_test: 9,
+  relational: 10,
+  shift: 11,
+  additive: 12,
+  multiplicative: 13,
+  exponent: 14,
+  unary: 15,
+  member: 16,
 };
 
 export default grammar({
@@ -54,6 +55,7 @@ export default grammar({
       "schema_file",
       "data",
       "injectable",
+      "is",
       "true",
       "false",
     ],
@@ -372,6 +374,7 @@ export default grammar({
         $.bitwise_and_expression,
         $.merge_expression,
         $.equality_expression,
+        $.type_test_expression,
         $.relational_expression,
         $.shift_expression,
         $.additive_expression,
@@ -472,6 +475,16 @@ export default grammar({
     merge_expression: ($) =>
       prec.left(PREC.merge, seq($._expression, $.merge_operator, $._expression)),
 
+    type_test_expression: ($) =>
+      prec.left(
+        PREC.type_test,
+        seq(
+          field("expression", $._expression),
+          field("operator", $.is_operator),
+          field("target_type", $._type_reference),
+        ),
+      ),
+
     equality_expression: ($) =>
       prec.left(
         PREC.equality,
@@ -544,5 +557,6 @@ export default grammar({
     strict_not_equal_operator: (_) => "!==",
     and_and_operator: (_) => "&&",
     or_or_operator: (_) => "||",
+    is_operator: (_) => "is",
   },
 });

@@ -1946,6 +1946,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "type_test_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "relational_expression"
         },
         {
@@ -2046,7 +2050,7 @@
     },
     "member_access": {
       "type": "PREC_LEFT",
-      "value": 15,
+      "value": 16,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2084,7 +2088,7 @@
     },
     "self_reference": {
       "type": "PREC_LEFT",
-      "value": 16,
+      "value": 17,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2121,7 +2125,7 @@
     },
     "unary_expression": {
       "type": "PREC",
-      "value": 14,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2155,7 +2159,7 @@
     },
     "exponent_expression": {
       "type": "PREC_RIGHT",
-      "value": 13,
+      "value": 14,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2176,7 +2180,7 @@
     },
     "multiplicative_expression": {
       "type": "PREC_LEFT",
-      "value": 12,
+      "value": 13,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2210,7 +2214,7 @@
     },
     "additive_expression": {
       "type": "PREC_LEFT",
-      "value": 11,
+      "value": 12,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2240,7 +2244,7 @@
     },
     "shift_expression": {
       "type": "PREC_LEFT",
-      "value": 10,
+      "value": 11,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2274,7 +2278,7 @@
     },
     "relational_expression": {
       "type": "PREC_LEFT",
-      "value": 9,
+      "value": 10,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2327,6 +2331,39 @@
           {
             "type": "SYMBOL",
             "name": "_expression"
+          }
+        ]
+      }
+    },
+    "type_test_expression": {
+      "type": "PREC_LEFT",
+      "value": 9,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "expression",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "operator",
+            "content": {
+              "type": "SYMBOL",
+              "name": "is_operator"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "target_type",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_type_reference"
+            }
           }
         ]
       }
@@ -2727,6 +2764,10 @@
     "or_or_operator": {
       "type": "STRING",
       "value": "||"
+    },
+    "is_operator": {
+      "type": "STRING",
+      "value": "is"
     }
   },
   "extras": [
@@ -2821,6 +2862,10 @@
       {
         "type": "STRING",
         "value": "injectable"
+      },
+      {
+        "type": "STRING",
+        "value": "is"
       },
       {
         "type": "STRING",

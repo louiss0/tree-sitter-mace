@@ -1,0 +1,210 @@
+==================
+Primitive type test
+==================
+|===|
+variant[string, int] value = "Mace";
+boolean result = value is string;
+|===| { result: result }
+
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (variant_type
+        (string_type)
+        (int_type))
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (variable_declaration
+      (boolean_type)
+      (identifier
+        (identifier_word))
+      (type_test_expression
+        (identifier
+          (identifier_word))
+        (is_operator)
+        (string_type))))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
+
+==================
+Schema, array, member, and alias type tests
+==================
+|===|
+type Name: string;
+schema Local: { value: string };
+variant[Local, string] config = { value: "x" };
+variant[array<string>, string] values = ["x"];
+boolean schema_test = config.value is string;
+boolean container_test = values is array<string>;
+boolean alias_test = values is Name;
+|===| { schema_test: schema_test, container_test: container_test, alias_test: alias_test }
+
+---
+
+(source_file
+  (script_block
+    (type_declaration
+      (identifier
+        (identifier_word))
+      (string_type))
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (identifier
+            (identifier_word))
+          (string_type))))
+    (variable_declaration
+      (variant_type
+        (named_type
+          (identifier
+            (identifier_word)))
+        (string_type))
+      (identifier
+        (identifier_word))
+      (record_literal
+        (record_field
+          (identifier
+            (identifier_word))
+          (string_literal))))
+    (variable_declaration
+      (variant_type
+        (array_type
+          (string_type))
+        (string_type))
+      (identifier
+        (identifier_word))
+      (array_literal
+        (string_literal)))
+    (variable_declaration
+      (boolean_type)
+      (identifier
+        (identifier_word))
+      (type_test_expression
+        (member_access
+          (identifier
+            (identifier_word))
+          (identifier
+            (identifier_word)))
+        (is_operator)
+        (string_type)))
+    (variable_declaration
+      (boolean_type)
+      (identifier
+        (identifier_word))
+      (type_test_expression
+        (identifier
+          (identifier_word))
+        (is_operator)
+        (array_type
+          (string_type))))
+    (variable_declaration
+      (boolean_type)
+      (identifier
+        (identifier_word))
+      (type_test_expression
+        (identifier
+          (identifier_word))
+        (is_operator)
+        (named_type
+          (identifier
+            (identifier_word))))))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))
+
+==================
+Type-test precedence
+==================
+|===|
+variant[string, int] value = "x";
+boolean equality = value is string == true;
+boolean conjunction = true && value is string;
+string result = value is string ? value : "fallback";
+|===| { equality: equality, conjunction: conjunction, result: result }
+
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (variant_type
+        (string_type)
+        (int_type))
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (variable_declaration
+      (boolean_type)
+      (identifier
+        (identifier_word))
+      (equality_expression
+        (type_test_expression
+          (identifier
+            (identifier_word))
+          (is_operator)
+          (string_type))
+        (equal_equal_operator)
+        (boolean_literal)))
+    (variable_declaration
+      (boolean_type)
+      (identifier
+        (identifier_word))
+      (logical_and_expression
+        (boolean_literal)
+        (and_and_operator)
+        (type_test_expression
+          (identifier
+            (identifier_word))
+          (is_operator)
+          (string_type))))
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (conditional_expression
+        (type_test_expression
+          (identifier
+            (identifier_word))
+          (is_operator)
+          (string_type))
+        (identifier
+          (identifier_word))
+        (string_literal))))
+  (output_block
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))
+    (output_field
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word)))))

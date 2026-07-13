@@ -2,16 +2,15 @@
   "from"
   "import"
   "type"
+  "enum"
   "schema"
   "gen_doc"
   "schema_doc"
   "output"
   "schema_file"
-  "parse"
-  "parse_file"
 ] @keyword
 
-(nullable_modifier) @keyword.modifier
+(injectable_modifier) @keyword.modifier
 
 [
   (data_mode)
@@ -29,24 +28,15 @@
 
 [
   "array"
-  "fusion"
+  "union"
   "variant"
-  "choice"
 ] @type.builtin
 
-(type_declaration
-  (identifier) @type.definition)
-
-(schema_declaration
-  (identifier) @type.definition)
-
-(gen_doc_declaration
-  "gen_doc" @keyword
-  (identifier) @type.definition)
-
-(schema_doc_declaration
-  "schema_doc" @keyword
-  (identifier) @type.definition)
+(type_declaration (identifier) @type.definition)
+(enum_declaration (identifier) @type.definition)
+(schema_declaration (identifier) @type.definition)
+(gen_doc_declaration "gen_doc" @keyword (identifier) @type.definition)
+(schema_doc_declaration "schema_doc" @keyword (identifier) @type.definition)
 
 [
   "summary"
@@ -55,66 +45,31 @@
 ] @property
 
 (import_declaration
-  [
-    "import"
-    "-"
-    "as"
-  ] @keyword
+  "import" @keyword
   (identifier) @type)
 
-(named_type
-  (identifier) @type)
-
-(schema_directive
-  (identifier) @type)
-
-(variable_declaration
-  (_)
-  (identifier) @variable)
-
-(variable_declaration
-  (nullable_modifier)
-  (_)
-  (identifier) @variable)
+(named_type (identifier) @type)
+(schema_directive (identifier) @type)
+(variable_declaration (identifier) @variable)
 
 (member_access
   target: (identifier) @variable
   member: (identifier) @property)
-
-(member_access
-  target: (parsed_variable_reference)
-  member: (identifier) @property)
-
 (member_access
   target: (member_access)
   member: (identifier) @property)
 
-(member_access
-  target: (array_access)
-  member: (identifier) @property)
-
 [
-  (schema_field
-    (field_name) @property)
-  (output_field
-    (field_name) @property)
-  (output_schema_field
-    (field_name) @property)
-  (record_field
-    (field_name) @property)
+  (schema_field (identifier) @property)
+  (output_field (identifier) @property)
+  (output_schema_field (identifier) @property)
+  (record_field (identifier) @property)
+  (prop_entry (identifier) @property)
 ]
 
-(prop_entry
-  (field_name) @property)
-
 (self_reference
-  "$" @punctuation.special
-  "self" @variable.language
+  "$self" @variable.language
   (identifier) @property)
-
-(parsed_variable_reference
-  "$" @punctuation.special
-  (identifier) @variable)
 
 [
   (string_literal)
@@ -127,18 +82,14 @@
   (description_text)
 ] @comment
 
-(inline_description
-  "/#" @comment)
-(interpolation
-  "$(" @punctuation.special
-  ")" @punctuation.special)
+(inline_description "/#" @comment)
+(interpolation "$(" @punctuation.special ")" @punctuation.special)
 
 (int_literal) @number
 (float_literal) @number.float
 (hex_int_literal) @number
 (hex_float_literal) @number.float
 (boolean_literal) @boolean
-(null_literal) @constant.builtin
 (comment) @comment
 
 [
@@ -158,32 +109,20 @@
   (pipe_operator)
   (less_operator)
   (less_equal_operator)
+  (merge_operator)
   (greater_operator)
   (greater_equal_operator)
   (equal_equal_operator)
   (not_equal_operator)
+  (strict_equal_operator)
+  (strict_not_equal_operator)
   (and_and_operator)
   (or_or_operator)
-  (in_operator)
+  (is_operator)
   (optional_marker)
   "="
   "?"
 ] @operator
 
-[
-  "."
-  ","
-  ":"
-  ";"
-] @punctuation.delimiter
-
-[
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-  "<"
-  ">"
-] @punctuation.bracket
+["." "," ":" ";"] @punctuation.delimiter
+["(" ")" "[" "]" "{" "}" "<" ">"] @punctuation.bracket
