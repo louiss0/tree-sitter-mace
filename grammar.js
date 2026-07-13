@@ -420,7 +420,6 @@ export default grammar({
         $.exponent_expression,
         $.unary_expression,
         $.member_access,
-        $.array_access,
         $._primary_expression,
       ),
 
@@ -447,20 +446,9 @@ export default grammar({
       prec.left(
         PREC.member,
         seq(
-          field("target", choice($._primary_expression, $.member_access, $.array_access)),
+          field("target", choice($._primary_expression, $.member_access)),
           field("operator", choice(".", "?.")),
           field("member", $.identifier),
-        ),
-      ),
-
-    array_access: ($) =>
-      prec.left(
-        PREC.member,
-        seq(
-          field("target", choice($._primary_expression, $.member_access, $.array_access)),
-          "[",
-          field("index", $.int_literal),
-          "]",
         ),
       ),
 

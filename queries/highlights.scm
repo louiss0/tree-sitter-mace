@@ -89,10 +89,6 @@
   target: (member_access)
   member: (identifier) @property)
 
-(member_access
-  target: (array_access)
-  member: (identifier) @property)
-
 [
   (schema_field
     (field_name) @property)

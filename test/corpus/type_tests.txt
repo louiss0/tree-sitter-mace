@@ -35,16 +35,15 @@ boolean result = value is string;
         (identifier_word)))))
 
 ==================
-Schema, array, member, and array-access type tests
+Schema, member, and array type tests
 ==================
 |===|
 schema Local: { value: string };
 variant[Local, string] config = { value: "x" };
 variant[array<string>, string] values = ["x"];
 boolean schema_test = config.value is string;
-boolean array_test = values[0] is string;
 boolean container_test = values is array<string>;
-|===| { schema_test: schema_test, array_test: array_test, container_test: container_test }
+|===| { schema_test: schema_test, container_test: container_test }
 
 ---
 
@@ -99,29 +98,12 @@ boolean container_test = values is array<string>;
       (identifier
         (identifier_word))
       (type_test_expression
-        (array_access
-          (identifier
-            (identifier_word))
-          (int_literal))
-        (is_operator)
-        (string_type)))
-    (variable_declaration
-      (boolean_type)
-      (identifier
-        (identifier_word))
-      (type_test_expression
         (identifier
           (identifier_word))
         (is_operator)
         (array_type
           (string_type)))))
   (output_block
-    (output_field
-      (field_name
-        (identifier
-          (identifier_word)))
-      (identifier
-        (identifier_word)))
     (output_field
       (field_name
         (identifier
