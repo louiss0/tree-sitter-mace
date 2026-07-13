@@ -38,13 +38,14 @@ export default grammar({
       "from",
       "import",
       "type",
-      "enum",
       "schema",
       "gen_doc",
       "schema_doc",
       "array",
-      "union",
+      "fusion",
       "variant",
+      "choice",
+      "record",
       "string",
       "int",
       "float",
@@ -53,9 +54,12 @@ export default grammar({
       "boolean",
       "output",
       "schema_file",
+      "parse",
+      "parse_file",
       "data",
-      "injectable",
+      "nullable",
       "is",
+      "null",
       "true",
       "false",
     ],
@@ -65,7 +69,7 @@ export default grammar({
     source_file: ($) =>
       seq(repeat($.comment), optional(seq($.script_block, repeat($.comment))), $.output_block, repeat($.comment)),
 
-    comment: (_) => token(choice(/\/=[\s\S]*?=\//, /\/=[^\r\n]*/)),
+    comment: (_) => token(prec(1, choice(/\/\*[\s\S]*?\*\//, /\/\/[^\r\n]*/))),
 
     identifier: ($) => reserved("global", $.identifier_word),
 
@@ -126,14 +130,16 @@ export default grammar({
     hex_int_literal: (_) => /0[xX][0-9A-Fa-f]+/,
     hex_float_literal: (_) => /0[xX][0-9A-Fa-f]+\.[0-9A-Fa-f]+/,
     boolean_literal: (_) => choice("true", "false"),
+    null_literal: (_) => "null",
 
     import_declaration: ($) =>
       seq(
         "from",
         $.string_literal,
-        "import",
-        $.identifier,
-        repeat(seq(",", $.identifier)),
+        choice(
+          seq("import", "-", "as", $.identifier),
+          seq("import", $.identifier, repeat(seq(",", $.identifier))),
+        ),
         ";",
       ),
 
@@ -152,7 +158,6 @@ export default grammar({
       choice(
         $.variable_declaration,
         $.type_declaration,
-        $.enum_declaration,
         $.schema_declaration,
         $.gen_doc_declaration,
         $.schema_doc_declaration,
@@ -160,52 +165,33 @@ export default grammar({
 
     variable_declaration: ($) =>
       seq(
-        optional($.injectable_modifier),
+        optional($.nullable_modifier),
         $._type_reference,
         $.identifier,
-        optional(seq("=", $._expression)),
+        "=",
+        $._expression,
         ";",
       ),
-
-    injectable_modifier: (_) => "injectable",
 
     type_declaration: ($) =>
       seq("type", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
 
-    enum_declaration: ($) =>
-      seq(
-        "enum",
-        $.identifier,
-        ":",
-        $.enum_backing_type,
-        "{",
-        repeat(choice($.comment, $.enum_member)),
-        "}",
-        optional(";"),
-      ),
-
-    enum_backing_type: ($) => choice($.string_type, $.int_type, $.float_type, $.hex_int_type, $.hex_float_type, $.boolean_type),
-
-    enum_member: ($) =>
-      seq($.identifier, optional(seq("=", $.enum_member_value)), optional($._field_suffix)),
-
-    enum_member_value: ($) =>
-      choice($.string_literal, $.int_literal, $.float_literal, $.hex_int_literal, $.hex_float_literal, $.boolean_literal),
-
     gen_doc_declaration: ($) =>
-      seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.doc_entry)), "}", optional(";")),
+      seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.gen_doc_entry)), "}", optional(";")),
 
     schema_doc_declaration: ($) =>
       seq(
         "schema_doc",
         $.identifier,
         "{",
-        repeat(choice($.comment, $.doc_entry)),
+        repeat(choice($.comment, $.schema_doc_entry)),
         "}",
         optional(";"),
       ),
 
-    doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
+    gen_doc_entry: ($) => choice($.summary_entry, $.description_entry),
+
+    schema_doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
 
     summary_entry: ($) => seq("summary", ":", $.string_literal, $._pair_separator),
 
@@ -214,13 +200,28 @@ export default grammar({
     props_entry: ($) =>
       seq("props", ":", "{", repeat(choice($.comment, $.prop_entry)), "}", $._pair_separator),
 
-    prop_entry: ($) => seq($.identifier, ":", $.string_literal, $._pair_separator),
+    prop_entry: ($) => seq($.field_name, ":", $.string_literal, $._pair_separator),
 
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, optional(";")),
 
     record_type: ($) => seq("{", repeat(choice($.comment, $.schema_field)), "}"),
-    _pair_separator: (_) => choice(",", ";"),
-    _field_separator: (_) => choice(",", ";"),
+
+    field_name: ($) =>
+      choice(
+        $.identifier,
+        "type",
+        "schema",
+        "output",
+        "schema_file",
+        "parse",
+        "parse_file",
+        "data",
+        "from",
+        "import",
+        "record",
+      ),
+    _pair_separator: (_) => ",",
+    _field_separator: (_) => ",",
 
     _field_suffix: ($) =>
       choice(
@@ -230,7 +231,7 @@ export default grammar({
 
     schema_field: ($) =>
       seq(
-        $.identifier,
+        $.field_name,
         optional($.optional_marker),
         ":",
         $._type_reference,
@@ -246,8 +247,10 @@ export default grammar({
         $.hex_float_type,
         $.boolean_type,
         $.array_type,
-        $.union_type,
+        $.record_map_type,
+        $.fusion_type,
         $.variant_type,
+        $.choice_type,
         $.named_type,
       ),
 
@@ -258,10 +261,34 @@ export default grammar({
     hex_float_type: (_) => "hex_float",
     boolean_type: (_) => "boolean",
 
+    choice_type: ($) =>
+      seq(
+        "choice",
+        "[",
+        choice(
+          $.choice_member,
+          seq($.choice_member, repeat(seq(",", $.choice_member)))
+        ),
+        "]",
+      ),
+
+    choice_member: ($) =>
+      choice(
+        $.string_literal,
+        $.int_literal,
+        $.float_literal,
+        $.hex_int_literal,
+        $.hex_float_literal,
+        $.boolean_literal,
+        $.identifier,
+      ),
+
     array_type: ($) => seq("array", "<", $._type_reference, ">"),
 
-    union_type: ($) =>
-      prec(1, seq("union", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
+    record_map_type: ($) => seq("record", "<", $._type_reference, ">"),
+
+    fusion_type: ($) =>
+      prec(1, seq("fusion", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
 
     variant_type: ($) =>
       prec(1, seq("variant", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
@@ -306,20 +333,22 @@ export default grammar({
         seq(
           "[",
           choice(
+            alias($.data_output_mode_directive, $.output_mode_directive),
             $.schema_directive,
             $.schema_file_directive,
-            seq(alias($.data_output_mode_directive, $.output_mode_directive)),
-
+            $.parse_directive,
+            $.parse_file_directive,
+          ),
+          repeat(
             seq(
-              alias($.data_output_mode_directive, $.output_mode_directive),
               ",",
-              $.schema_directive,
-            ),
-
-            seq(
-              alias($.data_output_mode_directive, $.output_mode_directive),
-              ",",
-              $.schema_file_directive,
+              choice(
+                alias($.data_output_mode_directive, $.output_mode_directive),
+                $.schema_directive,
+                $.schema_file_directive,
+                $.parse_directive,
+                $.parse_file_directive,
+              ),
             ),
           ),
           "]",
@@ -340,23 +369,32 @@ export default grammar({
 
     schema_file_directive: ($) => seq("schema_file", "=", $.string_literal),
 
+    parse_directive: ($) => seq("parse", "=", $.identifier),
+
+    parse_file_directive: ($) => seq("parse_file", "=", $.string_literal),
+
     output_field: ($) =>
-      seq(
-        $.identifier,
-        optional($.optional_marker),
-        ":",
-        $._expression,
-        optional($._field_suffix),
+      choice(
+        seq(
+          $.field_name,
+          optional($.optional_marker),
+          ":",
+          $._expression,
+          optional($._field_suffix),
+        ),
+        seq($.field_name, optional($._field_suffix)),
       ),
 
     output_schema_field: ($) =>
       seq(
-        $.identifier,
+        $.field_name,
         optional($.optional_marker),
         ":",
         $._type_reference,
         optional($._field_suffix),
       ),
+
+    nullable_modifier: (_) => "nullable",
 
     inline_description: ($) => seq("/#", $.description_text),
 
@@ -372,7 +410,7 @@ export default grammar({
         $.bitwise_or_expression,
         $.bitwise_xor_expression,
         $.bitwise_and_expression,
-        $.merge_expression,
+        $.structural_merge,
         $.equality_expression,
         $.type_test_expression,
         $.relational_expression,
@@ -382,6 +420,7 @@ export default grammar({
         $.exponent_expression,
         $.unary_expression,
         $.member_access,
+        $.array_access,
         $._primary_expression,
       ),
 
@@ -394,9 +433,11 @@ export default grammar({
         $.hex_int_literal,
         $.string_literal,
         $.boolean_literal,
+        $.null_literal,
         $.array_literal,
         $.record_literal,
         $.self_reference,
+        $.parsed_variable_reference,
         $.parenthesized_expression,
       ),
 
@@ -406,14 +447,28 @@ export default grammar({
       prec.left(
         PREC.member,
         seq(
-          field("target", choice($._primary_expression, $.member_access)),
-          ".",
+          field("target", choice($._primary_expression, $.member_access, $.array_access)),
+          field("operator", choice(".", "?.")),
           field("member", $.identifier),
         ),
       ),
 
+    array_access: ($) =>
+      prec.left(
+        PREC.member,
+        seq(
+          field("target", choice($._primary_expression, $.member_access, $.array_access)),
+          "[",
+          field("index", $.int_literal),
+          "]",
+        ),
+      ),
+
     self_reference: ($) =>
-      prec.left(PREC.member + 1, seq("$self", ".", $.identifier, repeat(seq(".", $.identifier)))),
+      prec.left(PREC.member + 1, seq("$", "self", ".", $.identifier, repeat(seq(".", $.identifier)))),
+
+    parsed_variable_reference: ($) =>
+      prec.left(PREC.member + 1, seq("$", $.identifier)),
 
     unary_expression: ($) =>
       prec(
@@ -467,13 +522,11 @@ export default grammar({
             $.less_equal_operator,
             $.greater_operator,
             $.greater_equal_operator,
+            $.in_operator,
           ),
           $._expression,
         ),
       ),
-
-    merge_expression: ($) =>
-      prec.left(PREC.merge, seq($._expression, $.merge_operator, $._expression)),
 
     type_test_expression: ($) =>
       prec.left(
@@ -485,14 +538,25 @@ export default grammar({
         ),
       ),
 
+    merge_operand: ($) =>
+      choice(
+        $.identifier,
+        $.array_literal,
+        $.record_literal,
+      ),
+
+    structural_merge: ($) =>
+      prec.left(
+        PREC.merge,
+        seq($.merge_operand, repeat1(seq("<>", $.merge_operand))),
+      ),
+
     equality_expression: ($) =>
       prec.left(
         PREC.equality,
         seq(
           $._expression,
           choice(
-            $.strict_equal_operator,
-            $.strict_not_equal_operator,
             $.equal_equal_operator,
             $.not_equal_operator,
           ),
@@ -524,12 +588,15 @@ export default grammar({
     record_literal: ($) => seq("{", repeat(choice($.comment, $.record_field)), "}"),
 
     record_field: ($) =>
-      seq(
-        $.identifier,
-        optional($.optional_marker),
-        ":",
-        $._expression,
-        optional(choice(",", ";")),
+      choice(
+        seq(
+          $.field_name,
+          optional($.optional_marker),
+          ":",
+          $._expression,
+          optional(","),
+        ),
+        seq($.field_name, optional(",")),
       ),
 
     bang_operator: (_) => "!",
@@ -548,15 +615,13 @@ export default grammar({
     pipe_operator: (_) => "|",
     less_operator: (_) => "<",
     less_equal_operator: (_) => "<=",
-    merge_operator: (_) => "<>",
     greater_operator: (_) => ">",
     greater_equal_operator: (_) => ">=",
     equal_equal_operator: (_) => "==",
     not_equal_operator: (_) => "!=",
-    strict_equal_operator: (_) => "===",
-    strict_not_equal_operator: (_) => "!==",
     and_and_operator: (_) => "&&",
     or_or_operator: (_) => "||",
+    in_operator: (_) => "in",
     is_operator: (_) => "is",
   },
 });

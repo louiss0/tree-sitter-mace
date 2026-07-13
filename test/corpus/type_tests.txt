@@ -28,39 +28,36 @@ boolean result = value is string;
         (string_type))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
 ==================
-Schema, array, member, and alias type tests
+Schema, array, member, and array-access type tests
 ==================
 |===|
-type Name: string;
 schema Local: { value: string };
 variant[Local, string] config = { value: "x" };
 variant[array<string>, string] values = ["x"];
 boolean schema_test = config.value is string;
+boolean array_test = values[0] is string;
 boolean container_test = values is array<string>;
-boolean alias_test = values is Name;
-|===| { schema_test: schema_test, container_test: container_test, alias_test: alias_test }
+|===| { schema_test: schema_test, array_test: array_test, container_test: container_test }
 
 ---
 
 (source_file
   (script_block
-    (type_declaration
-      (identifier
-        (identifier_word))
-      (string_type))
     (schema_declaration
       (identifier
         (identifier_word))
       (record_type
         (schema_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_type))))
     (variable_declaration
       (variant_type
@@ -72,8 +69,9 @@ boolean alias_test = values is Name;
         (identifier_word))
       (record_literal
         (record_field
-          (identifier
-            (identifier_word))
+          (field_name
+            (identifier
+              (identifier_word)))
           (string_literal))))
     (variable_declaration
       (variant_type
@@ -101,11 +99,12 @@ boolean alias_test = values is Name;
       (identifier
         (identifier_word))
       (type_test_expression
-        (identifier
-          (identifier_word))
+        (array_access
+          (identifier
+            (identifier_word))
+          (int_literal))
         (is_operator)
-        (array_type
-          (string_type))))
+        (string_type)))
     (variable_declaration
       (boolean_type)
       (identifier
@@ -114,23 +113,25 @@ boolean alias_test = values is Name;
         (identifier
           (identifier_word))
         (is_operator)
-        (named_type
-          (identifier
-            (identifier_word))))))
+        (array_type
+          (string_type)))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
-      (identifier
-        (identifier_word)))
-    (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))
     (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
-        (identifier_word))
+        (identifier_word)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
 
@@ -194,17 +195,20 @@ string result = value is string ? value : "fallback";
         (string_literal))))
   (output_block
     (output_field
-      (identifier
-        (identifier_word))
-      (identifier
-        (identifier_word)))
-    (output_field
-      (identifier
-        (identifier_word))
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))
     (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
-        (identifier_word))
+        (identifier_word)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
       (identifier
         (identifier_word)))))
