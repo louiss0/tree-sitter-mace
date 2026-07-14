@@ -40,6 +40,7 @@ export default grammar({
       "from",
       "import",
       "type",
+      "schema",
       "gen_doc",
       "schema_doc",
       "array",

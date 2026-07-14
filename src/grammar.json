@@ -2960,6 +2960,10 @@
       },
       {
         "type": "STRING",
+        "value": "schema"
+      },
+      {
+        "type": "STRING",
         "value": "gen_doc"
       },
       {

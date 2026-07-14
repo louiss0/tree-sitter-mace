@@ -15,7 +15,7 @@
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 5
 #define MAX_ALIAS_SEQUENCE_LENGTH 7
-#define MAX_RESERVED_WORD_SET_SIZE 21
+#define MAX_RESERVED_WORD_SET_SIZE 22
 #define PRODUCTION_ID_COUNT 3
 #define SUPERTYPE_COUNT 0
 
@@ -3272,6 +3272,7 @@ static const TSSymbol ts_reserved_words[8][MAX_RESERVED_WORD_SET_SIZE] = {
     anon_sym_type,
     anon_sym_gen_doc,
     anon_sym_schema_doc,
+    anon_sym_schema,
     anon_sym_record,
     sym_string_type,
     sym_int_type,
@@ -3295,6 +3296,7 @@ static const TSSymbol ts_reserved_words[8][MAX_RESERVED_WORD_SET_SIZE] = {
     anon_sym_type,
     anon_sym_gen_doc,
     anon_sym_schema_doc,
+    anon_sym_schema,
     anon_sym_record,
     sym_string_type,
     sym_int_type,
@@ -3362,6 +3364,7 @@ static const TSSymbol ts_reserved_words[8][MAX_RESERVED_WORD_SET_SIZE] = {
     anon_sym_type,
     anon_sym_gen_doc,
     anon_sym_schema_doc,
+    anon_sym_schema,
     sym_nullable_modifier,
     sym_is_operator,
   },
@@ -3372,6 +3375,7 @@ static const TSSymbol ts_reserved_words[8][MAX_RESERVED_WORD_SET_SIZE] = {
     anon_sym_type,
     anon_sym_gen_doc,
     anon_sym_schema_doc,
+    anon_sym_schema,
     anon_sym_record,
     sym_string_type,
     sym_int_type,
@@ -12955,7 +12959,7 @@ TS_PUBLIC const TSLanguage *tree_sitter_mace(void) {
     .primary_state_ids = ts_primary_state_ids,
     .name = "mace",
     .reserved_words = &ts_reserved_words[0][0],
-    .max_reserved_word_set_size = 21,
+    .max_reserved_word_set_size = 22,
     .metadata = {
       .major_version = 0,
       .minor_version = 1,
