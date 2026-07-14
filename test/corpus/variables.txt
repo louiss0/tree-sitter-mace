@@ -2,7 +2,7 @@
 primitive variable declarations
 ===
 |===|
-string name = "Ada";
+string name = "Ada" /# Display name;
 int age = 27;
 float ratio = 3.14;
 boolean enabled = true;
@@ -21,7 +21,9 @@ boolean enabled = true;
       (string_type)
       (identifier
         (identifier_word))
-      (string_literal))
+      (string_literal)
+      (inline_description
+        (description_text)))
     (variable_declaration
       (int_type)
       (identifier

@@ -1222,6 +1222,25 @@
     }
   },
   {
+    "type": "field_doc_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "field_name",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "field_name",
     "named": true,
     "fields": {},
@@ -1231,6 +1250,25 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fields_entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "field_doc_entry",
           "named": true
         }
       ]
@@ -2512,44 +2550,6 @@
     }
   },
   {
-    "type": "prop_entry",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "field_name",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "props_entry",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "prop_entry",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "record_field",
     "named": true,
     "fields": {},
@@ -2998,7 +2998,7 @@
           "named": true
         },
         {
-          "type": "props_entry",
+          "type": "fields_entry",
           "named": true
         },
         {
@@ -3852,6 +3852,10 @@
           "named": true
         },
         {
+          "type": "inline_description",
+          "named": true
+        },
+        {
           "type": "int_literal",
           "named": true
         },
@@ -4146,6 +4150,10 @@
     "named": false
   },
   {
+    "type": "fields",
+    "named": false
+  },
+  {
     "type": "float_literal",
     "named": true
   },
@@ -4252,10 +4260,6 @@
   {
     "type": "plus_operator",
     "named": true
-  },
-  {
-    "type": "props",
-    "named": false
   },
   {
     "type": "record",

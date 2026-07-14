@@ -684,6 +684,18 @@
           "name": "_expression"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "inline_description"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": ";"
         }
@@ -850,7 +862,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "props_entry"
+          "name": "fields_entry"
         }
       ]
     },
@@ -896,12 +908,12 @@
         }
       ]
     },
-    "props_entry": {
+    "fields_entry": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "props"
+          "value": "fields"
         },
         {
           "type": "STRING",
@@ -922,7 +934,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "prop_entry"
+                "name": "field_doc_entry"
               }
             ]
           }
@@ -937,7 +949,7 @@
         }
       ]
     },
-    "prop_entry": {
+    "field_doc_entry": {
       "type": "SEQ",
       "members": [
         {

@@ -170,6 +170,7 @@ export default grammar({
         $.identifier,
         "=",
         $._expression,
+        optional($.inline_description),
         ";",
       ),
 
@@ -191,16 +192,16 @@ export default grammar({
 
     gen_doc_entry: ($) => choice($.summary_entry, $.description_entry),
 
-    schema_doc_entry: ($) => choice($.summary_entry, $.description_entry, $.props_entry),
+    schema_doc_entry: ($) => choice($.summary_entry, $.description_entry, $.fields_entry),
 
     summary_entry: ($) => seq("summary", ":", $.string_literal, $._pair_separator),
 
     description_entry: ($) => seq("description", ":", $.doc_block_string, $._pair_separator),
 
-    props_entry: ($) =>
-      seq("props", ":", "{", repeat(choice($.comment, $.prop_entry)), "}", $._pair_separator),
+    fields_entry: ($) =>
+      seq("fields", ":", "{", repeat(choice($.comment, $.field_doc_entry)), "}", $._pair_separator),
 
-    prop_entry: ($) => seq($.field_name, ":", $.string_literal, $._pair_separator),
+    field_doc_entry: ($) => seq($.field_name, ":", $.string_literal, $._pair_separator),
 
     schema_declaration: ($) => seq("schema", $.identifier, ":", $.record_type, optional(";")),
 

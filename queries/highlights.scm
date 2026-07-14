@@ -51,7 +51,7 @@
 [
   "summary"
   "description"
-  "props"
+  "fields"
 ] @property
 
 (import_declaration
@@ -100,7 +100,7 @@
     (field_name) @property)
 ]
 
-(prop_entry
+(field_doc_entry
   (field_name) @property)
 
 (self_reference

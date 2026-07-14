@@ -143,7 +143,7 @@ schema_doc User {
 # User
 A reusable schema.
 """,
-  props: {
+  fields: {
     name: "The user's display name",
     age: "Optional age",
   },
@@ -172,13 +172,13 @@ schema User: {
         (description_entry
           (doc_block_string)))
       (schema_doc_entry
-        (props_entry
-          (prop_entry
+        (fields_entry
+          (field_doc_entry
             (field_name
               (identifier
                 (identifier_word)))
             (string_literal))
-          (prop_entry
+          (field_doc_entry
             (field_name
               (identifier
                 (identifier_word)))
