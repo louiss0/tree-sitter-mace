@@ -472,7 +472,7 @@
     },
     "path_literal": {
       "type": "PATTERN",
-      "value": "\"[^\"\\\\\\r\\n$]*\""
+      "value": "'[^'\\\\\\r\\n$]*'"
     },
     "import_declaration": {
       "type": "SEQ",
@@ -1775,7 +1775,7 @@
         },
         {
           "type": "STRING",
-          "value": "\"data\""
+          "value": "'data'"
         }
       ]
     },
@@ -1792,7 +1792,7 @@
         },
         {
           "type": "STRING",
-          "value": "\"schema\""
+          "value": "'schema'"
         }
       ]
     },

@@ -129,7 +129,7 @@ export default grammar({
     boolean_literal: (_) => choice("true", "false"),
     null_literal: (_) => "null",
 
-    path_literal: (_) => /"[^"\\\r\n$]*"/,
+    path_literal: (_) => /'[^'\\\r\n$]*'/,
 
     import_declaration: ($) =>
       seq(
@@ -358,9 +358,9 @@ export default grammar({
     _schema_directive_list: ($) =>
       prec(2, seq("[", alias($.schema_output_mode_directive, $.output_mode_directive), "]")),
 
-    data_output_mode_directive: (_) => seq("output", "=", '"data"'),
+    data_output_mode_directive: (_) => seq("output", "=", "'data'"),
 
-    schema_output_mode_directive: (_) => seq("output", "=", '"schema"'),
+    schema_output_mode_directive: (_) => seq("output", "=", "'schema'"),
 
     schema_directive: ($) => seq("schema", "=", $.identifier),
 

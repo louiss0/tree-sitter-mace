@@ -3990,14 +3990,6 @@
     "named": false
   },
   {
-    "type": "\"data\"",
-    "named": false
-  },
-  {
-    "type": "\"schema\"",
-    "named": false
-  },
-  {
     "type": "$",
     "named": false
   },
@@ -4007,6 +3999,14 @@
   },
   {
     "type": "'",
+    "named": false
+  },
+  {
+    "type": "'data'",
+    "named": false
+  },
+  {
+    "type": "'schema'",
     "named": false
   },
   {
