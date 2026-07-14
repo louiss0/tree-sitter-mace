@@ -470,6 +470,10 @@
       "type": "STRING",
       "value": "null"
     },
+    "path_literal": {
+      "type": "PATTERN",
+      "value": "\"[^\"\\\\\\r\\n$]*\""
+    },
     "import_declaration": {
       "type": "SEQ",
       "members": [
@@ -479,7 +483,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string_literal"
+          "name": "path_literal"
         },
         {
           "type": "CHOICE",
@@ -1770,8 +1774,8 @@
           "value": "="
         },
         {
-          "type": "SYMBOL",
-          "name": "data_mode"
+          "type": "STRING",
+          "value": "\"data\""
         }
       ]
     },
@@ -1787,18 +1791,10 @@
           "value": "="
         },
         {
-          "type": "SYMBOL",
-          "name": "schema_mode"
+          "type": "STRING",
+          "value": "\"schema\""
         }
       ]
-    },
-    "data_mode": {
-      "type": "STRING",
-      "value": "data"
-    },
-    "schema_mode": {
-      "type": "STRING",
-      "value": "schema"
     },
     "schema_directive": {
       "type": "SEQ",
@@ -1830,7 +1826,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string_literal"
+          "name": "path_literal"
         }
       ]
     },
@@ -1864,7 +1860,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string_literal"
+          "name": "path_literal"
         }
       ]
     },
@@ -2964,10 +2960,6 @@
       },
       {
         "type": "STRING",
-        "value": "schema"
-      },
-      {
-        "type": "STRING",
         "value": "gen_doc"
       },
       {
@@ -3017,26 +3009,6 @@
       {
         "type": "STRING",
         "value": "boolean"
-      },
-      {
-        "type": "STRING",
-        "value": "output"
-      },
-      {
-        "type": "STRING",
-        "value": "schema_file"
-      },
-      {
-        "type": "STRING",
-        "value": "parse"
-      },
-      {
-        "type": "STRING",
-        "value": "parse_file"
-      },
-      {
-        "type": "STRING",
-        "value": "data"
       },
       {
         "type": "STRING",

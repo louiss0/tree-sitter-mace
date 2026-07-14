@@ -26,6 +26,8 @@ const PREC = {
   member: 16,
 };
 
+
+
 export default grammar({
   name: "mace",
 
@@ -38,7 +40,6 @@ export default grammar({
       "from",
       "import",
       "type",
-      "schema",
       "gen_doc",
       "schema_doc",
       "array",
@@ -52,11 +53,6 @@ export default grammar({
       "hex_int",
       "hex_float",
       "boolean",
-      "output",
-      "schema_file",
-      "parse",
-      "parse_file",
-      "data",
       "nullable",
       "is",
       "null",
@@ -132,10 +128,12 @@ export default grammar({
     boolean_literal: (_) => choice("true", "false"),
     null_literal: (_) => "null",
 
+    path_literal: (_) => /"[^"\\\r\n$]*"/,
+
     import_declaration: ($) =>
       seq(
         "from",
-        $.string_literal,
+        $.path_literal,
         choice(
           seq("import", "-", "as", $.identifier),
           seq("import", $.identifier, repeat(seq(",", $.identifier))),
@@ -359,20 +357,17 @@ export default grammar({
     _schema_directive_list: ($) =>
       prec(2, seq("[", alias($.schema_output_mode_directive, $.output_mode_directive), "]")),
 
-    data_output_mode_directive: ($) => seq("output", "=", $.data_mode),
+    data_output_mode_directive: (_) => seq("output", "=", '"data"'),
 
-    schema_output_mode_directive: ($) => seq("output", "=", $.schema_mode),
-
-    data_mode: (_) => "data",
-    schema_mode: (_) => "schema",
+    schema_output_mode_directive: (_) => seq("output", "=", '"schema"'),
 
     schema_directive: ($) => seq("schema", "=", $.identifier),
 
-    schema_file_directive: ($) => seq("schema_file", "=", $.string_literal),
+    schema_file_directive: ($) => seq("schema_file", "=", $.path_literal),
 
     parse_directive: ($) => seq("parse", "=", $.identifier),
 
-    parse_file_directive: ($) => seq("parse_file", "=", $.string_literal),
+    parse_file_directive: ($) => seq("parse_file", "=", $.path_literal),
 
     output_field: ($) =>
       choice(

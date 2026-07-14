@@ -5,7 +5,7 @@ Optional member chain
 |===|
 nullable User user = null;
 |===|
-[output = data]
+[output = "data"]
 {
   city?: user?.profile?.address?.city,
 }

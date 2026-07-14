@@ -5,7 +5,7 @@ misplaced inline description
 type Name: string;
 /# invalid placement
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file
@@ -33,7 +33,7 @@ schema_doc User {
   extra: "nope",
 }
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file

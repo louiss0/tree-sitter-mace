@@ -9,7 +9,7 @@ User user = {
 };
 |===|
 
-[output = data, schema = User]
+[output = "data", schema = User]
 {
   user: user,
 }
@@ -63,7 +63,7 @@ script block with import-as alias
 |===|
 from "./package_json.mace" import-as Package;
 |===|
-[output = data]
+[output = "data"]
 {
   result: Package,
 }
@@ -137,7 +137,7 @@ User user = {
   tags: ["ops", "prod"],
 };
 |===|
-[output = data, schema = User]
+[output = "data", schema = User]
 {
   user: user,
 }
@@ -211,7 +211,7 @@ schema User: {
   enabled?: boolean,
 };
 |===|
-[output = schema]
+[output = "schema"]
 {
   name: Name,
   enabled?: boolean,
@@ -273,7 +273,7 @@ User user = {
   created_at: "2026-04-08",
 };
 |===|
-[output = data]
+[output = "data"]
 {
   id: id,
   user: user,

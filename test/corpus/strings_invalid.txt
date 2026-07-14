@@ -5,7 +5,7 @@ single quoted string rejects newline before closing quote
 string greeting = 'abc
 ';
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file
@@ -27,7 +27,7 @@ double quoted string rejects newline before closing quote
 string greeting = "abc
 ";
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file

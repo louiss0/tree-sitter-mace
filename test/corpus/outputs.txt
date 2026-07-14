@@ -24,7 +24,7 @@ string name = "Ada";
 schema User: { name: string, };
 User user = { name, };
 |===|
-[output = data]
+[output = "data"]
 {
   name,
   user,
@@ -74,7 +74,7 @@ User user = { name, };
 ===
 explicit data output block
 ===
-[output = data]
+[output = "data"]
 {
   name: "Ada"
 }
@@ -100,7 +100,7 @@ schema User: {
   age?: int
 }
 |===|
-[output = data, schema = User]
+[output = "data", schema = User]
 {
   name: "Ada",
   age?: 27
@@ -327,7 +327,7 @@ schema Runtime: {
   env: string,
 }
 |===|
-[parse = Runtime, output = data]
+[parse = Runtime, output = "data"]
 {
   result: $env,
 }
@@ -362,7 +362,7 @@ schema Runtime: {
 ===
 schema output with type references
 ===
-[output = schema]
+[output = "schema"]
 """
 # User Output
 """
@@ -406,7 +406,7 @@ schema output with type references
 ===
 schema output with variant type references
 ===
-[output = schema]
+[output = "schema"]
 {
   value: variant[string, int],
   profile?: variant[Profile, string]
@@ -439,7 +439,7 @@ schema output with variant type references
 ===
 schema output with fusion schema composition references
 ===
-[output = schema]
+[output = "schema"]
 {
   value: fusion[Profile, Audit]
 }
@@ -482,7 +482,7 @@ optional output field
 ===
 keyword field names inside record and output fields
 ===
-[output = data]
+[output = "data"]
 {
   type: {
     version: version,
@@ -513,7 +513,7 @@ keyword field names inside record and output fields
 ===
 duplicate output directives are invalid
 ===
-[output = data, output = schema]
+[output = "data", output = "schema"]
 {
   name: "Ada",
 }

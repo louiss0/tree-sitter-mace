@@ -1,7 +1,7 @@
 ===
 data output with inline doc block
 ===
-[output = data]
+[output = "data"]
 """
 # User Payload
 
@@ -65,7 +65,7 @@ schema User: {
   age?: int, /# Optional age
 };
 |===|
-[output = schema]
+[output = "schema"]
 {
   user: User, /# Public user contract
 }

@@ -900,11 +900,6 @@
     }
   },
   {
-    "type": "data_mode",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "description_entry",
     "named": true,
     "fields": {},
@@ -1408,7 +1403,7 @@
           "named": true
         },
         {
-          "type": "string_literal",
+          "type": "path_literal",
           "named": true
         }
       ]
@@ -2290,21 +2285,7 @@
   {
     "type": "output_mode_directive",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "data_mode",
-          "named": true
-        },
-        {
-          "type": "schema_mode",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "output_schema_field",
@@ -2528,7 +2509,7 @@
       "required": true,
       "types": [
         {
-          "type": "string_literal",
+          "type": "path_literal",
           "named": true
         }
       ]
@@ -3088,16 +3069,11 @@
       "required": true,
       "types": [
         {
-          "type": "string_literal",
+          "type": "path_literal",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "schema_mode",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "script_block",
@@ -4014,6 +3990,14 @@
     "named": false
   },
   {
+    "type": "\"data\"",
+    "named": false
+  },
+  {
+    "type": "\"schema\"",
+    "named": false
+  },
+  {
     "type": "$",
     "named": false
   },
@@ -4248,6 +4232,10 @@
   {
     "type": "parse_file",
     "named": false
+  },
+  {
+    "type": "path_literal",
+    "named": true
   },
   {
     "type": "percent_operator",

@@ -5,7 +5,7 @@ hex primitive declarations
 hex_int mask = 0xFF;
 hex_float ratio = 0x2.8;
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file
@@ -31,7 +31,7 @@ variant type alias
 |===|
 type Identity: variant[string, int] /# A scalar identity value;
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file
@@ -55,7 +55,7 @@ variant array type alias
 |===|
 type Values: variant[array<string>, array<int>];
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file
@@ -84,7 +84,7 @@ schema Config: {
   nested: record<record<boolean>>,
 };
 |===|
-[output = schema]
+[output = "schema"]
 {
   values: record<int>,
 }
@@ -137,7 +137,7 @@ fusion schema composition alias
 |===|
 type User: fusion[Profile, Audit];
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file
@@ -163,7 +163,7 @@ nested fusion and variant references
 |===|
 type Composite: variant[fusion[Profile, Audit], string];
 |===|
-[output = schema]
+[output = "schema"]
 {
   value: Composite,
 }
@@ -202,7 +202,7 @@ choice type alias
 type Environment: choice["dev", "prod"];
 type Mode: choice[Environment, 1, true];
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file

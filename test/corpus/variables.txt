@@ -199,7 +199,7 @@ reserved keyword cannot be a variable name
 |===|
 string schema = "Ada";
 |===|
-[output = data] {}
+[output = "data"] {}
 ---
 
 (source_file

@@ -111,7 +111,7 @@ Owner: $($self.user.name)
 ===
 output inline doc block
 ===
-[output = schema]
+[output = "schema"]
 """
 # Public User Output
 """
@@ -154,7 +154,7 @@ schema User: {
   age?: int,
 };
 |===|
-[output = schema]
+[output = "schema"]
 {
   user: User,
 }
