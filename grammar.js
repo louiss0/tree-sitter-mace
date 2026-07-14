@@ -568,7 +568,7 @@ export default grammar({
       prec.right(PREC.conditional, seq($._expression, "?", $._expression, ":", $._expression)),
 
     array_literal: ($) =>
-      seq("[", optional(seq($._expression, repeat(seq(",", $._expression)))), "]"),
+      seq("[", optional(seq($._expression, repeat(seq(",", $._expression)), optional(","))), "]"),
 
     record_literal: ($) => seq("{", repeat(choice($.comment, $.record_field)), "}"),
 
