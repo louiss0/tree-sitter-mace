@@ -280,7 +280,6 @@ export default grammar({
         $.hex_int_literal,
         $.hex_float_literal,
         $.boolean_literal,
-        $.identifier,
       ),
 
     array_type: ($) => seq("array", "<", $._type_reference, ">"),
