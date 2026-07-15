@@ -1,0 +1,121 @@
+==================
+Variant match
+==================
+
+|===|
+variant[string, int] value = 7;
+string selected = match (value) {
+  string => "text",
+  int => "number",
+};
+|===|
+{ selected, }
+
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (variant_type
+        (string_type)
+        (int_type))
+      (identifier
+        (identifier_word))
+      (int_literal))
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (match_expression
+        value: (identifier
+          (identifier_word))
+        (match_arm
+          pattern: (string_type)
+          value: (string_literal))
+        (match_arm
+          pattern: (int_type)
+          value: (string_literal)))))
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word))))))
+
+==================
+Choice match
+==================
+
+|===|
+choice["on", "off"] value = "on";
+int selected = match (value) {
+  "on" => 1,
+  "off" => 0,
+};
+|===|
+{ selected, }
+
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (choice_type
+        (choice_member
+          (string_literal))
+        (choice_member
+          (string_literal)))
+      (identifier
+        (identifier_word))
+      (string_literal))
+    (variable_declaration
+      (int_type)
+      (identifier
+        (identifier_word))
+      (match_expression
+        value: (identifier
+          (identifier_word))
+        (match_arm
+          pattern: (choice_member
+            (string_literal))
+          value: (int_literal))
+        (match_arm
+          pattern: (choice_member
+            (string_literal))
+          value: (int_literal)))))
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word))))))
+
+==================
+Nested ternary is invalid
+==================
+
+|===|
+string selected = first ? "one" : second ? "two" : "three";
+|===|
+{ selected, }
+
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (conditional_expression
+        (identifier
+          (identifier_word))
+        (ERROR
+          (string_literal)
+          (identifier
+            (identifier_word)))
+        (string_literal)
+        (string_literal))))
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word))))))

@@ -9,14 +9,10 @@
   "schema_file"
   "parse"
   "parse_file"
+  "match"
 ] @keyword
 
 (nullable_modifier) @keyword.modifier
-
-[
-  (data_mode)
-  (schema_mode)
-] @keyword
 
 [
   (string_type)
@@ -161,9 +157,9 @@
   (and_and_operator)
   (or_or_operator)
   (in_operator)
-  (is_operator)
   (optional_marker)
   "="
+  "=>"
   "?"
 ] @operator
 

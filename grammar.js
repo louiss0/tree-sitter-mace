@@ -16,8 +16,7 @@ const PREC = {
   bitwise_and: 6,
   merge: 7,
   equality: 8,
-  type_test: 9,
-  relational: 10,
+  relational: 9,
   shift: 11,
   additive: 12,
   multiplicative: 13,
@@ -47,6 +46,7 @@ export default grammar({
       "fusion",
       "variant",
       "choice",
+      "match",
       "record",
       "string",
       "int",
@@ -55,7 +55,6 @@ export default grammar({
       "hex_float",
       "boolean",
       "nullable",
-      "is",
       "null",
       "true",
       "false",
@@ -401,6 +400,11 @@ export default grammar({
     _expression: ($) =>
       choice(
         $.conditional_expression,
+        $._non_conditional_expression,
+      ),
+
+    _non_conditional_expression: ($) =>
+      choice(
         $.logical_or_expression,
         $.logical_and_expression,
         $.bitwise_or_expression,
@@ -408,7 +412,6 @@ export default grammar({
         $.bitwise_and_expression,
         $.structural_merge,
         $.equality_expression,
-        $.type_test_expression,
         $.relational_expression,
         $.shift_expression,
         $.additive_expression,
@@ -434,6 +437,7 @@ export default grammar({
         $.self_reference,
         $.parsed_variable_reference,
         $.parenthesized_expression,
+        $.match_expression,
       ),
 
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
@@ -459,40 +463,40 @@ export default grammar({
         PREC.unary,
         seq(
           choice($.bang_operator, $.tilde_operator, $.plus_operator, $.minus_operator),
-          $._expression,
+          $._non_conditional_expression,
         ),
       ),
 
     exponent_expression: ($) =>
-      prec.right(PREC.exponent, seq($._expression, $.double_star_operator, $._expression)),
+      prec.right(PREC.exponent, seq($._non_conditional_expression, $.double_star_operator, $._non_conditional_expression)),
 
     multiplicative_expression: ($) =>
       prec.left(
         PREC.multiplicative,
         seq(
-          $._expression,
+          $._non_conditional_expression,
           choice($.star_operator, $.slash_operator, $.percent_operator),
-          $._expression,
+          $._non_conditional_expression,
         ),
       ),
 
     additive_expression: ($) =>
       prec.left(
         PREC.additive,
-        seq($._expression, choice($.plus_operator, $.minus_operator), $._expression),
+        seq($._non_conditional_expression, choice($.plus_operator, $.minus_operator), $._non_conditional_expression),
       ),
 
     shift_expression: ($) =>
       prec.left(
         PREC.shift,
         seq(
-          $._expression,
+          $._non_conditional_expression,
           choice(
             $.shift_left_operator,
             $.shift_right_operator,
             $.unsigned_shift_right_operator,
           ),
-          $._expression,
+          $._non_conditional_expression,
         ),
       ),
 
@@ -500,7 +504,7 @@ export default grammar({
       prec.left(
         PREC.relational,
         seq(
-          $._expression,
+          $._non_conditional_expression,
           choice(
             $.less_operator,
             $.less_equal_operator,
@@ -508,17 +512,7 @@ export default grammar({
             $.greater_equal_operator,
             $.in_operator,
           ),
-          $._expression,
-        ),
-      ),
-
-    type_test_expression: ($) =>
-      prec.left(
-        PREC.type_test,
-        seq(
-          field("expression", $._expression),
-          field("operator", $.is_operator),
-          field("target_type", $._type_reference),
+          $._non_conditional_expression,
         ),
       ),
 
@@ -539,32 +533,51 @@ export default grammar({
       prec.left(
         PREC.equality,
         seq(
-          $._expression,
+          $._non_conditional_expression,
           choice(
             $.equal_equal_operator,
             $.not_equal_operator,
           ),
-          $._expression,
+          $._non_conditional_expression,
         ),
       ),
 
     bitwise_and_expression: ($) =>
-      prec.left(PREC.bitwise_and, seq($._expression, $.ampersand_operator, $._expression)),
+      prec.left(PREC.bitwise_and, seq($._non_conditional_expression, $.ampersand_operator, $._non_conditional_expression)),
 
     bitwise_xor_expression: ($) =>
-      prec.left(PREC.bitwise_xor, seq($._expression, $.caret_operator, $._expression)),
+      prec.left(PREC.bitwise_xor, seq($._non_conditional_expression, $.caret_operator, $._non_conditional_expression)),
 
     bitwise_or_expression: ($) =>
-      prec.left(PREC.bitwise_or, seq($._expression, $.pipe_operator, $._expression)),
+      prec.left(PREC.bitwise_or, seq($._non_conditional_expression, $.pipe_operator, $._non_conditional_expression)),
 
     logical_and_expression: ($) =>
-      prec.left(PREC.logical_and, seq($._expression, $.and_and_operator, $._expression)),
+      prec.left(PREC.logical_and, seq($._non_conditional_expression, $.and_and_operator, $._non_conditional_expression)),
 
     logical_or_expression: ($) =>
-      prec.left(PREC.logical_or, seq($._expression, $.or_or_operator, $._expression)),
+      prec.left(PREC.logical_or, seq($._non_conditional_expression, $.or_or_operator, $._non_conditional_expression)),
 
     conditional_expression: ($) =>
-      prec.right(PREC.conditional, seq($._expression, "?", $._expression, ":", $._expression)),
+      prec(PREC.conditional, seq($._non_conditional_expression, "?", $._non_conditional_expression, ":", $._non_conditional_expression)),
+
+    match_expression: ($) =>
+      seq(
+        "match",
+        "(",
+        field("value", $._expression),
+        ")",
+        "{",
+        repeat1($.match_arm),
+        "}",
+      ),
+
+    match_arm: ($) =>
+      seq(
+        field("pattern", choice($._type_reference, $.choice_member)),
+        "=>",
+        field("value", $._expression),
+        ",",
+      ),
 
     array_literal: ($) =>
       seq("[", optional(seq($._expression, repeat(seq(",", $._expression)), optional(","))), "]"),
@@ -606,6 +619,5 @@ export default grammar({
     and_and_operator: (_) => "&&",
     or_or_operator: (_) => "||",
     in_operator: (_) => "in",
-    is_operator: (_) => "is",
   },
 });
