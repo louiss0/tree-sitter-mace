@@ -29,7 +29,7 @@ hex_float ratio = 0x2.8;
 variant type alias
 ===
 |===|
-type Identity: variant[string, int] /# A scalar identity value;
+alias Identity: variant[string, int] /# A scalar identity value;
 |===|
 [output = "data"] {}
 ---
@@ -53,7 +53,7 @@ type Identity: variant[string, int] /# A scalar identity value;
 variant array type alias
 ===
 |===|
-type Values: variant[array<string>, array<int>];
+alias Values: variant[array<string>, array<int>];
 |===|
 [output = "data"] {}
 ---
@@ -77,8 +77,8 @@ type Values: variant[array<string>, array<int>];
 record map type references
 ===
 |===|
-type Lookup: record<string>;
-type NestedLookup: record<array<int>>;
+alias Lookup: record<string>;
+alias NestedLookup: record<array<int>>;
 schema Config: {
   labels: record<string>,
   nested: record<record<boolean>>,
@@ -135,7 +135,7 @@ schema Config: {
 fusion schema composition alias
 ===
 |===|
-type User: fusion[Profile, Audit];
+alias User: fusion[Profile, Audit];
 |===|
 [output = "data"] {}
 ---
@@ -161,7 +161,7 @@ type User: fusion[Profile, Audit];
 nested fusion and variant references
 ===
 |===|
-type Composite: variant[fusion[Profile, Audit], string];
+alias Composite: variant[fusion[Profile, Audit], string];
 |===|
 [output = "schema"]
 {
@@ -199,8 +199,8 @@ type Composite: variant[fusion[Profile, Audit], string];
 choice type alias
 ===
 |===|
-type Environment: choice["dev", "prod"];
-type Mode: fusion[Environment, choice[1, true]];
+alias Environment: choice["dev", "prod"];
+alias Mode: fusion[Environment, choice[1, true]];
 |===|
 [output = "data"] {}
 ---

@@ -1,7 +1,7 @@
 [
   "from"
   "import"
-  "type"
+  "alias"
   "schema"
   "gen_doc"
   "schema_doc"

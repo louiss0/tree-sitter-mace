@@ -38,7 +38,7 @@ export default grammar({
     global: () => [
       "from",
       "import",
-      "type",
+      "alias",
       "schema",
       "gen_doc",
       "schema_doc",
@@ -173,7 +173,7 @@ export default grammar({
       ),
 
     type_declaration: ($) =>
-      seq("type", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
+      seq("alias", $.identifier, ":", $._type_reference, optional($.inline_description), ";"),
 
     gen_doc_declaration: ($) =>
       seq("gen_doc", $.identifier, "{", repeat(choice($.comment, $.gen_doc_entry)), "}", optional(";")),
@@ -208,7 +208,7 @@ export default grammar({
     field_name: ($) =>
       choice(
         $.identifier,
-        "type",
+        "alias",
         "schema",
         "output",
         "schema_file",
@@ -356,9 +356,13 @@ export default grammar({
     _schema_directive_list: ($) =>
       prec(2, seq("[", alias($.schema_output_mode_directive, $.output_mode_directive), "]")),
 
-    data_output_mode_directive: (_) => seq("output", "=", "'data'"),
+    data_output_mode_directive: ($) => seq("output", "=", $.data_mode),
 
-    schema_output_mode_directive: (_) => seq("output", "=", "'schema'"),
+    schema_output_mode_directive: ($) => seq("output", "=", $.schema_mode),
+
+    data_mode: (_) => choice("'data'", '"data"'),
+
+    schema_mode: (_) => choice("'schema'", '"schema"'),
 
     schema_directive: ($) => seq("schema", "=", $.identifier),
 

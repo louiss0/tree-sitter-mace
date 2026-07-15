@@ -69,7 +69,7 @@ boolean enabled = true;
 named type alias variable
 ===
 |===|
-type Name: string;
+alias Name: string;
 Name name = "Ada";
 |===|
 {

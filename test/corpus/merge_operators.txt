@@ -93,7 +93,7 @@ merge output identifier with literal
 merge script variables
 ===
 |===|
-type Tags: array<string>;
+alias Tags: array<string>;
 Tags base = ["base"];
 Tags extra = ["extra"];
 |===|

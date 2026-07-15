@@ -52,13 +52,13 @@ A reusable schema.
   },
 };
 
-type Status: choice["Pending"] /# Current status choice;
+alias Status: choice["Pending"] /# Current status choice;
 
 gen_doc Status {
   summary: "Represents a status choice",
 };
 
-type Name: string /# A user display name;
+alias Name: string /# A user display name;
 
 schema User: {
   name: Name, /# The user's name

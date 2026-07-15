@@ -90,7 +90,7 @@ from "./package_json.mace" import-as Package;
 script block with alternate delimiter length
 ===
 |====|
-type Scores: array<int>;
+alias Scores: array<int>;
 Scores scores = [1, 2, 3];
 |====|
 {
@@ -127,7 +127,7 @@ Scores scores = [1, 2, 3];
 mixed declarations with schema aware output block
 ===
 |===|
-type Name: string;
+alias Name: string;
 schema User: {
   name: Name, /# The user's display name
   tags: array<string>,
@@ -205,7 +205,7 @@ User user = {
 script block with schema mode output
 ===
 |===|
-type Name: string;
+alias Name: string;
 schema User: {
   name: Name,
   enabled?: boolean,
@@ -265,8 +265,8 @@ script block with variant and fusion aliases
 |===|
 schema Profile: { name: string, };
 schema Audit: { created_at: string, };
-type Identity: variant[string, int];
-type User: fusion[Profile, Audit];
+alias Identity: variant[string, int];
+alias User: fusion[Profile, Audit];
 Identity id = "Ada";
 User user = {
   name: "Ada",
