@@ -200,7 +200,7 @@ choice type alias
 ===
 |===|
 type Environment: choice["dev", "prod"];
-type Mode: choice[Environment, 1, true];
+type Mode: fusion[Environment, choice[1, true]];
 |===|
 [output = "data"] {}
 ---
@@ -218,14 +218,15 @@ type Mode: choice[Environment, 1, true];
     (type_declaration
       (identifier
         (identifier_word))
-      (choice_type
-        (choice_member
+      (fusion_type
+        (named_type
           (identifier
             (identifier_word)))
-        (choice_member
-          (int_literal))
-        (choice_member
-          (boolean_literal)))))
+        (choice_type
+          (choice_member
+            (int_literal))
+          (choice_member
+            (boolean_literal))))))
   (output_block
     (directive_list
       (output_mode_directive
