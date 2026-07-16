@@ -1344,7 +1344,7 @@
           "named": true
         },
         {
-          "type": "path_literal",
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -2725,7 +2725,7 @@
       "required": true,
       "types": [
         {
-          "type": "path_literal",
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -3273,7 +3273,7 @@
       "required": true,
       "types": [
         {
-          "type": "path_literal",
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -4226,10 +4226,6 @@
   {
     "type": "parse_file",
     "named": false
-  },
-  {
-    "type": "path_literal",
-    "named": true
   },
   {
     "type": "percent_operator",

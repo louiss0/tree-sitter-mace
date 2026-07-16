@@ -497,7 +497,9 @@ keyword field names inside record and output fields
       (output_mode_directive
         (data_mode)))
     (output_field
-      (field_name)
+      (field_name
+        (identifier
+          (identifier_word)))
       (record_literal
         (record_field
           (field_name
@@ -506,7 +508,9 @@ keyword field names inside record and output fields
           (identifier
             (identifier_word)))
         (record_field
-          (field_name)
+          (field_name
+            (identifier
+              (identifier_word)))
           (identifier
             (identifier_word)))))))
 
@@ -524,8 +528,7 @@ duplicate output directives are invalid
     (directive_list
       (output_mode_directive
         (data_mode))
-      (ERROR
-        (identifier_word)))
+      (ERROR))
     (output_field
       (field_name
         (identifier

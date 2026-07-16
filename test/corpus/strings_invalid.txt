@@ -8,17 +8,17 @@ string greeting = 'abc
 [output = "data"] {}
 ---
 
-(source_file
-  (script_block
-    (ERROR
-      (string_type)
-      (identifier
-        (identifier_word))
-      (ERROR)))
-  (output_block
-    (directive_list
-      (output_mode_directive
-        (data_mode)))))
+(ERROR
+  (string_type)
+  (identifier
+    (identifier_word))
+  (ERROR
+    (array_literal
+      (ERROR
+        (identifier
+          (identifier_word)))
+      (string_literal)))
+  (record_literal))
 
 ===
 double quoted string rejects newline before closing quote
@@ -30,14 +30,14 @@ string greeting = "abc
 [output = "data"] {}
 ---
 
-(source_file
-  (script_block
-    (ERROR
-      (string_type)
-      (identifier
-        (identifier_word))
-      (ERROR)))
-  (output_block
-    (directive_list
-      (output_mode_directive
-        (data_mode)))))
+(ERROR
+  (string_type)
+  (identifier
+    (identifier_word))
+  (ERROR
+    (array_literal
+      (ERROR
+        (identifier
+          (identifier_word)))
+      (string_literal)))
+  (record_literal))

@@ -470,10 +470,6 @@
       "type": "STRING",
       "value": "null"
     },
-    "path_literal": {
-      "type": "PATTERN",
-      "value": "'[^'\\\\\\r\\n$]*'"
-    },
     "import_declaration": {
       "type": "SEQ",
       "members": [
@@ -483,7 +479,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "path_literal"
+          "name": "string_literal"
         },
         {
           "type": "CHOICE",
@@ -1848,7 +1844,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "path_literal"
+          "name": "string_literal"
         }
       ]
     },
@@ -1882,7 +1878,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "path_literal"
+          "name": "string_literal"
         }
       ]
     },

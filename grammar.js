@@ -127,12 +127,10 @@ export default grammar({
     boolean_literal: (_) => choice("true", "false"),
     null_literal: (_) => "null",
 
-    path_literal: (_) => /'[^'\\\r\n$]*'/,
-
     import_declaration: ($) =>
       seq(
         "from",
-        $.path_literal,
+        $.string_literal,
         choice(
           seq("import", "-", "as", $.identifier),
           seq("import", $.identifier, repeat(seq(",", $.identifier))),
@@ -365,11 +363,11 @@ export default grammar({
 
     schema_directive: ($) => seq("schema", "=", $.identifier),
 
-    schema_file_directive: ($) => seq("schema_file", "=", $.path_literal),
+    schema_file_directive: ($) => seq("schema_file", "=", $.string_literal),
 
     parse_directive: ($) => seq("parse", "=", $.identifier),
 
-    parse_file_directive: ($) => seq("parse_file", "=", $.path_literal),
+    parse_file_directive: ($) => seq("parse_file", "=", $.string_literal),
 
     output_field: ($) =>
       choice(
