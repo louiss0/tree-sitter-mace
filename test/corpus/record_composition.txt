@@ -1,0 +1,25 @@
+===
+resolved record in output block
+===
+{
+  result: { left: 1, right: 2 },
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (record_literal
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (int_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (int_literal))))))
