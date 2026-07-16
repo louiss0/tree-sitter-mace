@@ -2060,10 +2060,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "structural_merge"
-        },
-        {
-          "type": "SYMBOL",
           "name": "equality_expression"
         },
         {
@@ -2180,7 +2176,7 @@
     },
     "member_access": {
       "type": "PREC_LEFT",
-      "value": 16,
+      "value": 14,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2231,7 +2227,7 @@
     },
     "self_reference": {
       "type": "PREC_LEFT",
-      "value": 17,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2272,7 +2268,7 @@
     },
     "parsed_variable_reference": {
       "type": "PREC_LEFT",
-      "value": 17,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2289,7 +2285,7 @@
     },
     "unary_expression": {
       "type": "PREC",
-      "value": 15,
+      "value": 13,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2323,7 +2319,7 @@
     },
     "exponent_expression": {
       "type": "PREC_RIGHT",
-      "value": 14,
+      "value": 12,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2344,7 +2340,7 @@
     },
     "multiplicative_expression": {
       "type": "PREC_LEFT",
-      "value": 13,
+      "value": 11,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2378,7 +2374,7 @@
     },
     "additive_expression": {
       "type": "PREC_LEFT",
-      "value": 12,
+      "value": 10,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2408,7 +2404,7 @@
     },
     "shift_expression": {
       "type": "PREC_LEFT",
-      "value": 11,
+      "value": 9,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2442,7 +2438,7 @@
     },
     "relational_expression": {
       "type": "PREC_LEFT",
-      "value": 9,
+      "value": 8,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2482,55 +2478,9 @@
         ]
       }
     },
-    "merge_operand": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "array_literal"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "record_literal"
-        }
-      ]
-    },
-    "structural_merge": {
-      "type": "PREC_LEFT",
-      "value": 7,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "merge_operand"
-          },
-          {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "<>"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "merge_operand"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
     "equality_expression": {
       "type": "PREC_LEFT",
-      "value": 8,
+      "value": 7,
       "content": {
         "type": "SEQ",
         "members": [

@@ -14,15 +14,14 @@ const PREC = {
   bitwise_or: 4,
   bitwise_xor: 5,
   bitwise_and: 6,
-  merge: 7,
-  equality: 8,
-  relational: 9,
-  shift: 11,
-  additive: 12,
-  multiplicative: 13,
-  exponent: 14,
-  unary: 15,
-  member: 16,
+  equality: 7,
+  relational: 8,
+  shift: 9,
+  additive: 10,
+  multiplicative: 11,
+  exponent: 12,
+  unary: 13,
+  member: 14,
 };
 
 
@@ -414,7 +413,6 @@ export default grammar({
         $.bitwise_or_expression,
         $.bitwise_xor_expression,
         $.bitwise_and_expression,
-        $.structural_merge,
         $.equality_expression,
         $.relational_expression,
         $.shift_expression,
@@ -518,19 +516,6 @@ export default grammar({
           ),
           $._non_conditional_expression,
         ),
-      ),
-
-    merge_operand: ($) =>
-      choice(
-        $.identifier,
-        $.array_literal,
-        $.record_literal,
-      ),
-
-    structural_merge: ($) =>
-      prec.left(
-        PREC.merge,
-        seq($.merge_operand, repeat1(seq("<>", $.merge_operand))),
       ),
 
     equality_expression: ($) =>
