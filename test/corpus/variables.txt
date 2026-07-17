@@ -215,8 +215,10 @@ string schema = "Ada";
         (data_mode)))))
 
 ===
+string variable declaration
+===
 |===|
-nullable string env = "dev";
+string env = "dev";
 |===|
 {
   env: env,
@@ -226,7 +228,6 @@ nullable string env = "dev";
 (source_file
   (script_block
     (variable_declaration
-      (nullable_modifier)
       (string_type)
       (identifier
         (identifier_word))
@@ -240,8 +241,10 @@ nullable string env = "dev";
         (identifier_word)))))
 
 ===
+string variable declaration with a distinct value
+===
 |===|
-nullable string env = null;
+string env = "prod";
 |===|
 {
   env: env,
@@ -251,11 +254,10 @@ nullable string env = null;
 (source_file
   (script_block
     (variable_declaration
-      (nullable_modifier)
       (string_type)
       (identifier
         (identifier_word))
-      (null_literal)))
+      (string_literal)))
   (output_block
     (output_field
       (field_name
@@ -265,8 +267,10 @@ nullable string env = null;
         (identifier_word)))))
 
 ===
+integer variable declaration
+===
 |===|
-nullable int retries = 3;
+int retries = 3;
 |===|
 {
   retries: retries,
@@ -276,7 +280,6 @@ nullable int retries = 3;
 (source_file
   (script_block
     (variable_declaration
-      (nullable_modifier)
       (int_type)
       (identifier
         (identifier_word))
@@ -290,8 +293,10 @@ nullable int retries = 3;
         (identifier_word)))))
 
 ===
+float variable declaration
+===
 |===|
-nullable float threshold = 0.75;
+float threshold = 0.75;
 |===|
 {
   threshold: threshold,
@@ -301,7 +306,6 @@ nullable float threshold = 0.75;
 (source_file
   (script_block
     (variable_declaration
-      (nullable_modifier)
       (float_type)
       (identifier
         (identifier_word))
@@ -315,8 +319,10 @@ nullable float threshold = 0.75;
         (identifier_word)))))
 
 ===
+boolean variable declaration
+===
 |===|
-nullable boolean enabled = false;
+boolean enabled = false;
 |===|
 {
   enabled: enabled,
@@ -326,7 +332,6 @@ nullable boolean enabled = false;
 (source_file
   (script_block
     (variable_declaration
-      (nullable_modifier)
       (boolean_type)
       (identifier
         (identifier_word))
@@ -340,8 +345,10 @@ nullable boolean enabled = false;
         (identifier_word)))))
 
 ===
+array variable declaration
+===
 |===|
-nullable array<string> tags = ["ops", "prod"];
+array<string> tags = ["ops", "prod"];
 |===|
 {
   tags: tags,
@@ -351,7 +358,6 @@ nullable array<string> tags = ["ops", "prod"];
 (source_file
   (script_block
     (variable_declaration
-      (nullable_modifier)
       (array_type
         (string_type))
       (identifier
@@ -368,11 +374,13 @@ nullable array<string> tags = ["ops", "prod"];
         (identifier_word)))))
 
 ===
+schema typed variable declaration with a record value
+===
 |===|
 schema User: {
   name: string,
 };
-nullable User user = {
+User user = {
   name: "Ada",
 };
 |===|
@@ -393,7 +401,6 @@ nullable User user = {
               (identifier_word)))
           (string_type))))
     (variable_declaration
-      (nullable_modifier)
       (named_type
         (identifier
           (identifier_word)))

@@ -12,8 +12,6 @@
   "match"
 ] @keyword
 
-(nullable_modifier) @keyword.modifier
-
 [
   (string_type)
   (int_type)
@@ -65,11 +63,6 @@
   (identifier) @type)
 
 (variable_declaration
-  (_)
-  (identifier) @variable)
-
-(variable_declaration
-  (nullable_modifier)
   (_)
   (identifier) @variable)
 
