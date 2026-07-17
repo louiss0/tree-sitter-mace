@@ -215,8 +215,6 @@ string schema = "Ada";
         (data_mode)))))
 
 ===
-nullable string variable
-===
 |===|
 nullable string env = "dev";
 |===|
@@ -241,8 +239,6 @@ nullable string env = "dev";
       (identifier
         (identifier_word)))))
 
-===
-nullable string variable with null initializer
 ===
 |===|
 nullable string env = null;
@@ -269,8 +265,6 @@ nullable string env = null;
         (identifier_word)))))
 
 ===
-nullable int variable
-===
 |===|
 nullable int retries = 3;
 |===|
@@ -295,8 +289,6 @@ nullable int retries = 3;
       (identifier
         (identifier_word)))))
 
-===
-nullable float variable
 ===
 |===|
 nullable float threshold = 0.75;
@@ -323,8 +315,6 @@ nullable float threshold = 0.75;
         (identifier_word)))))
 
 ===
-nullable boolean variable
-===
 |===|
 nullable boolean enabled = false;
 |===|
@@ -349,8 +339,6 @@ nullable boolean enabled = false;
       (identifier
         (identifier_word)))))
 
-===
-nullable array variable
 ===
 |===|
 nullable array<string> tags = ["ops", "prod"];
@@ -379,8 +367,6 @@ nullable array<string> tags = ["ops", "prod"];
       (identifier
         (identifier_word)))))
 
-===
-nullable schema variable
 ===
 |===|
 schema User: {
