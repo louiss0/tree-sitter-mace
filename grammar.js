@@ -53,7 +53,6 @@ export default grammar({
       "hex_int",
       "hex_float",
       "boolean",
-      "nullable",
       "null",
       "true",
       "false",
@@ -160,7 +159,6 @@ export default grammar({
 
     variable_declaration: ($) =>
       seq(
-        optional($.nullable_modifier),
         $._type_reference,
         $.identifier,
         "=",
@@ -389,8 +387,6 @@ export default grammar({
         $._type_reference,
         optional($._field_suffix),
       ),
-
-    nullable_modifier: (_) => "nullable",
 
     inline_description: ($) => seq("/#", $.description_text),
 

@@ -3854,10 +3854,6 @@
           "named": true
         },
         {
-          "type": "nullable_modifier",
-          "named": true
-        },
-        {
           "type": "parenthesized_expression",
           "named": true
         },
@@ -4205,10 +4201,6 @@
   },
   {
     "type": "null_literal",
-    "named": true
-  },
-  {
-    "type": "nullable_modifier",
     "named": true
   },
   {
