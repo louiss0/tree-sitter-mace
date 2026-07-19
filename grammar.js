@@ -512,7 +512,6 @@ export default grammar({
             $.less_equal_operator,
             $.greater_operator,
             $.greater_equal_operator,
-            $.in_operator,
           ),
           $._non_conditional_expression,
         ),
@@ -607,6 +606,5 @@ export default grammar({
     not_equal_operator: (_) => "!=",
     and_and_operator: (_) => "&&",
     or_or_operator: (_) => "||",
-    in_operator: (_) => "in",
   },
 });

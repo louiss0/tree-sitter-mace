@@ -2502,10 +2502,6 @@
               {
                 "type": "SYMBOL",
                 "name": "greater_equal_operator"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "in_operator"
               }
             ]
           },
@@ -2999,10 +2995,6 @@
     "or_or_operator": {
       "type": "STRING",
       "value": "||"
-    },
-    "in_operator": {
-      "type": "STRING",
-      "value": "in"
     }
   },
   "extras": [

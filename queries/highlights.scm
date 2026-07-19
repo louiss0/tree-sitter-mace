@@ -148,7 +148,6 @@
   (not_equal_operator)
   (and_and_operator)
   (or_or_operator)
-  (in_operator)
   (optional_marker)
   "="
   "=>"

@@ -3034,10 +3034,6 @@
           "named": true
         },
         {
-          "type": "in_operator",
-          "named": true
-        },
-        {
           "type": "int_literal",
           "named": true
         },
@@ -4165,10 +4161,6 @@
   {
     "type": "import-as",
     "named": false
-  },
-  {
-    "type": "in_operator",
-    "named": true
   },
   {
     "type": "int_literal",
