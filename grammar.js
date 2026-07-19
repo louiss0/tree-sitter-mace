@@ -67,7 +67,8 @@ export default grammar({
 
     identifier: ($) => reserved("global", $.identifier_word),
 
-    identifier_word: (_) => /[A-Za-z][A-Za-z0-9_]*/,
+    identifier_word: (_) =>
+      token(seq(/[A-Za-z][A-Za-z0-9_]*/, repeat(seq("-", /[A-Za-z0-9_]+/)))),
 
     string_literal: ($) =>
       choice(
@@ -131,8 +132,13 @@ export default grammar({
         "from",
         $.string_literal,
         choice(
-          seq("import", "-", "as", $.identifier),
-          seq("import", $.identifier, repeat(seq(",", $.identifier))),
+          seq("import-as", $.identifier),
+          seq(
+            "import",
+            $.identifier,
+            optional(seq(":", $.identifier)),
+            repeat(seq(",", $.identifier, optional(seq(":", $.identifier)))),
+          ),
         ),
         ";",
       ),

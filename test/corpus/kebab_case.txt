@@ -1,0 +1,184 @@
+===
+kebab-case variable
+===
+|===|
+string display-name = "Ada";
+|===|
+{
+  display-name: display-name,
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal)))
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
+
+===
+kebab-case schema
+===
+|===|
+schema user-profile: {
+  display-name: string,
+};
+|===|
+[schema = user-profile]
+{
+  display-name: "Ada",
+}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (string_type)))))
+  (output_block
+    (directive_list
+      (schema_directive
+        (identifier
+          (identifier_word))))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (string_literal))))
+
+===
+kebab-case output field
+===
+{
+  display-name: "Ada",
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (string_literal))))
+
+===
+kebab-case destructured import
+===
+|===|
+from "./shared.mace" import display-name;
+|===|
+{
+  display-name: display-name,
+}
+---
+
+(source_file
+  (script_block
+    (import_declaration
+      (string_literal)
+      (identifier
+        (identifier_word))))
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
+
+===
+kebab-case destructured import alias
+===
+|===|
+from "./shared.mace" import displayName:display-name;
+|===|
+{
+  display-name: display-name,
+}
+---
+
+(source_file
+  (script_block
+    (import_declaration
+      (string_literal)
+      (identifier
+        (identifier_word))
+      (identifier
+        (identifier_word))))
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
+
+===
+kebab-case import-as alias
+===
+|===|
+from "./shared.mace" import-as shared-data;
+|===|
+{
+  shared-data: shared-data,
+}
+---
+
+(source_file
+  (script_block
+    (import_declaration
+      (string_literal)
+      (identifier
+        (identifier_word))))
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
+
+===
+nested kebab-case output records
+===
+{
+  user-profile: {
+    contact-details: {
+      display-name: "Ada",
+    },
+  },
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (record_literal
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (record_literal
+            (record_field
+              (field_name
+                (identifier
+                  (identifier_word)))
+              (string_literal))))))))

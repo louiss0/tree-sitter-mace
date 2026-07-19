@@ -2167,11 +2167,6 @@
     }
   },
   {
-    "type": "minus_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "multiplicative_expression",
     "named": true,
     "fields": {},
@@ -4008,10 +4003,6 @@
     "named": false
   },
   {
-    "type": "-",
-    "named": false
-  },
-  {
     "type": ".",
     "named": false
   },
@@ -4073,10 +4064,6 @@
   },
   {
     "type": "array",
-    "named": false
-  },
-  {
-    "type": "as",
     "named": false
   },
   {
@@ -4176,6 +4163,10 @@
     "named": false
   },
   {
+    "type": "import-as",
+    "named": false
+  },
+  {
     "type": "in_operator",
     "named": true
   },
@@ -4194,6 +4185,10 @@
   {
     "type": "match",
     "named": false
+  },
+  {
+    "type": "minus_operator",
+    "named": true
   },
   {
     "type": "not_equal_operator",

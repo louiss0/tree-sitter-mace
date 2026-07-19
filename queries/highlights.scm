@@ -51,8 +51,7 @@
 (import_declaration
   [
     "import"
-    "-"
-    "as"
+    "import-as"
   ] @keyword
   (identifier) @type)
 
