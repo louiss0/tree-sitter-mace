@@ -1,7 +1,6 @@
 [
   "from"
   "import"
-  "bind"
   "alias"
   "schema"
   "gen_doc"
