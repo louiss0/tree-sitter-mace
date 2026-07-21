@@ -49,11 +49,12 @@
 ] @property
 
 (import_declaration
-  [
-    "import"
-    (bind_keyword)
-  ] @keyword
+  "import" @keyword
   (identifier) @type)
+
+(import_declaration
+  _ @keyword
+  (#eq? @keyword "bind"))
 
 (named_type
   (identifier) @type)
