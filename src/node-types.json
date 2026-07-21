@@ -4067,6 +4067,10 @@
     "named": true
   },
   {
+    "type": "bind",
+    "named": false
+  },
+  {
     "type": "boolean_type",
     "named": true
   },
@@ -4156,10 +4160,6 @@
   },
   {
     "type": "import",
-    "named": false
-  },
-  {
-    "type": "import-as",
     "named": false
   },
   {

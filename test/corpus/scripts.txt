@@ -58,10 +58,10 @@ User user = {
         (identifier_word)))))
 
 ===
-script block with import-as alias
+script block with bind alias
 ===
 |===|
-from "./package_json.mace" import-as Package;
+from "./package_json.mace" bind Package;
 |===|
 [output = "data"]
 {

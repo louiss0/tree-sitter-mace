@@ -289,7 +289,7 @@ data output with parse_file directive without data
 data output with imported parse directive without data
 ===
 |===|
-from "./nx_inputs.mace" import-as NxInputs;
+from "./nx_inputs.mace" bind NxInputs;
 |===|
 [parse = NxInputs]
 {

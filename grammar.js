@@ -40,6 +40,7 @@ export default grammar({
     global: () => [
       "from",
       "import",
+      "bind",
       "alias",
       "schema",
       "gen_doc",
@@ -142,7 +143,7 @@ export default grammar({
         "from",
         $.string_literal,
         choice(
-          seq("import-as", $.identifier),
+          seq("bind", $.identifier),
           seq(
             "import",
             $.identifier,

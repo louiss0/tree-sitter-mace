@@ -129,10 +129,10 @@ from "./shared.mace" import displayName:display-name;
         (identifier_word)))))
 
 ===
-kebab-case import-as alias
+kebab-case bind alias
 ===
 |===|
-from "./shared.mace" import-as shared-data;
+from "./shared.mace" bind shared-data;
 |===|
 {
   shared-data: shared-data,
@@ -244,7 +244,7 @@ output-block kebab-case keys prefixed by every keyword
 {
   from-value: null,
   import-value: null,
-  import-as-value: null,
+  bind-value: null,
   alias-value: null,
   schema-value: null,
   gen_doc-value: null,
@@ -411,7 +411,7 @@ record kebab-case keys prefixed by every keyword
   record-value: {
     from-value: null,
     import-value: null,
-    import-as-value: null,
+    bind-value: null,
     alias-value: null,
     schema-value: null,
     gen_doc-value: null,

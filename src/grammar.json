@@ -559,7 +559,7 @@
               "members": [
                 {
                   "type": "STRING",
-                  "value": "import-as"
+                  "value": "bind"
                 },
                 {
                   "type": "SYMBOL",
@@ -3063,6 +3063,10 @@
       {
         "type": "STRING",
         "value": "import"
+      },
+      {
+        "type": "STRING",
+        "value": "bind"
       },
       {
         "type": "STRING",
