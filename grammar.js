@@ -316,28 +316,12 @@ export default grammar({
           "}",
         ),
         seq(
-          alias($._data_directive_list, $.directive_list),
-          $.inline_doc_block,
-          "{",
-          repeat(choice($.comment, $.output_field)),
-          "}",
-        ),
-        seq(
           alias($._schema_directive_list, $.directive_list),
-          "{",
-          repeat(choice($.comment, $.output_schema_field)),
-          "}",
-        ),
-        seq(
-          alias($._schema_directive_list, $.directive_list),
-          $.inline_doc_block,
           "{",
           repeat(choice($.comment, $.output_schema_field)),
           "}",
         ),
       ),
-
-    inline_doc_block: ($) => $.doc_block_string,
 
     _data_directive_list: ($) =>
       prec(
@@ -350,6 +334,7 @@ export default grammar({
             $.schema_file_directive,
             $.parse_directive,
             $.parse_file_directive,
+            $.doc_directive,
           ),
           repeat(
             seq(
@@ -360,6 +345,7 @@ export default grammar({
                 $.schema_file_directive,
                 $.parse_directive,
                 $.parse_file_directive,
+                $.doc_directive,
               ),
             ),
           ),
@@ -368,7 +354,15 @@ export default grammar({
       ),
 
     _schema_directive_list: ($) =>
-      prec(2, seq("[", alias($.schema_output_mode_directive, $.output_mode_directive), "]")),
+      prec(
+        2,
+        seq(
+          "[",
+          alias($.schema_output_mode_directive, $.output_mode_directive),
+          optional(seq(",", $.doc_directive)),
+          "]",
+        ),
+      ),
 
     data_output_mode_directive: ($) => seq("output", "=", $.data_mode),
 
@@ -385,6 +379,8 @@ export default grammar({
     parse_directive: ($) => seq("parse", "=", $.identifier),
 
     parse_file_directive: ($) => seq("parse_file", "=", $.string_literal),
+
+    doc_directive: ($) => seq("doc", "=", $._expression),
 
     output_field: ($) =>
       choice(

@@ -363,10 +363,9 @@ schema Runtime: {
 ===
 schema output with type references
 ===
-[output = "schema"]
-"""
+[output = "schema", doc = """
 # User Output
-"""
+"""]
 {
   name: string, /# The user's name
   scores: array<array<int>>,
@@ -378,9 +377,9 @@ schema output with type references
   (output_block
     (directive_list
       (output_mode_directive
-        (schema_mode)))
-    (inline_doc_block
-      (doc_block_string))
+        (schema_mode))
+      (doc_directive
+        (string_literal)))
     (output_schema_field
       (field_name
         (identifier

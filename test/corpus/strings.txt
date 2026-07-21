@@ -109,12 +109,11 @@ Owner: $($self.user.name)
               (identifier_word))))))))
 
 ===
-output inline doc block
+output doc directive
 ===
-[output = "schema"]
-"""
+[output = "schema", doc = """
 # Public User Output
-"""
+"""]
 {
   name: string,
 }
@@ -124,9 +123,9 @@ output inline doc block
   (output_block
     (directive_list
       (output_mode_directive
-        (schema_mode)))
-    (inline_doc_block
-      (doc_block_string))
+        (schema_mode))
+      (doc_directive
+        (string_literal)))
     (output_schema_field
       (field_name
         (identifier

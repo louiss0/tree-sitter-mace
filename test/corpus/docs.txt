@@ -1,12 +1,11 @@
 ===
-data output with inline doc block
+data output with doc directive
 ===
-[output = "data"]
-"""
+[output = "data", doc = """
 # User Payload
 
 This block emits user data.
-"""
+"""]
 {
   name: "Ada", /# The emitted user name
   age: 27, /# The emitted age
@@ -17,9 +16,9 @@ This block emits user data.
   (output_block
     (directive_list
       (output_mode_directive
-        (data_mode)))
-    (inline_doc_block
-      (doc_block_string))
+        (data_mode))
+      (doc_directive
+        (string_literal)))
     (output_field
       (field_name
         (identifier

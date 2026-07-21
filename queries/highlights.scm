@@ -104,7 +104,6 @@
 [
   (string_literal)
   (doc_block_string)
-  (inline_doc_block)
 ] @string
 
 [

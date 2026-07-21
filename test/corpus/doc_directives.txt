@@ -1,0 +1,31 @@
+===
+data output doc directive accepts a variable
+===
+|===|
+string documentation = "Public output";
+|===|
+[output = "data", doc = documentation]
+{
+  name: "Ada",
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal)))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode))
+      (doc_directive
+        (identifier
+          (identifier_word))))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (string_literal))))
