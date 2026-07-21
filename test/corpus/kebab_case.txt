@@ -143,6 +143,7 @@ from "./shared.mace" bind shared-data;
   (script_block
     (import_declaration
       (string_literal)
+      (bind_keyword)
       (identifier
         (identifier_word))))
   (output_block

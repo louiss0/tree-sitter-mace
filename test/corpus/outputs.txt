@@ -301,6 +301,7 @@ from "./nx_inputs.mace" bind NxInputs;
   (script_block
     (import_declaration
       (string_literal)
+      (bind_keyword)
       (identifier
         (identifier_word))))
   (output_block

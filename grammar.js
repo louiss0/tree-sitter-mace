@@ -143,7 +143,7 @@ export default grammar({
         "from",
         $.string_literal,
         choice(
-          seq("bind", $.identifier),
+          seq($.bind_keyword, $.identifier),
           seq(
             "import",
             $.identifier,
@@ -153,6 +153,8 @@ export default grammar({
         ),
         ";",
       ),
+
+    bind_keyword: (_) => "bind",
 
     script_block: ($) =>
       seq(

@@ -1340,6 +1340,10 @@
       "required": true,
       "types": [
         {
+          "type": "bind_keyword",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -4067,8 +4071,8 @@
     "named": true
   },
   {
-    "type": "bind",
-    "named": false
+    "type": "bind_keyword",
+    "named": true
   },
   {
     "type": "boolean_type",

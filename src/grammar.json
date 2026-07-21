@@ -558,8 +558,8 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "bind"
+                  "type": "SYMBOL",
+                  "name": "bind_keyword"
                 },
                 {
                   "type": "SYMBOL",
@@ -645,6 +645,10 @@
           "value": ";"
         }
       ]
+    },
+    "bind_keyword": {
+      "type": "STRING",
+      "value": "bind"
     },
     "script_block": {
       "type": "SEQ",

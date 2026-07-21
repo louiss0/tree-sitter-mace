@@ -51,7 +51,7 @@
 (import_declaration
   [
     "import"
-    "bind"
+    (bind_keyword)
   ] @keyword
   (identifier) @type)
 
