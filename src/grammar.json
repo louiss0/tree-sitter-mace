@@ -71,12 +71,26 @@
       }
     },
     "identifier": {
-      "type": "RESERVED",
-      "content": {
-        "type": "SYMBOL",
-        "name": "identifier_word"
-      },
-      "context_name": "global"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "RESERVED",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier_word"
+          },
+          "context_name": "global"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_kebab_identifier_word"
+          },
+          "named": true,
+          "value": "identifier_word"
+        }
+      ]
     },
     "identifier_word": {
       "type": "TOKEN",
@@ -104,6 +118,38 @@
             }
           }
         ]
+      }
+    },
+    "_kebab_identifier_word": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[A-Za-z][A-Za-z0-9_]*"
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "-"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[A-Za-z0-9_]+"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     },
     "string_literal": {

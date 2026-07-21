@@ -182,3 +182,58 @@ nested kebab-case output records
                 (identifier
                   (identifier_word)))
               (string_literal))))))))
+
+===
+keyword-prefixed kebab-case identifiers
+===
+|===|
+string string-value = "Ada";
+|===|
+[output = "schema"]
+{
+  string-value: StringValue,
+  int-value: IntValue,
+  float-value: FloatValue,
+  boolean-value: BooleanValue,
+}
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal)))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (schema_mode)))
+    (output_schema_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (named_type
+        (identifier
+          (identifier_word))))
+    (output_schema_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (named_type
+        (identifier
+          (identifier_word))))
+    (output_schema_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (named_type
+        (identifier
+          (identifier_word))))
+    (output_schema_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (named_type
+        (identifier
+          (identifier_word))))))

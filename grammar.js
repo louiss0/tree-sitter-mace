@@ -7,6 +7,9 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const IDENTIFIER_HEAD = /[A-Za-z][A-Za-z0-9_]*/;
+const IDENTIFIER_SEGMENT = /[A-Za-z0-9_]+/;
+
 const PREC = {
   conditional: 1,
   logical_or: 2,
@@ -65,10 +68,17 @@ export default grammar({
 
     comment: (_) => token(prec(1, choice(/\/\*[\s\S]*?\*\//, /\/\/[^\r\n]*/))),
 
-    identifier: ($) => reserved("global", $.identifier_word),
+    identifier: ($) =>
+      choice(
+        reserved("global", $.identifier_word),
+        alias($._kebab_identifier_word, $.identifier_word),
+      ),
 
     identifier_word: (_) =>
-      token(seq(/[A-Za-z][A-Za-z0-9_]*/, repeat(seq("-", /[A-Za-z0-9_]+/)))),
+      token(seq(IDENTIFIER_HEAD, repeat(seq("-", IDENTIFIER_SEGMENT)))),
+
+    _kebab_identifier_word: (_) =>
+      token(prec(1, seq(IDENTIFIER_HEAD, repeat1(seq("-", IDENTIFIER_SEGMENT))))),
 
     string_literal: ($) =>
       choice(
