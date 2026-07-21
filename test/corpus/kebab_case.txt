@@ -237,3 +237,342 @@ string string-value = "Ada";
       (named_type
         (identifier
           (identifier_word))))))
+
+===
+output-block kebab-case keys prefixed by every keyword
+===
+{
+  from-value: null,
+  import-value: null,
+  import-as-value: null,
+  alias-value: null,
+  schema-value: null,
+  gen_doc-value: null,
+  schema_doc-value: null,
+  output-value: null,
+  schema_file-value: null,
+  parse-value: null,
+  parse_file-value: null,
+  array-value: null,
+  fusion-value: null,
+  variant-value: null,
+  choice-value: null,
+  match-value: null,
+  record-value: null,
+  string-value: null,
+  int-value: null,
+  float-value: null,
+  hex_int-value: null,
+  hex_float-value: null,
+  boolean-value: null,
+  null-value: null,
+  true-value: null,
+  false-value: null,
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (null_literal))))
+
+===
+record kebab-case keys prefixed by every keyword
+===
+{
+  record-value: {
+    from-value: null,
+    import-value: null,
+    import-as-value: null,
+    alias-value: null,
+    schema-value: null,
+    gen_doc-value: null,
+    schema_doc-value: null,
+    output-value: null,
+    schema_file-value: null,
+    parse-value: null,
+    parse_file-value: null,
+    array-value: null,
+    fusion-value: null,
+    variant-value: null,
+    choice-value: null,
+    match-value: null,
+    record-value: null,
+    string-value: null,
+    int-value: null,
+    float-value: null,
+    hex_int-value: null,
+    hex_float-value: null,
+    boolean-value: null,
+    null-value: null,
+    true-value: null,
+    false-value: null,
+  },
+}
+---
+
+(source_file
+  (output_block
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (record_literal
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (null_literal))))))
