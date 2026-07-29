@@ -907,11 +907,6 @@
     }
   },
   {
-    "type": "doc_block_string",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "doc_directive",
     "named": true,
     "fields": {},
@@ -4213,6 +4208,10 @@
   {
     "type": "doc",
     "named": false
+  },
+  {
+    "type": "doc_block_string",
+    "named": true
   },
   {
     "type": "double_star_operator",

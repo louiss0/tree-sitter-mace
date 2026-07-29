@@ -117,16 +117,16 @@ export default grammar({
         ),
       ),
 
-    doc_block_string: ($) =>
-      seq(
-        '"""',
-        repeat(
-          choice(
-            token.immediate(choice(/[^"\\$]+/, '"', '""', "$")),
-            token.immediate(seq("\\", choice("\\", "'", '"', "n", "r", "t"))),
+    doc_block_string: (_) =>
+      token(
+        prec(
+          1,
+          seq(
+            '"""',
+            repeat(choice(/[^"\\]+/, '"', '""', seq("\\", /./))),
+            '"""',
           ),
         ),
-        '"""',
       ),
 
     interpolation: ($) => seq("$(", $._expression, ")"),
