@@ -1,7 +1,7 @@
 ===
-data output with doc directive
+data output with description directive
 ===
-[output = "data", doc = """
+[output = "data", description = """
 # User Payload
 
 This block emits user data.
@@ -17,7 +17,7 @@ This block emits user data.
     (directive_list
       (output_mode_directive
         (data_mode))
-      (doc_directive
+      (description_directive
         (string_literal)))
     (output_field
       (field_name

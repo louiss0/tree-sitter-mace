@@ -109,9 +109,9 @@ Owner: $($self.user.name)
               (identifier_word))))))))
 
 ===
-output doc directive
+output description directive
 ===
-[output = "schema", doc = """
+[output = "schema", description = """
 # Public User Output
 """]
 {
@@ -124,7 +124,7 @@ output doc directive
     (directive_list
       (output_mode_directive
         (schema_mode))
-      (doc_directive
+      (description_directive
         (string_literal)))
     (output_schema_field
       (field_name

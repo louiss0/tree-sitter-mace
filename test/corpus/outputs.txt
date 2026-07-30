@@ -363,7 +363,7 @@ schema Runtime: {
 ===
 schema output with type references
 ===
-[output = "schema", doc = """
+[output = "schema", description = """
 # User Output
 """]
 {
@@ -378,7 +378,7 @@ schema output with type references
     (directive_list
       (output_mode_directive
         (schema_mode))
-      (doc_directive
+      (description_directive
         (string_literal)))
     (output_schema_field
       (field_name

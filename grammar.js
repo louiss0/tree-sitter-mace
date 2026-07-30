@@ -334,7 +334,7 @@ export default grammar({
             $.schema_file_directive,
             $.parse_directive,
             $.parse_file_directive,
-            $.doc_directive,
+            $.description_directive,
           ),
           repeat(
             seq(
@@ -345,7 +345,7 @@ export default grammar({
                 $.schema_file_directive,
                 $.parse_directive,
                 $.parse_file_directive,
-                $.doc_directive,
+                $.description_directive,
               ),
             ),
           ),
@@ -359,7 +359,7 @@ export default grammar({
         seq(
           "[",
           alias($.schema_output_mode_directive, $.output_mode_directive),
-          optional(seq(",", $.doc_directive)),
+          optional(seq(",", $.description_directive)),
           "]",
         ),
       ),
@@ -380,7 +380,7 @@ export default grammar({
 
     parse_file_directive: ($) => seq("parse_file", "=", $.string_literal),
 
-    doc_directive: ($) => seq("doc", "=", $._expression),
+    description_directive: ($) => seq("description", "=", $._expression),
 
     output_field: ($) =>
       choice(

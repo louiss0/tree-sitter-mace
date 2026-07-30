@@ -1654,7 +1654,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "doc_directive"
+                "name": "description_directive"
               }
             ]
           },
@@ -1697,7 +1697,7 @@
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "doc_directive"
+                      "name": "description_directive"
                     }
                   ]
                 }
@@ -1742,7 +1742,7 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "doc_directive"
+                    "name": "description_directive"
                   }
                 ]
               },
@@ -1886,12 +1886,12 @@
         }
       ]
     },
-    "doc_directive": {
+    "description_directive": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "doc"
+          "value": "description"
         },
         {
           "type": "STRING",
