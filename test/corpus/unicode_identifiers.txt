@@ -1,0 +1,48 @@
+===
+Unicode identifiers
+===
+[output = 'data']
+{
+  技能: ["lexer", "parser"],
+  プロンプト: {
+    μορφή: "markdown",
+  },
+  herramientas: [{
+    ενεργό: true,
+  }],
+}
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (array_literal
+        (string_literal)
+        (string_literal)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (record_literal
+        (record_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (string_literal))))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (array_literal
+        (record_literal
+          (record_field
+            (field_name
+              (identifier
+                (identifier_word)))
+            (boolean_literal)))))))
