@@ -99,7 +99,7 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "[\\p{L}][\\p{L}\\p{Nd}_]*"
+            "value": "[\\p{L}][\\p{L}\\p{Nd}\\p{M}_]*"
           },
           {
             "type": "REPEAT",
@@ -112,7 +112,7 @@
                 },
                 {
                   "type": "PATTERN",
-                  "value": "[\\p{L}\\p{Nd}_]+"
+                  "value": "[\\p{L}\\p{Nd}\\p{M}_]+"
                 }
               ]
             }
@@ -130,7 +130,7 @@
           "members": [
             {
               "type": "PATTERN",
-              "value": "[\\p{L}][\\p{L}\\p{Nd}_]*"
+              "value": "[\\p{L}][\\p{L}\\p{Nd}\\p{M}_]*"
             },
             {
               "type": "REPEAT1",
@@ -143,7 +143,7 @@
                   },
                   {
                     "type": "PATTERN",
-                    "value": "[\\p{L}\\p{Nd}_]+"
+                    "value": "[\\p{L}\\p{Nd}\\p{M}_]+"
                   }
                 ]
               }

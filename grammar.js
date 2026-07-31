@@ -7,8 +7,8 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const IDENTIFIER_HEAD = /[\p{L}][\p{L}\p{Nd}_]*/;
-const IDENTIFIER_SEGMENT = /[\p{L}\p{Nd}_]+/;
+const IDENTIFIER_HEAD = /[\p{L}][\p{L}\p{Nd}\p{M}_]*/;
+const IDENTIFIER_SEGMENT = /[\p{L}\p{Nd}\p{M}_]+/;
 
 const PREC = {
   conditional: 1,

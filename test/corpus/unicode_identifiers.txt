@@ -46,3 +46,30 @@ Unicode identifiers
               (identifier
                 (identifier_word)))
             (boolean_literal)))))))
+
+===
+Combining marks in identifiers
+===
+|===|
+string café = "ok";
+|===|
+[output = 'data'] { value: café, }
+---
+
+(source_file
+  (script_block
+    (variable_declaration
+      (string_type)
+      (identifier
+        (identifier_word))
+      (string_literal)))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (identifier
+        (identifier_word)))))
