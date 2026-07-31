@@ -1,0 +1,23 @@
+===
+Grouped expressions
+===
+[output = 'data'] { value: (true || false) && true, }
+---
+
+(source_file
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))
+    (output_field
+      (field_name
+        (identifier
+          (identifier_word)))
+      (logical_and_expression
+        (parenthesized_expression
+          (logical_or_expression
+            (boolean_literal)
+            (or_or_operator)
+            (boolean_literal)))
+        (and_and_operator)
+        (boolean_literal)))))
