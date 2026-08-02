@@ -231,3 +231,38 @@ alias Mode: fusion[Environment, choice[1, true]];
     (directive_list
       (output_mode_directive
         (data_mode)))))
+
+===
+recursive schema self type
+===
+|===|
+schema Node: {
+  value: string,
+  children?: array<$self>,
+};
+|===|
+[output = "data"] {}
+---
+
+(source_file
+  (script_block
+    (schema_declaration
+      (identifier
+        (identifier_word))
+      (record_type
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (string_type))
+        (schema_field
+          (field_name
+            (identifier
+              (identifier_word)))
+          (optional_marker)
+          (array_type
+            (self_type))))))
+  (output_block
+    (directive_list
+      (output_mode_directive
+        (data_mode)))))

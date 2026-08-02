@@ -264,6 +264,7 @@ export default grammar({
         $.fusion_type,
         $.variant_type,
         $.choice_type,
+        $.self_type,
         $.named_type,
       ),
 
@@ -306,6 +307,8 @@ export default grammar({
       prec(1, seq("variant", "[", $._type_reference, repeat(seq(",", $._type_reference)), "]")),
 
     named_type: ($) => $.identifier,
+
+    self_type: ($) => seq("$", "self"),
 
     output_block: ($) =>
       choice(

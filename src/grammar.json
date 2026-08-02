@@ -1289,6 +1289,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "self_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "named_type"
         }
       ]
@@ -1524,6 +1528,19 @@
     "named_type": {
       "type": "SYMBOL",
       "name": "identifier"
+    },
+    "self_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "STRING",
+          "value": "self"
+        }
+      ]
     },
     "output_block": {
       "type": "CHOICE",
