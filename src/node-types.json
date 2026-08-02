@@ -298,10 +298,6 @@
           "named": true
         },
         {
-          "type": "self_type",
-          "named": true
-        },
-        {
           "type": "string_type",
           "named": true
         },
@@ -1385,10 +1381,6 @@
           "named": true
         },
         {
-          "type": "self_type",
-          "named": true
-        },
-        {
           "type": "string_type",
           "named": true
         },
@@ -1923,10 +1915,6 @@
           },
           {
             "type": "record_map_type",
-            "named": true
-          },
-          {
-            "type": "self_type",
             "named": true
           },
           {
@@ -2682,10 +2670,6 @@
           "named": true
         },
         {
-          "type": "self_type",
-          "named": true
-        },
-        {
           "type": "string_type",
           "named": true
         },
@@ -3063,10 +3047,6 @@
           "named": true
         },
         {
-          "type": "self_type",
-          "named": true
-        },
-        {
           "type": "string_type",
           "named": true
         },
@@ -3372,10 +3352,6 @@
           "named": true
         },
         {
-          "type": "self_type",
-          "named": true
-        },
-        {
           "type": "string_type",
           "named": true
         },
@@ -3459,11 +3435,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "self_type",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "shift_expression",
@@ -3704,10 +3675,6 @@
         },
         {
           "type": "record_map_type",
-          "named": true
-        },
-        {
-          "type": "self_type",
           "named": true
         },
         {
@@ -4009,10 +3976,6 @@
           "named": true
         },
         {
-          "type": "self_type",
-          "named": true
-        },
-        {
           "type": "shift_expression",
           "named": true
         },
@@ -4081,10 +4044,6 @@
         },
         {
           "type": "record_map_type",
-          "named": true
-        },
-        {
-          "type": "self_type",
           "named": true
         },
         {
